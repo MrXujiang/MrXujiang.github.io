@@ -94,18 +94,18 @@
 
 
 
-<meta name="description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 快速开始创建一个博客文章页面1$ hexo new &quot;My New Post&quot; 更多参考: Writing 运行服务器1$ hexo server 更多参考: Server 生成静态文件1$ hexo gener">
+<meta name="description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 <meta name="keywords" content="Css3,transition,animation,linear-gradient,box-shadow,border-radius,keyframes">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Css3揭秘——高级实用技巧大全">
 <meta property="og:url" content="http://yoursite.com/2018/01/30/animation/index.html">
 <meta property="og:site_name" content="Coding for your eyes">
-<meta property="og:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 快速开始创建一个博客文章页面1$ hexo new &quot;My New Post&quot; 更多参考: Writing 运行服务器1$ hexo server 更多参考: Server 生成静态文件1$ hexo gener">
+<meta property="og:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-02T13:37:07.126Z">
+<meta property="og:updated_time" content="2018-02-02T16:55:59.684Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Css3揭秘——高级实用技巧大全">
-<meta name="twitter:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 快速开始创建一个博客文章页面1$ hexo new &quot;My New Post&quot; 更多参考: Writing 运行服务器1$ hexo server 更多参考: Server 生成静态文件1$ hexo gener">
+<meta name="twitter:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 
 
 
@@ -278,9 +278,43 @@
       
 
       
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
     </ul>
   
 
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="搜索..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
   
 </nav>
 
@@ -403,7 +437,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  131
+                  324
                 </span>
               
 
@@ -429,14 +463,131 @@
 
       
         <p>自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效.</p>
-<h2 id="快速开始"><a href="#快速开始" class="headerlink" title="快速开始"></a>快速开始</h2><h3 id="创建一个博客文章页面"><a href="#创建一个博客文章页面" class="headerlink" title="创建一个博客文章页面"></a>创建一个博客文章页面</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>更多参考: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="运行服务器"><a href="#运行服务器" class="headerlink" title="运行服务器"></a>运行服务器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>更多参考: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>更多参考: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="发布到远程站点"><a href="#发布到远程站点" class="headerlink" title="发布到远程站点"></a>发布到远程站点</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>更多参考: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<h2 id="程序员必读"><a href="#程序员必读" class="headerlink" title="程序员必读"></a>程序员必读</h2><blockquote>
+<p><a href="https://mrxujiang.github.io2018/01/30/skills_for_css3/" target="_blank" rel="noopener">Css3编码技巧</a></p>
+</blockquote>
+
+<style>
+.black-theme{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+}
+</style>
+
+<h2 id="1-实现内部虚线边框"><a href="#1-实现内部虚线边框" class="headerlink" title="1.实现内部虚线边框"></a>1.实现内部虚线边框</h2><blockquote>
+<p>知识点：outline</p>
+</blockquote>
+
+<style>
+.dash-border{
+  width: 200px;
+  height: 100px;
+  line-height: 100px;
+  outline: 1px dashed #fff;
+  outline-offset: -10px;
+}
+</style>
+<div class="dash-border black-theme">
+hello world
+</div> 
+
+<ul>
+<li>核心代码<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// css</span><br><span class="line"><span class="selector-class">.dash-border</span>&#123;</span><br><span class="line">  <span class="attribute">outline</span>: <span class="number">1px</span> dashed <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">outline-offset</span>: -<span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="2-边框内圆角的实现"><a href="#2-边框内圆角的实现" class="headerlink" title="2.边框内圆角的实现"></a>2.边框内圆角的实现</h2><blockquote>
+<p>知识点：box-shadow</p>
+</blockquote>
+
+<style>
+.radius-border{
+  margin-top: 20px;
+  width: 180px;
+  height: 80px;
+  box-shadow: 0 0 0 10px gray;
+}
+</style>
+<div class="radius-border black-theme"></div> 
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">box-shadow</span>: 0 0 0 10<span class="selector-tag">px</span> <span class="selector-tag">gray</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-实现条纹背景与进度条"><a href="#3-实现条纹背景与进度条" class="headerlink" title="3.实现条纹背景与进度条"></a>3.实现条纹背景与进度条</h2><blockquote>
+<p>知识点：linear-gradient,repeating-linear-gradient</p>
+</blockquote>
+
+<style>
+.bg-stripe{
+  margin-top: 20px;
+  width: 180px;
+  height: 20px;
+  background: linear-gradient(to right,#fb3 50%,#58a 0);
+  background-size: 40px 100%;
+  box-shadow: inset 0 0 3px #555;
+}
+.bg-stripe-2{
+  background: linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0);
+  background-size: 40px 40px;
+}
+.bg-stripe-3{
+  background: repeating-linear-gradient(60deg,#fb3,#fb3 15px,#58a 0,#58a 30px);
+}
+</style>
+<div class="bg-stripe black-theme"></div>
+<div class="bg-stripe black-theme bg-stripe-2"></div>
+<div class="bg-stripe black-theme bg-stripe-3"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 上</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>,<span class="selector-id">#fb3</span> 50%,<span class="selector-id">#58a</span> 0);</span><br><span class="line"><span class="selector-tag">background-size</span>: 40<span class="selector-tag">px</span> 100%;</span><br><span class="line"></span><br><span class="line">// 中</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(45<span class="selector-tag">deg</span>,<span class="selector-id">#fb3</span> 25%,<span class="selector-id">#58a</span> 0,<span class="selector-id">#58a</span> 50%,<span class="selector-id">#fb3</span> 0,<span class="selector-id">#fb3</span> 75%,<span class="selector-id">#58a</span> 0);</span><br><span class="line"><span class="selector-tag">background-size</span>: 40<span class="selector-tag">px</span> 40<span class="selector-tag">px</span>;</span><br><span class="line"></span><br><span class="line">// 下 (可以实现任意角度的渐变，45°时显示效果最好)</span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">repeating-linear-gradient</span>(60<span class="selector-tag">deg</span>,<span class="selector-id">#fb3</span>,<span class="selector-id">#fb3</span> 15<span class="selector-tag">px</span>,<span class="selector-id">#58a</span> 0,<span class="selector-id">#58a</span> 30<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="4-复杂的背景图案"><a href="#4-复杂的背景图案" class="headerlink" title="4.复杂的背景图案"></a>4.复杂的背景图案</h2><blockquote>
+<p>知识点：linear-gradient,repeating-linear-gradient,radial-gradient</p>
+</blockquote>
+
+<style>
+.bg-grid{
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  background-image: linear-gradient(rgba(255,255,255,1) 2px,transparent 0),
+  linear-gradient(to right,rgba(255,255,255,1) 2px,transparent 0),
+  linear-gradient(rgba(255,255,255,.2) 1px,transparent 0),
+  linear-gradient(to right,rgba(255,255,255,.2) 1px,transparent 0);
+  background-position: -50px -50px;
+  background-size: 100px 100px,100px 100px, 100% 10px, 10px 100%;
+}
+.animate-grid{
+  animation: move-grid 6s linear infinite;
+}
+@keyframes move-grid{
+  0%{
+    background-position: -50px -50px;
+  }
+  30%{
+    background-position: -100px -100px;
+  }
+  60%{
+    background-position: -100px -150px;
+  }
+  100%{
+    background-position: -50px -50px;
+  }
+}
+</style>
+<div class="bg-grid black-theme"></div>
+<div class="bg-grid black-theme animate-grid"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgba</span>(255,255,255,1) 2<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>,<span class="selector-tag">rgba</span>(255,255,255,1) 2<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgba</span>(255,255,255,<span class="selector-class">.2</span>) 1<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>,<span class="selector-tag">rgba</span>(255,255,255,<span class="selector-class">.2</span>) 1<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0);</span><br><span class="line">  <span class="selector-tag">background-position</span>: <span class="selector-tag">-50px</span> <span class="selector-tag">-50px</span>;</span><br><span class="line">  <span class="selector-tag">background-size</span>: 100<span class="selector-tag">px</span> 100<span class="selector-tag">px</span>,100<span class="selector-tag">px</span> 100<span class="selector-tag">px</span>, 100% 10<span class="selector-tag">px</span>, 10<span class="selector-tag">px</span> 100%;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -704,7 +855,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#快速开始"><span class="nav-number">1.</span> <span class="nav-text">快速开始</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个博客文章页面"><span class="nav-number">1.1.</span> <span class="nav-text">创建一个博客文章页面</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运行服务器"><span class="nav-number">1.2.</span> <span class="nav-text">运行服务器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#生成静态文件"><span class="nav-number">1.3.</span> <span class="nav-text">生成静态文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发布到远程站点"><span class="nav-number">1.4.</span> <span class="nav-text">发布到远程站点</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现内部虚线边框"><span class="nav-number">2.</span> <span class="nav-text">1.实现内部虚线边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-边框内圆角的实现"><span class="nav-number">3.</span> <span class="nav-text">2.边框内圆角的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现条纹背景与进度条"><span class="nav-number">4.</span> <span class="nav-text">3.实现条纹背景与进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-复杂的背景图案"><span class="nav-number">5.</span> <span class="nav-text">4.复杂的背景图案</span></a></li></ol></div>
             
 
           </div>
@@ -907,6 +1058,323 @@ var _hmt = _hmt || [];
 
 
   
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
 
 
 

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title><![CDATA[Css3揭秘——高级实用技巧大全]]></title>
+    <url>%2F2018%2F01%2F30%2Fanimation%2F</url>
+    <content type="text"><![CDATA[自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧 .black-theme{ margin-left: auto; margin-right: auto; margin-bottom: 20px; text-align: center; border-radius: 8px; background-color: #000; color: #fff; } 1.实现内部虚线边框 知识点：outline .dash-border{ width: 200px; height: 100px; line-height: 100px; outline: 1px dashed #fff; outline-offset: -10px; } hello world 核心代码12345// css.dash-border&#123; outline: 1px dashed #fff; outline-offset: -10px;&#125; 2.边框内圆角的实现 知识点：box-shadow .radius-border{ margin-top: 20px; width: 180px; height: 80px; box-shadow: 0 0 0 10px gray; } 核心代码 1box-shadow: 0 0 0 10px gray; 3.实现条纹背景与进度条 知识点：linear-gradient,repeating-linear-gradient .bg-stripe{ margin-top: 20px; width: 180px; height: 20px; background: linear-gradient(to right,#fb3 50%,#58a 0); background-size: 40px 100%; box-shadow: inset 0 0 3px #555; } .bg-stripe-2{ background: linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0); background-size: 40px 40px; } .bg-stripe-3{ background: repeating-linear-gradient(60deg,#fb3,#fb3 15px,#58a 0,#58a 30px); } 核心代码 12345678910// 上background: linear-gradient(to right,#fb3 50%,#58a 0);background-size: 40px 100%;// 中background: linear-gradient(45deg,#fb3 25%,#58a 0,#58a 50%,#fb3 0,#fb3 75%,#58a 0);background-size: 40px 40px;// 下 (可以实现任意角度的渐变，45°时显示效果最好)background: repeating-linear-gradient(60deg,#fb3,#fb3 15px,#58a 0,#58a 30px); 4.复杂的背景图案 知识点：linear-gradient,repeating-linear-gradient,radial-gradient .bg-grid{ margin-top: 20px; width: 200px; height: 200px; background-image: linear-gradient(rgba(255,255,255,1) 2px,transparent 0), linear-gradient(to right,rgba(255,255,255,1) 2px,transparent 0), linear-gradient(rgba(255,255,255,.2) 1px,transparent 0), linear-gradient(to right,rgba(255,255,255,.2) 1px,transparent 0); background-position: -50px -50px; background-size: 100px 100px,100px 100px, 100% 10px, 10px 100%; } .animate-grid{ animation: move-grid 6s linear infinite; } @keyframes move-grid{ 0%{ background-position: -50px -50px; } 30%{ background-position: -100px -100px; } 60%{ background-position: -100px -150px; } 100%{ background-position: -50px -50px; } } 核心代码 1234567// 1background-image: linear-gradient(rgba(255,255,255,1) 2px,transparent 0), linear-gradient(to right,rgba(255,255,255,1) 2px,transparent 0), linear-gradient(rgba(255,255,255,.2) 1px,transparent 0), linear-gradient(to right,rgba(255,255,255,.2) 1px,transparent 0); background-position: -50px -50px; background-size: 100px 100px,100px 100px, 100% 10px, 10px 100%;]]></content>
+      <categories>
+        <category>Css3</category>
+      </categories>
+      <tags>
+        <tag>Css3</tag>
+        <tag>transition</tag>
+        <tag>animation</tag>
+        <tag>linear-gradient</tag>
+        <tag>box-shadow</tag>
+        <tag>border-radius</tag>
+        <tag>keyframes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[我的博客测试]]></title>
+    <url>%2F2018%2F01%2F29%2Fhello-world%2F</url>
+    <content type="text"><![CDATA[欢迎访问猪先森的博客,这篇文章是教你如何快速创建一个基于HEXO的博客,涉及到node和npm的相关使用,如果你是一枚程序猿,如果你还没有一个上手的博客,哈哈,你懂的,赶快来围观吧！ 快速开始创建一个博客文章页面1$ hexo new "My New Post" 更多参考: Writing 运行服务器1$ hexo server 更多参考: Server 生成静态文件1$ hexo generate 更多参考: Generating 发布到远程站点1$ hexo deploy 更多参考: Deployment hexo高级技巧 实现博客页面自定义交互 1&lt;escape&gt;在此标签内的元素可以不被hexo解析&lt;/escape&gt;]]></content>
+      <categories>
+        <category>测试</category>
+      </categories>
+  </entry>
+</search>

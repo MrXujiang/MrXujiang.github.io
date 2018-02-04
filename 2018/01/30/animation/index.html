@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Coding for your eyes">
 <meta property="og:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-03T16:49:40.977Z">
+<meta property="og:updated_time" content="2018-02-04T12:51:04.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="border和background篇">
 <meta name="twitter:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  324
+                  472
                 </span>
               
 
@@ -586,6 +586,95 @@ hello world
 <li>核心代码</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">// 1</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgba</span>(255,255,255,1) 2<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>,<span class="selector-tag">rgba</span>(255,255,255,1) 2<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">rgba</span>(255,255,255,<span class="selector-class">.2</span>) 1<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">to</span> <span class="selector-tag">right</span>,<span class="selector-tag">rgba</span>(255,255,255,<span class="selector-class">.2</span>) 1<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span> 0);</span><br><span class="line">  <span class="selector-tag">background-position</span>: <span class="selector-tag">-50px</span> <span class="selector-tag">-50px</span>;</span><br><span class="line">  <span class="selector-tag">background-size</span>: 100<span class="selector-tag">px</span> 100<span class="selector-tag">px</span>,100<span class="selector-tag">px</span> 100<span class="selector-tag">px</span>, 100% 10<span class="selector-tag">px</span>, 10<span class="selector-tag">px</span> 100%;</span><br></pre></td></tr></table></figure>
+
+<style>
+.bg-dot{
+  margin-top: 20px;
+  width: 200px;
+  height: 50px;
+  background-image: radial-gradient(circle,#0cf 15px,transparent),
+                    radial-gradient(circle,red 15px,transparent),
+                    radial-gradient(circle,yellow 15px,transparent),
+                    radial-gradient(circle,green 15px,transparent);
+  background-repeat: no-repeat;
+  background-position: 0 0, 50px 0, 100px 0, 150px 0, 200px 0;
+  background-size: 50px 50px;
+}
+.animate-dot{
+  animation: move-dot 8s linear infinite;
+}
+.animate-dot2{
+  animation: move-dot2 6s linear infinite;
+}
+@keyframes move-dot{
+  0%{
+    background-position: 0 0, 50px 0, 100px 0, 150px 0;
+  }
+  30%{
+    background-position: 50px 0, 0 0, 100px 0, 150px 0;
+  }
+  60%{
+    background-position: 50px 0, 100px 0, 0 0, 150px 0;
+  }
+  100%{
+    background-position: 50px 0, 100px 0, 150px 0, 0 0;
+  }
+}
+@keyframes move-dot2{
+  0%{
+    background-image: radial-gradient(circle,#0cf 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent);
+  }
+  30%{
+    background-image: radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,red 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent);
+  }
+  60%{
+    background-image: radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,yellow 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent);
+  }
+  100%{
+    background-image: radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,gray 15px,transparent),
+                    radial-gradient(circle,green 15px,transparent);
+  }
+}
+</style>
+<div class="bg-dot black-theme animate-dot"></div>
+<div class="bg-dot black-theme animate-dot2"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">// 利用css3多背景和position实现红绿灯和背景色块移动</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-id">#0cf</span> 15<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span>),</span><br><span class="line">                    <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-tag">red</span> 15<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span>),</span><br><span class="line">                    <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-tag">yellow</span> 15<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span>),</span><br><span class="line">                    <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-tag">green</span> 15<span class="selector-tag">px</span>,<span class="selector-tag">transparent</span>);</span><br><span class="line">  <span class="selector-tag">background-repeat</span>: <span class="selector-tag">no-repeat</span>;</span><br><span class="line">  <span class="selector-tag">background-position</span>: 0 0, 50<span class="selector-tag">px</span> 0, 100<span class="selector-tag">px</span> 0, 150<span class="selector-tag">px</span> 0, 200<span class="selector-tag">px</span> 0;</span><br><span class="line">  <span class="selector-tag">background-size</span>: 50<span class="selector-tag">px</span> 50<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
+
+<style>
+.bg-qi{
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  background-color: #eee;
+  background-image: linear-gradient(45deg,rgba(0,0,0,.25) 25%,transparent 0,transparent 75%,rgba(0,0,0,.25) 0),
+  linear-gradient(45deg,rgba(0,0,0,.25) 25%,transparent 0,transparent 75%,rgba(0,0,0,.25) 0);
+  background-position: 0 0, 20px 20px;
+  background-size: 40px 40px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+}
+
+</style>
+<div class="bg-qi black-theme"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 利用背景渐变实现棋盘图案</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(45<span class="selector-tag">deg</span>,<span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.25</span>) 25%,<span class="selector-tag">transparent</span> 0,<span class="selector-tag">transparent</span> 75%,<span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.25</span>) 0),</span><br><span class="line">                  <span class="selector-tag">linear-gradient</span>(45<span class="selector-tag">deg</span>,<span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.25</span>) 25%,<span class="selector-tag">transparent</span> 0,<span class="selector-tag">transparent</span> 75%,<span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.25</span>) 0);</span><br><span class="line"><span class="selector-tag">background-position</span>: 0 0, 20<span class="selector-tag">px</span> 20<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">background-size</span>: 40<span class="selector-tag">px</span> 40<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>

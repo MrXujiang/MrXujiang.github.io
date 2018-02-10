@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Coding for your eyes">
 <meta property="og:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-06T01:42:03.671Z">
+<meta property="og:updated_time" content="2018-02-10T04:55:08.575Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="border和background篇">
 <meta name="twitter:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  529
+                  576
                 </span>
               
 
@@ -680,7 +680,7 @@ hello world
 </blockquote>
 
 <style>
-.bg-rand{
+.bg-line-rand{
   margin-top: 20px;
   width: 480px;
   height: 60px;
@@ -691,14 +691,55 @@ hello world
   background-size: 41px 100%, 61px 100%, 83px 100%;
   box-shadow: 2px 2px 4px rgba(0,0,0,.4);
 }
-
+.bg-dot-rand{
+  margin-top: 20px;
+  width: 200px;
+  height: 200px;
+  background-color: #eee;
+  background-image: radial-gradient(circle,#fb3 5px, transparent 0),
+                    radial-gradient(circle,#ab4 13px, transparent 0),
+                    radial-gradient(circle,#655 31px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 101px 203px, 147px 60px, 373px 201px;
+  box-shadow: 2px 2px 4px rgba(0,0,0,.4);
+}
+.animate1{
+  animation: move 4s linear infinite;
+}
+.animate2{
+  animation: move2 4s linear infinite;
+}
+@keyframes move{
+  0%{
+    background-position: 0 0, 0 0, 0 0;
+  }
+  50%{
+    background-position: -10px 0, 20px 0, 30px 0;
+  }
+  100%{
+    background-position: 0 0, 30px 0, 10px 0;
+  }
+}
+@keyframes move2{
+  0%{
+    background-position: 0 0, 0 0, 0 0;
+  }
+  50%{
+    background-position: -10px 30px, 20px 0, -40px 80px;
+  }
+  100%{
+    background-position: 0 20px, 60px -20px, 10px 30px;
+  }
+}
 </style>
-<div class="bg-rand black-theme"></div>
+<div class="bg-line-rand black-theme"></div>
+<div class="bg-line-rand black-theme animate1"></div>
+<div class="bg-dot-rand black-theme animate2"></div>
 
 <ul>
 <li>核心代码</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 利用背景渐变实现棋盘图案</span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#fb3</span> 11<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#ab4</span> 23<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#655</span> 41<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0);</span><br><span class="line">  <span class="selector-tag">background-size</span>: 41<span class="selector-tag">px</span> 100%, 61<span class="selector-tag">px</span> 100%, 83<span class="selector-tag">px</span> 100%;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">// 利用背景渐变实现棋盘图案</span><br><span class="line"><span class="comment">/*线性*/</span></span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#fb3</span> 11<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#ab4</span> 23<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">linear-gradient</span>(90<span class="selector-tag">deg</span>,<span class="selector-id">#655</span> 41<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0);</span><br><span class="line">  <span class="selector-tag">background-size</span>: 41<span class="selector-tag">px</span> 100%, 61<span class="selector-tag">px</span> 100%, 83<span class="selector-tag">px</span> 100%;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*径向*/</span></span><br><span class="line"><span class="selector-tag">background-image</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-id">#fb3</span> 5<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-id">#ab4</span> 13<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0),</span><br><span class="line">                    <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span>,<span class="selector-id">#655</span> 31<span class="selector-tag">px</span>, <span class="selector-tag">transparent</span> 0);</span><br><span class="line"><span class="selector-tag">background-repeat</span>: <span class="selector-tag">no-repeat</span>;</span><br><span class="line"><span class="selector-tag">background-size</span>: 101<span class="selector-tag">px</span> 203<span class="selector-tag">px</span>, 147<span class="selector-tag">px</span> 60<span class="selector-tag">px</span>, 373<span class="selector-tag">px</span> 201<span class="selector-tag">px</span>;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -881,7 +922,7 @@ hello world
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">4</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -903,7 +944,7 @@ hello world
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">6</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Coding for your eyes">
 <meta property="og:description" content="border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-10T06:57:01.647Z">
+<meta property="og:updated_time" content="2018-02-10T12:56:04.741Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="border——radius篇">
 <meta name="twitter:description" content="border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  219
+                  268
                 </span>
               
 
@@ -526,28 +526,50 @@
 <li>核心代码</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50% /10%;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 20<span class="selector-tag">px</span> 20<span class="selector-tag">px</span> 100%;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 20% 50%;</span><br></pre></td></tr></table></figure>
-<h2 id="2-制作半椭圆-四分之一椭圆"><a href="#2-制作半椭圆-四分之一椭圆" class="headerlink" title="2.制作半椭圆/四分之一椭圆"></a>2.制作半椭圆/四分之一椭圆</h2><blockquote>
-<p>知识点：border-radius: a b c d / e f g h;&nbsp;&nbsp;&nbsp;&nbsp;//左边别代表四个角的水平半径，右边为垂直半径</p>
+<h2 id="3-纯css3实现饼图进度动画"><a href="#3-纯css3实现饼图进度动画" class="headerlink" title="3.纯css3实现饼图进度动画"></a>3.纯css3实现饼图进度动画</h2><blockquote>
+<p>知识点：border-radius: a b c d / e f g h; animation多动画属性;</p>
 </blockquote>
 
 <style>
-.br-21{
-  width: 200px;
+.br-31{
+  width: 100px;
   height: 100px;
-  border-radius: 50% / 100% 100% 0 0;
-  background-color: #f6c;
+  border-radius: 50%;
+  background: linear-gradient(to right,#f6c 50%,#333 0);
 }
-.br-22{
-  border-radius: 100% 0 0 0;
+.br-31::before{
+  content: '';
+  display: block;
+  margin-left: 50%;
+  height: 100%;
+  border-radius: 0 100% 100% 0 / 50%;
+  background-color: #f6c;
+  transform-origin: left;
+  animation: skin 4s linear infinite,
+             bg 8s step-end infinite;
+}
+@keyframes skin{
+  to{
+    transform: rotate(.5turn);
+  }
+}
+@keyframes bg{
+  50%{
+    background: #333;
+  }
+}
+.br-32::before{
+  animation-play-state: paused;
+  animation-delay: inherit;
 }
 </style>
-<div class="br-21 black-theme"></div>
-<div class="br-21 br-22 black-theme"></div>
+<div class="br-31 black-theme"></div>
+<div class="br-31 br-32 black-theme" style="animation-delay:-1s"></div>
 
 <ul>
 <li>核心代码</li>
 </ul>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*半椭圆*/</span></span><br><span class="line">border-radius: 50% / 100% 100% 0 0;</span><br><span class="line"><span class="comment">/* 四分之一椭圆 */</span></span><br><span class="line"><span class="selector-tag">border-radius</span>: 100% 0 0 0;</span><br></pre></td></tr></table></figure>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.br-31</span>&#123;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to right,#f6c 50%,#333 0);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.br-31</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">display</span>: block;</span><br><span class="line">  <span class="attribute">margin-left</span>: <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">0</span> <span class="number">100%</span> <span class="number">100%</span> <span class="number">0</span> / <span class="number">50%</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#f6c</span>;</span><br><span class="line">  <span class="attribute">transform-origin</span>: left;</span><br><span class="line">  <span class="attribute">animation</span>: skin <span class="number">4s</span> linear infinite,</span><br><span class="line">             bg <span class="number">8s</span> step-end infinite;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> skin&#123;</span><br><span class="line">  <span class="selector-tag">to</span>&#123;</span><br><span class="line">    <span class="attribute">transform</span>: <span class="built_in">rotate</span>(.5turn);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> bg&#123;</span><br><span class="line">  50%&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#333</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -628,8 +650,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/02/03/box-shadow/" rel="next" title="box-shadow篇">
-                <i class="fa fa-chevron-left"></i> box-shadow篇
+              <a href="/2018/02/03/box-shadow/" rel="next" title="box-shadow和filter篇">
+                <i class="fa fa-chevron-left"></i> box-shadow和filter篇
               </a>
             
           </div>
@@ -808,7 +830,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-制作自适应的椭圆"><span class="nav-number">1.1.</span> <span class="nav-text">1.制作自适应的椭圆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-制作半椭圆-四分之一椭圆"><span class="nav-number">1.2.</span> <span class="nav-text">2.制作半椭圆/四分之一椭圆</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-制作自适应的椭圆"><span class="nav-number">1.1.</span> <span class="nav-text">1.制作自适应的椭圆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-纯css3实现饼图进度动画"><span class="nav-number">1.2.</span> <span class="nav-text">3.纯css3实现饼图进度动画</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="程序员必读 Css3编码技巧">
+<meta name="description" content="border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;">
 <meta name="keywords" content="Css3,border-radius">
 <meta property="og:type" content="article">
-<meta property="og:title" content="border——radius高级篇">
+<meta property="og:title" content="border——radius篇">
 <meta property="og:url" content="http://yoursite.com/2018/02/10/border/index.html">
 <meta property="og:site_name" content="Coding for your eyes">
-<meta property="og:description" content="程序员必读 Css3编码技巧">
+<meta property="og:description" content="border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-10T05:23:33.436Z">
+<meta property="og:updated_time" content="2018-02-10T06:57:01.647Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="border——radius高级篇">
-<meta name="twitter:description" content="程序员必读 Css3编码技巧">
+<meta name="twitter:title" content="border——radius篇">
+<meta name="twitter:description" content="border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;">
 
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>border——radius高级篇 | Coding for your eyes</title>
+  <title>border——radius篇 | Coding for your eyes</title>
   
 
 
@@ -358,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">border——radius高级篇</h1>
+          <h1 class="post-title" itemprop="name headline">border——radius篇</h1>
         
 
         <div class="post-meta">
@@ -410,7 +410,7 @@
 
           
           
-             <span id="/2018/02/10/border/" class="leancloud_visitors" data-flag-title="border——radius高级篇">
+             <span id="/2018/02/10/border/" class="leancloud_visitors" data-flag-title="border——radius篇">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  10
+                  219
                 </span>
               
 
@@ -460,10 +460,94 @@
       
 
       
-        <h1 id="程序员必读"><a href="#程序员必读" class="headerlink" title="程序员必读"></a>程序员必读</h1><blockquote>
-<p><a href="https://mrxujiang.github.io/2018/01/30/border/" target="_blank" rel="noopener">Css3编码技巧</a></p>
+        <p>border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！</p>
+<h1 id="程序员必读"><a href="#程序员必读" class="headerlink" title="程序员必读"></a>程序员必读</h1><blockquote>
+<p><a href="https://mrxujiang.github.io/2018/02/03/box-shadow/" target="_blank" rel="noopener">Css3：box-shadow高级应用</a></p>
 </blockquote>
 
+<style>
+.black-theme{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+}
+</style>
+
+<h2 id="1-制作自适应的椭圆"><a href="#1-制作自适应的椭圆" class="headerlink" title="1.制作自适应的椭圆"></a>1.制作自适应的椭圆</h2><blockquote>
+<p>知识点:border-radius: a / b;&nbsp;&nbsp;&nbsp;&nbsp;//a,b分别为圆角的水平、垂直半径,<strong>单位若为%,则表示相对于宽度和高度进行解析</strong></p>
+</blockquote>
+
+<style>
+.br-1{
+  width: 200px;
+  height: 100px;
+  border-radius: 50% /10%;
+  background: linear-gradient(45deg,#06f,#f6c,#06c);
+}
+.br-2{
+  width: 100px;
+  border-radius: 20% 50%;
+}
+.ani{
+  animation: skew 4s infinite;
+}
+.ani1{
+  animation: skew1 4s infinite 2s;
+}
+.ani2{
+  animation: skew2 4s infinite 3s;
+}
+@keyframes skew{
+  to{
+    border-radius: 50%;
+  }
+}
+@keyframes skew1{
+  to{
+    border-radius: 20px 20px 100%;
+  }
+}
+@keyframes skew2{
+  to{
+    transform: rotate(360deg);
+  }
+}
+</style>
+<div class="br-1 black-theme"></div>
+<div class="br-1 black-theme ani"></div>
+<div class="br-1 black-theme ani1"></div>
+<div class="br-1 br-2 black-theme ani2"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">border-radius: 50% /10%;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 20<span class="selector-tag">px</span> 20<span class="selector-tag">px</span> 100%;</span><br><span class="line"><span class="selector-tag">border-radius</span>: 20% 50%;</span><br></pre></td></tr></table></figure>
+<h2 id="2-制作半椭圆-四分之一椭圆"><a href="#2-制作半椭圆-四分之一椭圆" class="headerlink" title="2.制作半椭圆/四分之一椭圆"></a>2.制作半椭圆/四分之一椭圆</h2><blockquote>
+<p>知识点：border-radius: a b c d / e f g h;&nbsp;&nbsp;&nbsp;&nbsp;//左边别代表四个角的水平半径，右边为垂直半径</p>
+</blockquote>
+
+<style>
+.br-21{
+  width: 200px;
+  height: 100px;
+  border-radius: 50% / 100% 100% 0 0;
+  background-color: #f6c;
+}
+.br-22{
+  border-radius: 100% 0 0 0;
+}
+</style>
+<div class="br-21 black-theme"></div>
+<div class="br-21 br-22 black-theme"></div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*半椭圆*/</span></span><br><span class="line">border-radius: 50% / 100% 100% 0 0;</span><br><span class="line"><span class="comment">/* 四分之一椭圆 */</span></span><br><span class="line"><span class="selector-tag">border-radius</span>: 100% 0 0 0;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -554,6 +638,10 @@
 
           <div class="post-nav-prev post-nav-item">
             
+              <a href="/2018/02/10/shape/" rel="prev" title="shape">
+                shape <i class="fa fa-chevron-right"></i>
+              </a>
+            
           </div>
         </div>
       
@@ -635,7 +723,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-count">5</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -720,7 +808,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-制作自适应的椭圆"><span class="nav-number">1.1.</span> <span class="nav-text">1.制作自适应的椭圆</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-制作半椭圆-四分之一椭圆"><span class="nav-number">1.2.</span> <span class="nav-text">2.制作半椭圆/四分之一椭圆</span></a></li></ol></li></ol></div>
             
 
           </div>

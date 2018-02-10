@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[border——radius高级篇]]></title>
+    <title><![CDATA[shape]]></title>
+    <url>%2F2018%2F02%2F10%2Fshape%2F</url>
+    <content type="text"></content>
+  </entry>
+  <entry>
+    <title><![CDATA[border——radius篇]]></title>
     <url>%2F2018%2F02%2F10%2Fborder%2F</url>
-    <content type="text"><![CDATA[程序员必读 Css3编码技巧]]></content>
+    <content type="text"><![CDATA[border-radius的出现让我们实现圆角效果提供了极大的便利，我们还可以通过对Border-radius特性的进一步研究来实现各种图形效果，接下来就让我们看看它的威力吧！ 程序员必读 Css3：box-shadow高级应用 .black-theme{ margin-left: auto; margin-right: auto; margin-bottom: 20px; text-align: center; border-radius: 8px; background-color: #000; color: #fff; } 1.制作自适应的椭圆 知识点:border-radius: a / b;&nbsp;&nbsp;&nbsp;&nbsp;//a,b分别为圆角的水平、垂直半径,单位若为%,则表示相对于宽度和高度进行解析 .br-1{ width: 200px; height: 100px; border-radius: 50% /10%; background: linear-gradient(45deg,#06f,#f6c,#06c); } .br-2{ width: 100px; border-radius: 20% 50%; } .ani{ animation: skew 4s infinite; } .ani1{ animation: skew1 4s infinite 2s; } .ani2{ animation: skew2 4s infinite 3s; } @keyframes skew{ to{ border-radius: 50%; } } @keyframes skew1{ to{ border-radius: 20px 20px 100%; } } @keyframes skew2{ to{ transform: rotate(360deg); } } 核心代码 123border-radius: 50% /10%;border-radius: 20px 20px 100%;border-radius: 20% 50%; 2.制作半椭圆/四分之一椭圆 知识点：border-radius: a b c d / e f g h;&nbsp;&nbsp;&nbsp;&nbsp;//左边别代表四个角的水平半径，右边为垂直半径 .br-21{ width: 200px; height: 100px; border-radius: 50% / 100% 100% 0 0; background-color: #f6c; } .br-22{ border-radius: 100% 0 0 0; } 核心代码 1234/*半椭圆*/border-radius: 50% / 100% 100% 0 0;/* 四分之一椭圆 */border-radius: 100% 0 0 0;]]></content>
       <categories>
         <category>Css3高级实用技巧大全</category>
       </categories>

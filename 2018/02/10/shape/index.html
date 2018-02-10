@@ -81,7 +81,7 @@
 
 
 
-  <meta name="keywords" content="前端, Css3, Js, git, Css3动画, animation" />
+  <meta name="keywords" content="Css3,border-radius," />
 
 
 
@@ -92,17 +92,18 @@
 
 
 
-<meta name="description" content="自由的前端小诗人">
+<meta name="description" content="形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-align: center;   border-radius: 8px;">
+<meta name="keywords" content="Css3,border-radius">
 <meta property="og:type" content="article">
-<meta property="og:title" content="shape">
+<meta property="og:title" content="css3形状篇">
 <meta property="og:url" content="http://yoursite.com/2018/02/10/shape/index.html">
 <meta property="og:site_name" content="Coding for your eyes">
-<meta property="og:description" content="自由的前端小诗人">
+<meta property="og:description" content="形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-align: center;   border-radius: 8px;">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-02-10T07:04:31.925Z">
+<meta property="og:updated_time" content="2018-02-10T08:16:09.392Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="shape">
-<meta name="twitter:description" content="自由的前端小诗人">
+<meta name="twitter:title" content="css3形状篇">
+<meta name="twitter:description" content="形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！ 程序员必读 Css3：box-shadow高级应用    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-align: center;   border-radius: 8px;">
 
 
 
@@ -138,7 +139,7 @@
 
 
 
-  <title>shape | Coding for your eyes</title>
+  <title>css3形状篇 | Coding for your eyes</title>
   
 
 
@@ -357,7 +358,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">shape</h1>
+          <h1 class="post-title" itemprop="name headline">css3形状篇</h1>
         
 
         <div class="post-meta">
@@ -380,6 +381,28 @@
           </span>
 
           
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Css3高级实用技巧大全/" itemprop="url" rel="index">
+                    <span itemprop="name">Css3高级实用技巧大全</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
 
           
             
@@ -387,7 +410,7 @@
 
           
           
-             <span id="/2018/02/10/shape/" class="leancloud_visitors" data-flag-title="shape">
+             <span id="/2018/02/10/shape/" class="leancloud_visitors" data-flag-title="css3形状篇">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -412,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  0
+                  188
                 </span>
               
 
@@ -437,7 +460,83 @@
       
 
       
-        
+        <p>形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！</p>
+<h1 id="程序员必读"><a href="#程序员必读" class="headerlink" title="程序员必读"></a>程序员必读</h1><blockquote>
+<p><a href="https://mrxujiang.github.io/2018/02/03/border/" target="_blank" rel="noopener">Css3：box-shadow高级应用</a></p>
+</blockquote>
+
+<style>
+.black-theme{
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+  text-align: center;
+  border-radius: 8px;
+  background-color: #000;
+  color: #fff;
+}
+</style>
+
+<h2 id="1-制做平行四边形-棱形"><a href="#1-制做平行四边形-棱形" class="headerlink" title="1.制做平行四边形/棱形"></a>1.制做平行四边形/棱形</h2><blockquote>
+<p>知识点: transform: skew(deg),&nbsp;&nbsp;//skew代表斜切,值为角度</p>
+</blockquote>
+
+<style>
+.sp-1{
+  position: relative;
+  width: 140px;
+  height: 80px;
+  line-height: 80px;
+  color: #fff;
+  text-align: center;
+  background-color: transparent;
+}
+.sp-1::before{
+  content: '';
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: #06c;
+  transform: skew(45deg);
+}
+</style>
+<div class="sp-1 black-theme">平行四边形</div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 对伪类添加变形 */</span></span><br><span class="line"><span class="selector-class">.sp-1</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">  <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background-color</span>: <span class="number">#06c</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">skew</span>(45deg);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-制做切角效果"><a href="#2-制做切角效果" class="headerlink" title="2.制做切角效果"></a>2.制做切角效果</h2><blockquote>
+<p>知识点: 利用背景渐变</p>
+</blockquote>
+
+<style>
+.sp-2,
+.sp-3{
+  width: 140px;
+  height: 80px;
+  line-height: 80px;
+  color: #fff;
+  text-align: center;
+  border-radius: 0;
+}
+.sp-2{
+  background: linear-gradient(-135deg,transparent 12px,#06c 0);
+}
+.sp-3{
+  background: radial-gradient(circle at top left,transparent 12px,#06c 0) no-repeat 0 0;
+}
+</style>
+<div class="sp-2 black-theme">切角</div>
+<div class="sp-3 black-theme">圆形切角</div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 正切角 */</span></span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">linear-gradient</span>(<span class="selector-tag">-135deg</span>,<span class="selector-tag">transparent</span> 12<span class="selector-tag">px</span>,<span class="selector-id">#06c</span> 0);</span><br><span class="line"><span class="comment">/* 圆形切角 */</span></span><br><span class="line"><span class="selector-tag">background</span>: <span class="selector-tag">radial-gradient</span>(<span class="selector-tag">circle</span> <span class="selector-tag">at</span> <span class="selector-tag">top</span> <span class="selector-tag">left</span>,<span class="selector-tag">transparent</span> 12<span class="selector-tag">px</span>,<span class="selector-id">#06c</span> 0) <span class="selector-tag">no-repeat</span> 0 0;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -488,6 +587,14 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Css3/" rel="tag"># Css3</a>
+          
+            <a href="/tags/border-radius/" rel="tag"># border-radius</a>
+          
+        </div>
       
 
       
@@ -572,8 +679,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -667,6 +783,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-制做平行四边形-棱形"><span class="nav-number">1.1.</span> <span class="nav-text">1.制做平行四边形/棱形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-制做切角效果"><span class="nav-number">1.2.</span> <span class="nav-text">2.制做切角效果</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[shape]]></title>
+    <title><![CDATA[css3形状篇]]></title>
     <url>%2F2018%2F02%2F10%2Fshape%2F</url>
-    <content type="text"></content>
+    <content type="text"><![CDATA[形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！ 程序员必读 Css3：box-shadow高级应用 .black-theme{ margin-left: auto; margin-right: auto; margin-bottom: 20px; text-align: center; border-radius: 8px; background-color: #000; color: #fff; } 1.制做平行四边形/棱形 知识点: transform: skew(deg),&nbsp;&nbsp;//skew代表斜切,值为角度 .sp-1{ position: relative; width: 140px; height: 80px; line-height: 80px; color: #fff; text-align: center; background-color: transparent; } .sp-1::before{ content: ''; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: 0; background-color: #06c; transform: skew(45deg); } 平行四边形 核心代码 123456789101112/* 对伪类添加变形 */.sp-1::before&#123; content: ''; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: 0; background-color: #06c; transform: skew(45deg);&#125; 2.制做切角效果 知识点: 利用背景渐变 .sp-2, .sp-3{ width: 140px; height: 80px; line-height: 80px; color: #fff; text-align: center; border-radius: 0; } .sp-2{ background: linear-gradient(-135deg,transparent 12px,#06c 0); } .sp-3{ background: radial-gradient(circle at top left,transparent 12px,#06c 0) no-repeat 0 0; } 切角 圆形切角 核心代码 1234/* 正切角 */background: linear-gradient(-135deg,transparent 12px,#06c 0);/* 圆形切角 */background: radial-gradient(circle at top left,transparent 12px,#06c 0) no-repeat 0 0;]]></content>
+      <categories>
+        <category>Css3高级实用技巧大全</category>
+      </categories>
+      <tags>
+        <tag>Css3</tag>
+        <tag>border-radius</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[border——radius篇]]></title>

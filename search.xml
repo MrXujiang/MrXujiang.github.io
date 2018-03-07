@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[git全解读]]></title>
+    <url>%2F2018%2F02%2F12%2FgitStudy%2F</url>
+    <content type="text"><![CDATA[版本库又名仓库，英文名repository，你可以简单理解成一个目录，这个目录里面的所有文件都可以被Git管理起来，每个文件的修改、删除，Git都能跟踪，以便任何时刻都可以追踪历史，或者在将来某个时刻可以“还原”。 程序员必读 Css3编码技巧 创建并提交一个版本库 课外知识: mkdir 创建目录; pwd 显示绝对路径; cat 文件名 查看文件内容注：所有的版本控制系统，其实只能跟踪文本文件的改动，比如TXT文件，网页，所有的程序代码等等，Git也不例外。而图片、视频这些二进制文件，虽然也能由版本控制系统管理，但没法跟踪文件的变化，只能把二进制文件每次改动串起来，也就是只知道图片从100KB改成了120KB，但到底改了啥，版本控制系统不知道，也没法知道。 Microsoft的Word格式是二进制格式，因此，版本控制系统是没法跟踪Word文件的改动的，如果要真要使用版本控制系统，就要以纯文本方式编写文件。千万不要使用Windows自带的记事本编辑任何文本文件,原因是Microsoft开发记事本的团队,在每个文件开头添加了0xefbbbf（十六进制）的字符，你会遇到很多不可思议的问题. 1.核心操作1234567891011# 1.初始化仓库,.git目录默认隐藏,可以通过命令ls -ah显示git init# 2.把文件添加到版本库，可以一次添加多个文件，git add . 代表把所有文件全部提交git add 文件名 文件名# 3.把文件提交到当前分支git commit -m '本次提交的说明'# 4.把项目提交到(远程)仓储git push 2.分支管理1234567891011# 1.查看远程分支git branch -a# 2.查看本地分支git branch# 3.切换分支git checkout -b 目标分支 源分支# 4.切换回分支git checkout 分支名 3.解决冲突12345678# 方法一 合并冲突git stashgit pullgit stash pop# 方法二 如果你想完全地覆盖本地的代码，只保留服务器端代码，则直接回退到上一个版本，再进行pullgit reset --hardgit pull origin master# 注：origin master表示git的主分支 4.查看ssh密钥1234# 1.进入.ssh目录cd ~/.ssh# 2.查看id_rsa.pub文件cat id_rsa.pub 5.克隆远程项目1git clone 远程源地址 补充 123456789101112131415161718192021# 查看仓库当前的状态git status// 查看提交日志git log# 回退版本,在git中用HEAD表示当前版本,HEAD^表示上一个版本,HEAD^^表示上上个版本git reset --hard HEAD^ 或git reset --hard 3628164 (数字代表log里commit后面的id,只需要填前几位就可以)# 窗口关闭后回退版本(git reflog用来记录你的每一次命令)git reflog# 工作区和暂存区工作区就是你建立的能看见的目录,.git即为git的版本库,Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD。用git add把文件添加进去，实际上就是把文件修改添加到暂存区；用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支# 撤销修改1.直接丢弃工作区的修改，用命令git checkout -- file2.修改添加到了暂存区，想丢弃修改，分两步，第一步用命令git reset HEAD file，就回到了场景1，第二步按场景1操作]]></content>
+      <categories>
+        <category>git</category>
+      </categories>
+      <tags>
+        <tag>git</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[css3形状篇]]></title>
     <url>%2F2018%2F02%2F10%2Fshape%2F</url>
     <content type="text"><![CDATA[形状是网页中必不可少的一部分,它使得网页更加生动和精致,接下来就让我们开启css3形状之旅！ 程序员必读 Css3：box-shadow高级应用 .black-theme{ margin-left: auto; margin-right: auto; margin-bottom: 20px; text-align: center; border-radius: 8px; background-color: #000; color: #fff; } 1.制做平行四边形/棱形/梯形 知识点: transform: skew(deg),&nbsp;&nbsp;//skew代表斜切,值为角度 transform-origin: bottom/left/top(默认)/right 变换源点的位置 .sp-1{ position: relative; width: 140px; height: 80px; line-height: 80px; color: #fff; text-align: center; background-color: transparent; } .sp-1::before{ content: ''; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: 0; background-color: #06c; transform: skew(45deg); } .sp-1-1::before{ transform: scaleY(2) perspective(.5em) rotateX(5deg); transform-origin: bottom; } 平行四边形 梯形 核心代码 123456789101112131415/* 对伪类添加变形 */.sp-1::before&#123; content: ''; position: absolute; z-index: -1; left: 0; right: 0; bottom: 0; top: 0; background-color: #06c; transform: skew(45deg);&#125;/* 梯形 */transform: scaleY(2) perspective(.5em) rotateX(5deg);transform-origin: bottom; 2.制做切角效果 知识点: 利用背景渐变 .sp-2, .sp-3{ width: 140px; height: 80px; line-height: 80px; color: #fff; text-align: center; border-radius: 0; } .sp-2{ background: linear-gradient(-135deg,transparent 12px,#06c 0); } .sp-3{ background: radial-gradient(circle at top left,transparent 12px,#06c 0) no-repeat 0 0; } 切角 圆形切角 核心代码 1234/* 正切角 */background: linear-gradient(-135deg,transparent 12px,#06c 0);/* 圆形切角 */background: radial-gradient(circle at top left,transparent 12px,#06c 0) no-repeat 0 0;]]></content>
@@ -8,8 +19,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>Css3</tag>
         <tag>border-radius</tag>
+        <tag>Css3</tag>
       </tags>
   </entry>
   <entry>
@@ -20,8 +31,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>Css3</tag>
         <tag>border-radius</tag>
+        <tag>Css3</tag>
       </tags>
   </entry>
   <entry>
@@ -44,10 +55,10 @@
       </categories>
       <tags>
         <tag>Css3</tag>
+        <tag>box-shadow</tag>
         <tag>outline</tag>
         <tag>radial-gradient</tag>
         <tag>linear-gradient</tag>
-        <tag>box-shadow</tag>
       </tags>
   </entry>
   <entry>

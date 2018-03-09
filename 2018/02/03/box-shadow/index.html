@@ -100,10 +100,16 @@
 <meta property="og:site_name" content="Coding for your eyes">
 <meta property="og:description" content="利用css3的新特性可以帮助我们实现各种意想不到的特效,下面就来一起看看吧~ 程序员必读 Css3编码技巧  1.实现水波动画 知识点：box-shadow    .wave {   margin-left: auto;   margin-right: auto;   width: 100px;   height: 100px;   border-radius: 100px;   border:">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-08T14:47:04.806Z">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<meta property="og:updated_time" content="2018-03-09T14:44:34.088Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="box-shadow和filter篇">
 <meta name="twitter:description" content="利用css3的新特性可以帮助我们实现各种意想不到的特效,下面就来一起看看吧~ 程序员必读 Css3编码技巧  1.实现水波动画 知识点：box-shadow    .wave {   margin-left: auto;   margin-right: auto;   width: 100px;   height: 100px;   border-radius: 100px;   border:">
+<meta name="twitter:image" content="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
 
 
 
@@ -435,7 +441,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  394
+                  533
                 </span>
               
 
@@ -618,6 +624,68 @@
 <li>核心代码<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 注：padding/margin设置百分比单位时，是基于父元素宽度的 */</span></span><br><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">drop-shadow</span>(2<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> 2<span class="selector-tag">px</span> <span class="selector-tag">rgba</span>(0,0,0,<span class="selector-class">.8</span>))</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h2 id="4-滤镜filter"><a href="#4-滤镜filter" class="headerlink" title="4.滤镜filter"></a>4.滤镜filter</h2><h4 id="1-染色效果"><a href="#1-染色效果" class="headerlink" title="1.染色效果"></a>1.染色效果</h4>
+<style>
+.img-filter{
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
+    display: block;
+    border-radius: 100%;
+}
+
+.img-filter-1{
+    filter: sepia(1)
+}
+
+.img-filter-2{
+    filter: saturate(4)
+}
+
+.img-filter-3{
+    filter: hue-rotate(295deg)
+}
+
+.img-filter-4{
+    filter: sepia(1) saturate(4) hue-rotate(295deg)
+}
+
+</style>
+<p>原图</p>
+<img class="img-filter" src="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<p>染色后--sepia()会给图片增加一种降饱和度的橙黄色染色效果</p>
+<img class="img-filter img-filter-1" src="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<p>染色后--saturate()会给图片的每个像素提高饱和度</p>
+<img class="img-filter img-filter-2" src="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<p>染色后--hue-rotate()会给每个像素的色相进以指定度数进行偏移</p>
+<img class="img-filter img-filter-3" src="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+<p>染色后--多个滤镜组合</p>
+<img class="img-filter img-filter-4" src="http://p3g4ahmhh.bkt.clouddn.com/1.jpg">
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* sepia() */</span></span><br><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">sepia</span>(1)</span><br><span class="line"><span class="comment">/* saturate() */</span></span><br><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">saturate</span>(4)</span><br><span class="line"><span class="comment">/* hue-rotate() */</span></span><br><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">hue-rotate</span>(295<span class="selector-tag">deg</span>)</span><br><span class="line"><span class="comment">/* 混合 */</span></span><br><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">sepia</span>(1) <span class="selector-tag">saturate</span>(2) <span class="selector-tag">hue-rotate</span>(100<span class="selector-tag">deg</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="2-模糊效果"><a href="#2-模糊效果" class="headerlink" title="2.模糊效果"></a>2.模糊效果</h4>
+<style>
+.img-blur{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80px;
+    height: 80px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: rgba(100,100,255,1);
+    filter: blur(20px);
+    color: #000;
+}
+</style>
+<div class="img-blur">Mr XuJiang, Love you.</div>
+
+<ul>
+<li>核心代码</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">filter</span>: <span class="selector-tag">blur</span>(20<span class="selector-tag">px</span>);</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -877,7 +945,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现水波动画"><span class="nav-number">1.1.</span> <span class="nav-text">1.实现水波动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实现加载动画"><span class="nav-number">1.2.</span> <span class="nav-text">2.实现加载动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-投影"><span class="nav-number">1.3.</span> <span class="nav-text">3.投影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单侧投影"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">1.单侧投影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-双侧投影"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">2.双侧投影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-不规则投影"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">3.不规则投影</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现水波动画"><span class="nav-number">1.1.</span> <span class="nav-text">1.实现水波动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-实现加载动画"><span class="nav-number">1.2.</span> <span class="nav-text">2.实现加载动画</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-投影"><span class="nav-number">1.3.</span> <span class="nav-text">3.投影</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-单侧投影"><span class="nav-number">1.3.0.1.</span> <span class="nav-text">1.单侧投影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-双侧投影"><span class="nav-number">1.3.0.2.</span> <span class="nav-text">2.双侧投影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-不规则投影"><span class="nav-number">1.3.0.3.</span> <span class="nav-text">3.不规则投影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-滤镜filter"><span class="nav-number">1.4.</span> <span class="nav-text">4.滤镜filter</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-染色效果"><span class="nav-number">1.4.0.1.</span> <span class="nav-text">1.染色效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-模糊效果"><span class="nav-number">1.4.0.2.</span> <span class="nav-text">2.模糊效果</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

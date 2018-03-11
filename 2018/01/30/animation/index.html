@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="Coding for your eyes">
 <meta property="og:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-10T15:58:59.921Z">
+<meta property="og:updated_time" content="2018-03-11T16:04:31.616Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="border和background篇">
 <meta name="twitter:description" content="自从有了Css3 transition和animation以来,前端开发在动画这一块有了更高的自由度和格局,对动画的开发也越来越容易.这篇文章就让我们汇总一下使用Css3实现的各种特效. 程序员必读 Css3编码技巧    .black-theme{   margin-left: auto;   margin-right: auto;   margin-bottom: 20px;   text-a">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  780
+                  810
                 </span>
               
 
@@ -805,6 +805,31 @@ hello world
 <li>核心代码</li>
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fold-1</span>&#123;</span><br><span class="line">  <span class="attribute">margin-left</span>: auto;</span><br><span class="line">  <span class="attribute">margin-right</span>: auto;</span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">20px</span>;</span><br><span class="line">  <span class="attribute">position</span>: relative;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">border-radius</span>: .<span class="number">5em</span>;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">80px</span>;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(-150deg,transparent 1.5em, #58a 0);</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.fold-1</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</span><br><span class="line">  <span class="attribute">position</span>: absolute;</span><br><span class="line">  <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(to left bottom,transparent 50%,rgba(0,0,0,.2) <span class="number">0</span>,<span class="built_in">rgba</span>(0,0,0,.4)) <span class="number">100%</span> <span class="number">0</span> no-repeat;</span><br><span class="line">  <span class="attribute">width</span>: <span class="number">1.73em</span>;</span><br><span class="line">  <span class="attribute">height</span>: <span class="number">3em</span>;</span><br><span class="line">  <span class="attribute">transform</span>: <span class="built_in">translateY</span>(-1.3em) <span class="built_in">rotate</span>(-30deg);</span><br><span class="line">  <span class="attribute">transform-origin</span>: bottom right;</span><br><span class="line">  <span class="attribute">border-bottom-left-radius</span>: inherit;</span><br><span class="line">  <span class="attribute">box-shadow</span>: -.<span class="number">2em</span> .<span class="number">2em</span> .<span class="number">3em</span> -.<span class="number">1em</span> <span class="built_in">rgba</span>(0,0,0,.15);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="6-自适应文本的条纹背景"><a href="#6-自适应文本的条纹背景" class="headerlink" title="6.自适应文本的条纹背景"></a>6.自适应文本的条纹背景</h2><blockquote>
+<p>知识点：linear-gradient,line-height,background-origin</p>
+</blockquote>
+
+<style>
+.stripe-bg{
+  padding: .5em;
+  line-height: 1.5em;
+  background: beige;
+  background-size: auto 3em;
+  background-origin: content-box;
+  background-image: linear-gradient(rgba(0,0,0,.2) 50%, transparent 0);
+}
+.stripe-bg > p{
+  margin: 0;
+}
+</style>
+<div class="stripe-bg">
+  <p>hello you</p>
+  <p>hello you</p>
+  <p>hello you</p>
+  <p>hello you</p>
+  <p>hello you</p>
+</div>
+
       
     </div>
     
@@ -1071,7 +1096,7 @@ hello world
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现内部虚线边框"><span class="nav-number">1.1.</span> <span class="nav-text">1.实现内部虚线边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-边框内圆角的实现"><span class="nav-number">1.2.</span> <span class="nav-text">2.边框内圆角的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现条纹背景与进度条"><span class="nav-number">1.3.</span> <span class="nav-text">3.实现条纹背景与进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-复杂的背景图案"><span class="nav-number">1.4.</span> <span class="nav-text">4.复杂的背景图案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-折角效果"><span class="nav-number">1.5.</span> <span class="nav-text">5.折角效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-折角效果"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">1.折角效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内阴影圆折角效果"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">2.内阴影圆折角效果</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-实现内部虚线边框"><span class="nav-number">1.1.</span> <span class="nav-text">1.实现内部虚线边框</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-边框内圆角的实现"><span class="nav-number">1.2.</span> <span class="nav-text">2.边框内圆角的实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现条纹背景与进度条"><span class="nav-number">1.3.</span> <span class="nav-text">3.实现条纹背景与进度条</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-复杂的背景图案"><span class="nav-number">1.4.</span> <span class="nav-text">4.复杂的背景图案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-折角效果"><span class="nav-number">1.5.</span> <span class="nav-text">5.折角效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-折角效果"><span class="nav-number">1.5.0.1.</span> <span class="nav-text">1.折角效果</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-内阴影圆折角效果"><span class="nav-number">1.5.0.2.</span> <span class="nav-text">2.内阴影圆折角效果</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-自适应文本的条纹背景"><span class="nav-number">1.6.</span> <span class="nav-text">6.自适应文本的条纹背景</span></a></li></ol></li></ol></div>
             
 
           </div>

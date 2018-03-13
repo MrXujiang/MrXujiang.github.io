@@ -1983,7 +1983,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #3eff62;
+  background: #a76aff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3099,6 +3099,5 @@ hr {
   }
 }
 .header {
-  background: #06c radial-gradient(circle, rgba(255,255,255,0.4), transparent) no-repeat bottom 19px center;
-  background-size: 100% 30px;
+  background: #000;
 }

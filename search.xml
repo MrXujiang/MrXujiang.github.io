@@ -1,6 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[自定义单选框复选框]]></title>
+    <url>%2F2018%2F03%2F14%2Fcheckbox%2F</url>
+    <content type="text"><![CDATA[我们都知道原生的复选框控件样式极难自定义，这对于工程师实现设计稿的难度加大了一大截。css3的出现，增加了:checked选择器，因此我们可以利用:checked和label来实现各式各样的表单选择控件，接下来让我们来看看如何实现吧！ 程序员必读 Css3编码技巧 1.自定义复选框 .check-wrap{ text-align: center; } .checkbox{ position: absolute; clip: rect(0,0,0,0); } .checkbox[type="checkbox"]:focus + label::before{ box-shadow: 0 0 .6em #06c; } .checkbox[type="checkbox"] + label::before{ content: '\a0'; /* 不换行空格 */ display: inline-block; margin-right: .3em; width: 2em; height: 2em; border-radius: .3em; vertical-align: middle; line-height: 2em; /* 关键 */ font-size: 20px; text-align: center; color: #fff; background: gray; } .checkbox[type="checkbox"]:checked + label::before{ content: '\2713'; /* 对勾 */ background: black; } label{ margin-right: 40px; font-size: 20px; } 生男孩 生女孩 123456789101112131415161718192021222324.checkbox&#123; position: absolute; clip: rect(0,0,0,0);&#125;.checkbox[type="checkbox"] + label::before&#123; content: '\a0'; /* 不换行空格 */ display: inline-block; margin-right: .3em; width: 2em; height: 2em; border-radius: .3em; vertical-align: middle; line-height: 2em; /* 关键 */ font-size: 20px; text-align: center; color: #fff; background: gray;&#125;.checkbox[type="checkbox"]:checked + label::before&#123; content: '\2713'; /* 对勾 */ background: black;&#125; 2.自定义开关 .check-wrap{ margin-bottom: 20px; text-align: center; } .switch{ position: absolute; clip: rect(0,0,0,0); } .switch[type="checkbox"] + label{ width: 6em; height: 3em; padding: .3em; border-radius: .3em; border: 1px solid rgba(0,0,0,.2); vertical-align: middle; line-height: 2em; /* 关键 */ font-size: 20px; text-align: center; color: #fff; box-shadow: 0 1px white inset; background-color: #ccc; background-image: linear-gradient(#ddd,#bbb); } .switch[type="checkbox"]:checked + label{ box-shadow: 0.05em .1em .2em rgba(0,0,0,.6) inset; border-color: rgba(0,0,0,.3); background: #bbb; } label{ margin-right: 40px; font-size: 14px; } .switch-an{ position: absolute; clip: rect(0,0,0,0); } .switch-an[type="checkbox"] + label{ position: relative; display: inline-block; width: 5em; height: 2em; border-radius: 1em; color: #fff; background: #06c; text-align: left; } .switch-an[type="checkbox"] + label::before{ content: ''; width:2em; height: 2em; position: absolute; left: 0; border-radius: 100%; vertical-align: middle; background-color: #fff; transition: left .3s; } .switch-an[type="checkbox"] + label::after{ content: 'OFF'; margin-left: 2.6em; } .switch-an[type="checkbox"]:checked + label::before{ transition: left .3s; left: 3em; } .switch-an[type="checkbox"]:checked + label::after{ content: 'NO'; margin-left: .6em; } 生男孩 生女孩 1234567891011121314151617181920212223242526272829/* 1 */.switch&#123; position: absolute; clip: rect(0,0,0,0);&#125;.switch[type="checkbox"] + label&#123; width: 6em; height: 3em; padding: .3em; border-radius: .3em; border: 1px solid rgba(0,0,0,.2); vertical-align: middle; line-height: 2em; /* 关键 */ font-size: 20px; text-align: center; color: #fff; box-shadow: 0 1px white inset; background-color: #ccc; background-image: linear-gradient(#ddd,#bbb);&#125;.switch[type="checkbox"]:checked + label&#123; box-shadow: 0.05em .1em .2em rgba(0,0,0,.6) inset; border-color: rgba(0,0,0,.3); background: #bbb;&#125;/* 2 */]]></content>
+      <categories>
+        <category>Css3高级实用技巧大全</category>
+      </categories>
+      <tags>
+        <tag>Css3</tag>
+        <tag>checkbox</tag>
+        <tag>input</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[text-effect]]></title>
     <url>%2F2018%2F03%2F13%2Ftext-effect%2F</url>
     <content type="text"><![CDATA[文字特效在过去大部分都用图片代替，但是自从有了css3,前端的宝宝再也不用担心没有设计师来切图了。接下来就让我来给大家展示text-shadow的强大效果吧！ 程序员必读 Css3编码技巧 1.凸凹印刷效果 .effect-1{ width: 300px; margin-left: auto; margin-right: auto; line-height: 2em; background: hsl(210,13%,60%); color: hsl(210,13%,30%); text-shadow: 0 1px 1px hsla(0,0%,100%,.8); } the only way to get rid of a temptation is to yield to it. 1text-shadow: 0 1px 1px hsla(0,0%,100%,.8); 2.空心字效果 .effect-2{ width: 300px; margin-left: auto; margin-right: auto; font-size: 30px; text-align: center; line-height: 2em; background: deeppink; color: #fff; text-shadow: 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000; } the only way. 1234text-shadow: 1px 1px #000, -1px -1px #000, 1px -1px #000, -1px 1px #000; 3.文字外发光效果(鼠标经过文字会有惊喜哦！) .effect-3{ width: 300px; margin-left: auto; margin-right: auto; font-size: 30px; text-align: center; line-height: 2em; background: #203; color: #ffc; text-shadow: 0 0 .1em, 0 0 .3em; transition: 1s; } .effect-3:hover{ text-shadow: 0 0 .6em, 0 0 .8em; } hover me! 12text-shadow: 0 0 .1em, 0 0 .3em; 3.文字凸起效果 .effect-4{ width: 300px; margin-left: auto; margin-right: auto; font-size: 30px; text-align: center; line-height: 2em; background: #ccc; color: #fff; text-shadow: 0 1px hsl(0,0%,85%), 0 2px hsl(0,0%,80%), 0 3px hsl(0,0%,75%), 0 4px hsl(0,0%,70%), 0 5px hsl(0,0%,65%), 0 5px 10px #000; transition: 1s; } .effect-4:hover{ text-shadow: 0 1px hsl(0,0%,85%); } hover me! 123456text-shadow: 0 1px hsl(0,0%,85%), 0 2px hsl(0,0%,80%), 0 3px hsl(0,0%,75%), 0 4px hsl(0,0%,70%), 0 5px hsl(0,0%,65%), 0 5px 10px #000;]]></content>
@@ -42,8 +55,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>border-radius</tag>
         <tag>Css3</tag>
+        <tag>border-radius</tag>
       </tags>
   </entry>
   <entry>
@@ -54,8 +67,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>border-radius</tag>
         <tag>Css3</tag>
+        <tag>border-radius</tag>
       </tags>
   </entry>
   <entry>

@@ -101,7 +101,7 @@
 <meta property="og:description" content="网页中过渡与动画是一种流行的表现手法，可以让界面显得更加生动和真实，接下来我们介绍的css3新特性，可以让你的web变得更加富有动感，让我们来看看精彩的案例吧！ 程序员必读 Css3编码技巧  1.弹性过渡–纯css实现表单提示层效果 知识点：贝塞尔曲线在线工具    .control{     width: 400px;     margin: 20px auto; } .tip{     po">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
-<meta property="og:updated_time" content="2018-03-15T15:34:12.161Z">
+<meta property="og:updated_time" content="2018-03-15T15:47:12.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="过渡与动画">
 <meta name="twitter:description" content="网页中过渡与动画是一种流行的表现手法，可以让界面显得更加生动和真实，接下来我们介绍的css3新特性，可以让你的web变得更加富有动感，让我们来看看精彩的案例吧！ 程序员必读 Css3编码技巧  1.弹性过渡–纯css实现表单提示层效果 知识点：贝塞尔曲线在线工具    .control{     width: 400px;     margin: 20px auto; } .tip{     po">
@@ -435,7 +435,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  412
+                  436
                 </span>
               
 
@@ -554,7 +554,7 @@ input:not(:focus) + .tip{
 
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.bg-wrap</span>&#123;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">url</span>(http://p3g4ahmhh.bkt.clouddn.com/bg.jpg);</span><br><span class="line">    <span class="attribute">background-size</span>: auto <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">animation</span>: move <span class="number">5s</span> linear infinite alternate;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: paused;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.bg-wrap</span><span class="selector-pseudo">:hover</span>,<span class="selector-class">.bg-wrap</span><span class="selector-pseudo">:focus</span>&#123;</span><br><span class="line">    <span class="attribute">animation-play-state</span>: running;</span><br><span class="line">&#125;</span><br><span class="line">@<span class="keyword">keyframes</span> move &#123;</span><br><span class="line">    <span class="selector-tag">to</span> &#123; <span class="attribute">background-position</span>: <span class="number">100%</span> <span class="number">0</span>; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="4-沿环形路径平移的动画"><a href="#4-沿环形路径平移的动画" class="headerlink" title="4.沿环形路径平移的动画"></a>4.沿环形路径平移的动画</h2><blockquote>
-<p>知识点：transform: rotate(1turn)</p>
+<p>知识点：transform: rotate(1turn); transform-origin变换的源点是基于自身的尺寸,默认值为自身的中心</p>
 </blockquote>
 
 <style>

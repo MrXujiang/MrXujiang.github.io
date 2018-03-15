@@ -1,9 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[过渡与动画]]></title>
+    <url>%2F2018%2F03%2F15%2Fanimation-transition%2F</url>
+    <content type="text"><![CDATA[网页中过渡与动画是一种流行的表现手法，可以让界面显得更加生动和真实，接下来我们介绍的css3新特性，可以让你的web变得更加富有动感，让我们来看看精彩的案例吧！ 程序员必读 Css3编码技巧 1.弹性过渡–纯css实现表单提示层效果 知识点：贝塞尔曲线在线工具 .control{ width: 400px; margin: 20px auto; } .tip{ position: absolute; margin-left: -200px; margin-top: 36px; padding: 2px 6px; font-size: 12px; color: #fff; border-radius: 4px; border: 1px solid #ccc; background: #06c; transform-origin: 0 0; transition: transform .5s cubic-bezier(.25,.1,.3,1.5); } input{ width: 200px; height: 26px; } input:not(:focus) + .tip{ transform: scale(0); transition: transform ease .25s; } 用户名 请输入用户名 123456789101112131415161718192021.tip&#123; position: absolute; margin-left: -200px; margin-top: 36px; padding: 2px 6px; font-size: 12px; color: #fff; border-radius: 4px; border: 1px solid #ccc; background: #06c; transform-origin: 0 0; /* 关键 */ transition: transform .5s cubic-bezier(.25,.1,.3,1.5); /* 关键 */&#125;input&#123; width: 200px; height: 26px;&#125;input:not(:focus) + .tip&#123; transform: scale(0); /* 关键 */ transition: transform ease .25s; /* 关键 */&#125; 2.逐帧动画 知识点：steps() .keyframes-wrap{ width: 128px; height: 130px; margin: 20px auto; background: url(http://p3g4ahmhh.bkt.clouddn.com/animate.jpg) no-repeat top left; animation: loader 1s infinite steps(8); text-indent: 200%; white-space: nowrap; overflow: hidden; } @keyframes loader { to { background-position: -1024px; } } 正在加载... 12345678910.keyframes-wrap&#123; background: url(http://p3g4ahmhh.bkt.clouddn.com/animate.jpg) no-repeat top left; animation: loader 1s infinite steps(8); text-indent: 200%; white-space: nowrap; overflow: hidden;&#125;@keyframes loader &#123; to &#123; background-position: -1024px; &#125;&#125; 3.利用css控制动画的暂停和播放 知识点：animation-play-state .bg-wrap{ width: 300px; height: 130px; margin: 20px auto; background: url(http://p3g4ahmhh.bkt.clouddn.com/bg.jpg); background-size: auto 100%; animation: move 5s linear infinite alternate; animation-play-state: paused; } .bg-wrap:hover,.bg-wrap:focus{ animation-play-state: running; } @keyframes move { to { background-position: 100% 0; } } 123456789101112.bg-wrap&#123; background: url(http://p3g4ahmhh.bkt.clouddn.com/bg.jpg); background-size: auto 100%; animation: move 5s linear infinite alternate; animation-play-state: paused;&#125;.bg-wrap:hover,.bg-wrap:focus&#123; animation-play-state: running;&#125;@keyframes move &#123; to &#123; background-position: 100% 0; &#125;&#125; 4.沿环形路径平移的动画 知识点：transform: rotate(1turn) .box{ display: flex; align-items: center; justify-content: center; width: 200px; height: 200px; border-radius: 100%; overflow: hidden; margin: 20px auto; background: orange; } .avator{ width: 60px; height: 60px; padding: 0; margin: 0 !important; border-radius: 100%; animation: spin 5s linear infinite; } @keyframes spin { from{ transform: rotate(0turn) translateY(-100px) translateY(50%) rotate(1turn) } to{ transform: rotate(1turn) translateY(-100px) translateY(50%) rotate(0turn) } } 1234567891011121314151617/* 首先要想方法让头像在父元素中居中 */.avator&#123; animation: spin 5s linear infinite;&#125;@keyframes spin &#123; from&#123; transform: rotate(0turn) translateY(-100px) translateY(50%) rotate(1turn) &#125; to&#123; transform: rotate(1turn) translateY(-100px) translateY(50%) rotate(0turn) &#125;&#125;]]></content>
+      <categories>
+        <category>Css3高级实用技巧大全</category>
+      </categories>
+      <tags>
+        <tag>transition</tag>
+        <tag>transform</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[根据兄弟元素数量来设置样式]]></title>
     <url>%2F2018%2F03%2F14%2Fselector%2F</url>
     <content type="text"><![CDATA[接下来我为大家介绍一种类似js效果的选择器，可以根据兄弟元素的数量来设置样式，那么我们开始吧。 程序员必读 Css3编码技巧 1. 当只有一项时的样式–only-child .list{ width: 80%; padding: 1em; margin-left: auto; margin-right: auto; margin-bottom: 20px; border-radius: 8px; color: #fff; background: #000; } .item{ display: inline-block; padding: .4em .6em; border-radius: 8px; line-height: 1em; } .item:only-child{ background: gray; } one 123.item:only-child&#123; /* 只有一个列表项时的样式 */ background: gray;&#125; 2. 根据兄弟元素的数量范围来选择元素 .item:nth-child(n+4){ background: orange; } .item-1:first-child:nth-last-child(n+4), .item-1:first-child:nth-last-child(n+4) ~ .item-1{ background: blue; } .item-2:first-child:nth-last-child(-n+4), .item-2:first-child:nth-last-child(-n+4) ~ .item-2{ background: green; } .item-3:first-child:nth-last-child(n+2):nth-last-child(-n+6), .item-3:first-child:nth-last-child(n+2):nth-last-child(-n+6) ~ .item-3{ background: #f6c; } 1. 选择列表中第四项及以后的所有项 one two three four five six 2. 列表至少有4项时选中所有项 one two three four five 3. 列表最多包含4项时选中所有项 one two three four 4. 列表项在2-6项时选中所有项 one two three four five six 1234567891011121314/* 1. 选择列表中第四项及以后的所有项 */.item:nth-child(n+4)/* 2. 列表至少有4项时选中所有项 */.item-1:first-child:nth-last-child(n+4),.item-1:first-child:nth-last-child(n+4) ~ .item-1/* 3. 列表最多包含4项时选中所有项 */.item-2:first-child:nth-last-child(-n+4),.item-2:first-child:nth-last-child(-n+4) ~ .item-2/* 4. 列表项在2-6项时选中所有项 */.item-3:first-child:nth-last-child(n+2):nth-last-child(-n+6),.item-3:first-child:nth-last-child(n+2):nth-last-child(-n+6) ~ .item-3]]></content>
+      <categories>
+        <category>Css3高级实用技巧大全</category>
+      </categories>
       <tags>
         <tag>Css3</tag>
         <tag>nth-child(n)</tag>
@@ -100,11 +115,11 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>box-shadow</tag>
         <tag>Css3</tag>
         <tag>outline</tag>
         <tag>radial-gradient</tag>
         <tag>linear-gradient</tag>
+        <tag>box-shadow</tag>
       </tags>
   </entry>
   <entry>

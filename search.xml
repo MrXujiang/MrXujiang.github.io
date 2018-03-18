@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[css2.0深入探究]]></title>
+    <url>%2F2018%2F03%2F17%2Fcss2-01%2F</url>
+    <content type="text"><![CDATA[要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧 1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。 .win-wrap{ text-align: center; } .minW{ display: inline-block; width: 0; line-height: 1.4; } .minW::before{ content: "love 你 love"; color: transparent; outline: 2px solid #cd0000; } .minW:hover::before{ content: "你 love 我"; color: transparent; outline: 2px solid #cd0000; } 123456789.minW&#123; display: inline-block; width: 0&#125;.minW:hover::before&#123; content: "你 love 我"; color: transparent; outline: 2px solid #cd0000;&#125; 2.子元素宽度设为100%时的奇怪现象原理探究 父元素的宽度 = 图片宽度 + 文字内容宽度浏览器渲染原理：先下载文档内容，加载头部样式资源，然后按从上到下、自外而内的顺序渲染dom内容。本例的现象产生的原因就是：当渲染到父元素时，子元素的width:100%并没有渲染，宽度就是图片加文字内容的宽度；等渲染到文字这个子元素的时候，父元素的宽度已经固定，此时的width:100%就是以固定好的父元素的宽度，宽度不够只能溢出。 .box{ margin-left: 50%; transform: translateX(-50%); display: inline-block; height: 100px; white-space: nowrap; background-color: rgba(0,0,0,.4); } .img{ display: inline-block; width: 120px; text-align: center; } .text{ display: inline-block; width: 100%; color: #fff; background-color: #06c; } img 半透明背景色是父级width:100% 12345678.box&#123; display: inline-block; white-space: nowrap;&#125; .text&#123; display: inline-block; width: 100%;&#125; 3.如何让元素支持height:100%效果* 1.设置显示的高度值 * 2.使用绝对定位 知识点：绝对定位的宽高百分比是基于padding-box的，而非绝对定位的宽高百分比是基于content-box 4.任意高度元素的展开收起动画(max-height/min-height)* 1.min-height/min-width的初始尺寸为auto, max-height/max-width的初始尺寸为none * 2.min-height/min-width的优先级高于max-width/max-height .navbar{ width: 200px; margin: 20px auto; text-align: center; } .nav{ border-bottom: 2px solid #06c; cursor: pointer; } .nav > .sub-nav{ max-height: 0; overflow: hidden; transition: max-height .6s cubic-bezier(.17,.67,.76,1.41) } .nav:hover > .sub-nav{ max-height: 400px; } .sub-nav > div:hover{ color: #fff; background: #06c; } 首页 花朵 云彩 DIV 12345678.nav &gt; .sub-nav&#123; max-height: 0; overflow: hidden; transition: max-height .6s cubic-bezier(.17,.67,.76,1.41)&#125;.nav:hover &gt; .sub-nav&#123; max-height: 400px;&#125; 4.内联元素深入探究 常见的内联元素有：display设置为inline,inline-block,inline-table的元素内联盒模型: 1. 内容区域：可以理解为文本选中的背景色区域(重点) 2. 内联盒子：内联标签或者纯文本 3. 行框盒子：由内联盒子组成的一行，每一行就是一个行框盒子 4. 包含盒子：由行框盒子组成的盒子 幽灵空白节点：在HTML5文档声明中，内联元素的解析和渲染表现就像每个行框盒子的前面有一个空白节点一样。如下案例所示： .in-ex{ background: #06c; } 1&lt;div class="in-ex"&gt;&lt;span style="display: inline-block"&gt;&lt;/span&gt;&lt;/div&gt;]]></content>
+      <categories>
+        <category>css2高级</category>
+      </categories>
+      <tags>
+        <tag>css2</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[作品集]]></title>
     <url>%2F2018%2F03%2F17%2Fworks%2F</url>
     <content type="text"><![CDATA[作为一名大前端，没有自己的网站项目怎么能行呢？下面是我这些年积累的项目，可以免费参考交流一下… .project-list{ display: flex; flex-wrap: wrap; justify-content: space-between; } .project-item{ margin-bottom: 30px; padding-top: 30px; padding-bottom: 30px; width: 210px; border-radius: 20px; background: #eee; } .project-item:hover{ box-shadow: 0 0 30px #ccc; } .tit-wrap{ display: block; height: 150px; line-height: 150px; text-align: center; color: #fff; font-size: 26px; text-decoration: none; border-bottom: none; } .tit{ color: #fff; display: inline-block; } .tit-wrap:hover .tit{ -webkit-animation-duration: 0.75s; animation-duration: 0.75s; -webkit-animation-name: bounceIn; animation-name: bounceIn; } .project-item:nth-child(2n+1) .tit-wrap{ background: #9CC; } .project-item:nth-child(2n+2) .tit-wrap{ background: #f9c; } .project-item:nth-child(2n+3) .tit-wrap{ background: #9c9; } @-webkit-keyframes bounceIn { from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); } 0% { opacity: 0; -webkit-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3); } 20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); } 40% { -webkit-transform: scale3d(0.9, 0.9, 0.9); transform: scale3d(0.9, 0.9, 0.9); } 60% { opacity: 1; -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03); } 80% { -webkit-transform: scale3d(0.97, 0.97, 0.97); transform: scale3d(0.97, 0.97, 0.97); } to { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); } } @keyframes bounceIn { from, 20%, 40%, 60%, 80%, to { -webkit-animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1); } 0% { opacity: 0; -webkit-transform: scale3d(0.3, 0.3, 0.3); transform: scale3d(0.3, 0.3, 0.3); } 20% { -webkit-transform: scale3d(1.1, 1.1, 1.1); transform: scale3d(1.1, 1.1, 1.1); } 40% { -webkit-transform: scale3d(0.9, 0.9, 0.9); transform: scale3d(0.9, 0.9, 0.9); } 60% { opacity: 1; -webkit-transform: scale3d(1.03, 1.03, 1.03); transform: scale3d(1.03, 1.03, 1.03); } 80% { -webkit-transform: scale3d(0.97, 0.97, 0.97); transform: scale3d(0.97, 0.97, 0.97); } to { opacity: 1; -webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1); } } 待完成 iOS企业证书签名 e商城 图片画廊 珈蓝学院 待完成]]></content>
@@ -88,8 +99,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>Css3</tag>
         <tag>border-radius</tag>
+        <tag>Css3</tag>
       </tags>
   </entry>
   <entry>
@@ -100,8 +111,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>Css3</tag>
         <tag>border-radius</tag>
+        <tag>Css3</tag>
       </tags>
   </entry>
   <entry>
@@ -123,11 +134,11 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>box-shadow</tag>
         <tag>Css3</tag>
         <tag>outline</tag>
         <tag>radial-gradient</tag>
         <tag>linear-gradient</tag>
+        <tag>box-shadow</tag>
       </tags>
   </entry>
   <entry>

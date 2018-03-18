@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[js常用工具函数]]></title>
+    <url>%2F2018%2F03%2F18%2Fjs-tools%2F</url>
+    <content type="text"><![CDATA[下面给大家梳理了我平时在工作中常用的js方法，本来是打算作为自己的工具库的，为了发现代码的最佳方案，再此贴出，望相互交流。 程序员必读 Css3编码技巧 1.检测平台（设备）类型12345var isWechat = /micromessenger/i.test(navigator.userAgent), isWeibo = /weibo/i.test(navigator.userAgent), isQQ = /qq\//i.test(navigator.userAgent), isIOS = /(iphone|ipod|ipad|ios)/i.test(navigator.userAgent), isAndroid = /android/i.test(navigator.userAgent); 2.时间格式化12345678910111213// 时间格式化function format_date(timeStamp) &#123; var date = new Date(timeStamp); return date.getFullYear() + "年" + prefix_zero(date.getMonth() + 1) + "月" + prefix_zero(date.getDate()) + "日 " + prefix_zero(date.getHours()) + ":" + prefix_zero(date.getMinutes());&#125;// 数字格式化function prefix_zero(num) &#123; return num &gt;= 10 ? num : "0" + num;&#125; 3.倒计时函数123456789101112131415// 倒计时时间格式化function format_time(timeStamp) &#123; var day = Math.floor(timeStamp / (24 * 3600 * 1000)); var leave1 = timeStamp % (24 * 3600 * 1000); var hours = Math.floor(leave1 / (3600 * 1000)); var leave2 = leave1 % (3600 * 1000); var minutes = Math.floor(leave2 / (60 * 1000)); var leave3 = leave2 % (60 * 1000); var seconds = Math.floor(leave3 / 1000); if (day) return day + "天" + hours + "小时" + minutes + "分"; if (hours) return hours + "小时" + minutes + "分" + seconds + "秒"; if (minutes) return minutes + "分" + seconds + "秒"; if (seconds) return seconds + "秒"; return "时间到！";&#125; 4.判断设备是否支持触摸事件1var isSupportTouch = ("ontouchstart" in document.documentElement) ? true : false; 5.未完待续……]]></content>
+      <tags>
+        <tag>js</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[css2.0深入探究]]></title>
     <url>%2F2018%2F03%2F17%2Fcss2-01%2F</url>
     <content type="text"><![CDATA[要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧 1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。 .win-wrap{ text-align: center; } .minW{ display: inline-block; width: 0; line-height: 1.4; } .minW::before{ content: "love 你 love"; color: transparent; outline: 2px solid #cd0000; } .minW:hover::before{ content: "你 love 我"; color: transparent; outline: 2px solid #cd0000; } 123456789.minW&#123; display: inline-block; width: 0&#125;.minW:hover::before&#123; content: "你 love 我"; color: transparent; outline: 2px solid #cd0000;&#125; 2.子元素宽度设为100%时的奇怪现象原理探究 父元素的宽度 = 图片宽度 + 文字内容宽度浏览器渲染原理：先下载文档内容，加载头部样式资源，然后按从上到下、自外而内的顺序渲染dom内容。本例的现象产生的原因就是：当渲染到父元素时，子元素的width:100%并没有渲染，宽度就是图片加文字内容的宽度；等渲染到文字这个子元素的时候，父元素的宽度已经固定，此时的width:100%就是以固定好的父元素的宽度，宽度不够只能溢出。 .box{ margin-left: 50%; transform: translateX(-50%); display: inline-block; height: 100px; white-space: nowrap; background-color: rgba(0,0,0,.4); } .img{ display: inline-block; width: 120px; text-align: center; } .text{ display: inline-block; width: 100%; color: #fff; background-color: #06c; } img 半透明背景色是父级width:100% 12345678.box&#123; display: inline-block; white-space: nowrap;&#125; .text&#123; display: inline-block; width: 100%;&#125; 3.如何让元素支持height:100%效果* 1.设置显示的高度值 * 2.使用绝对定位 知识点：绝对定位的宽高百分比是基于padding-box的，而非绝对定位的宽高百分比是基于content-box 4.任意高度元素的展开收起动画(max-height/min-height)* 1.min-height/min-width的初始尺寸为auto, max-height/max-width的初始尺寸为none * 2.min-height/min-width的优先级高于max-width/max-height .navbar{ width: 200px; margin: 20px auto; text-align: center; } .nav{ border-bottom: 2px solid #06c; cursor: pointer; } .nav > .sub-nav{ max-height: 0; overflow: hidden; transition: max-height .6s cubic-bezier(.17,.67,.76,1.41) } .nav:hover > .sub-nav{ max-height: 400px; } .sub-nav > div:hover{ color: #fff; background: #06c; } 首页 花朵 云彩 DIV 12345678.nav &gt; .sub-nav&#123; max-height: 0; overflow: hidden; transition: max-height .6s cubic-bezier(.17,.67,.76,1.41)&#125;.nav:hover &gt; .sub-nav&#123; max-height: 400px;&#125; 4.内联元素深入探究 常见的内联元素有：display设置为inline,inline-block,inline-table的元素内联盒模型: 1. 内容区域：可以理解为文本选中的背景色区域(重点) 2. 内联盒子：内联标签或者纯文本 3. 行框盒子：由内联盒子组成的一行，每一行就是一个行框盒子 4. 包含盒子：由行框盒子组成的盒子 幽灵空白节点：在HTML5文档声明中，内联元素的解析和渲染表现就像每个行框盒子的前面有一个空白节点一样。如下案例所示： .in-ex{ background: #06c; } 1&lt;div class="in-ex"&gt;&lt;span style="display: inline-block"&gt;&lt;/span&gt;&lt;/div&gt;]]></content>
@@ -99,8 +107,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>border-radius</tag>
         <tag>Css3</tag>
+        <tag>border-radius</tag>
       </tags>
   </entry>
   <entry>
@@ -111,8 +119,8 @@
         <category>Css3高级实用技巧大全</category>
       </categories>
       <tags>
-        <tag>border-radius</tag>
         <tag>Css3</tag>
+        <tag>border-radius</tag>
       </tags>
   </entry>
   <entry>

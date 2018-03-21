@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="哎呦，猪先森">
 <meta property="og:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-19T18:35:00.883Z">
+<meta property="og:updated_time" content="2018-03-21T17:30:30.681Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -383,7 +383,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,064
+                  1,173
                 </span>
               
 
@@ -586,6 +586,51 @@
 <div class="icon" data-tip="江小白"></div>
 
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;div class="icon" data-tip="江小白"&gt;&lt;/div&gt;</span><br><span class="line"><span class="comment">/* 可以使用原生属性和自定义属性 */</span></span><br><span class="line"><span class="selector-class">.icon</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">attr</span>(data-tip);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>4.计数器属性---纯css实现技术器效果
+&gt; 知识点： content的计数器属性
+</code></pre>
+<style>
+.counter{
+    height: 100px;
+    background: #06c;
+    color: #fff;
+}
+.box1{
+    padding: 10px;
+    counter-reset: count1;
+}
+.xigua:checked::before{
+    content: counter(count1);
+    counter-increment: count1;
+    position: absolute;
+    color: transparent;
+}
+.box1::after{
+    content: counter(count1);
+    position: absolute;
+    margin-top: -100px;
+    margin-left: 6em;
+    transform: translateY(20px);
+    border-radius: 50%;
+    line-height: 60px;
+    text-align: center;
+    padding: 2px;
+    width: 60px;
+    height: 60px;
+    box-sizing: border-box;
+    color: #06c;
+    background-color: #fff;
+}
+</style>
+<div class="counter">
+    <div class="box1">
+        <div>西瓜<input class="xigua" type="checkbox"></div>
+        <div>香蕉<input class="xigua" type="checkbox"></div>
+        <div>萝卜<input class="xigua" type="checkbox"></div>
+    </div>
+</div>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">    <span class="attribute">counter-reset</span>: count1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.xigua</span><span class="selector-pseudo">:checked</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">    <span class="attribute">counter-increment</span>: count1;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class="counter"&gt;</span><br><span class="line">    &lt;div class="box1"&gt;</span><br><span class="line">        &lt;div&gt;西瓜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;香蕉&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;萝卜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 
       
     </div>

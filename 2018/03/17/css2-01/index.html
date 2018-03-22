@@ -100,10 +100,12 @@
 <meta property="og:site_name" content="哎呦，猪先森">
 <meta property="og:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-21T17:30:30.681Z">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
+<meta property="og:updated_time" content="2018-03-22T16:13:30.018Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
+<meta name="twitter:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
 
 
 
@@ -383,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,173
+                  1,599
                 </span>
               
 
@@ -631,7 +633,122 @@
 </div>
 
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">    <span class="attribute">counter-reset</span>: count1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.xigua</span><span class="selector-pseudo">:checked</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">    <span class="attribute">counter-increment</span>: count1;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class="counter"&gt;</span><br><span class="line">    &lt;div class="box1"&gt;</span><br><span class="line">        &lt;div&gt;西瓜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;香蕉&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;萝卜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="5-padding深入研究"><a href="#5-padding深入研究" class="headerlink" title="5.padding深入研究"></a>5.padding深入研究</h4><pre><code>1.对于盒模型设置为box-sizing: border-box的元素，如果padding足够大，那么width将失效:
+</code></pre>
+<style>
+.pd-1{
+    margin-left: auto;
+    margin-right: auto;
+    background: #06c;
+    width: 200px;
+    padding-left: 120px;
+    padding-right: 120px;
+    box-sizing: border-box;
+    color: #fff;
+}
+</style>
+<div class="pd-1">内容为首选最小宽度</div>
 
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">width</span>: 200<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">padding-left</span>: 120<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">padding-right</span>: 120<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">box-sizing</span>: <span class="selector-tag">border-box</span>;</span><br></pre></td></tr></table></figure>
+<p>   2.对于内联元素，padding对视觉层和布局层都会有影响，如果父元素设置overflow:auto,则内联子元素的垂直padding可能会使父元素出现滚动条，否则如果父元素不设置设置overflow，只会在垂直方向上发生重叠，不会影响布局:<br>
+<style>
+.pd-2-1{
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 30px;
+    background: #06c;
+    width: 200px;
+    box-sizing: border-box;
+    color: #fff;
+}
+.pd-2-1 > span{
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background: #f06;
+}
+.pd-2-2{
+    margin-left: auto;
+    margin-right: auto;
+    background: #06c;
+    width: 200px;
+    overflow: auto;
+    box-sizing: border-box;
+    color: #fff;
+}
+.pd-2-2 > span{
+    padding-top: 2em;
+    padding-bottom: 2em;
+    background: #f06;
+}
+</style>
+<div class="pd-2-1"><span>父元素不设置overflow</span></div>
+<div class="pd-2-2"><span>父元素设置overflow</span></div>
+</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 父元素设置 */</span></span><br><span class="line"><span class="selector-class">.pd-2-1</span>&#123;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.pd-2-1</span> &gt; <span class="selector-tag">span</span>&#123;</span><br><span class="line">    <span class="attribute">padding-top</span>: <span class="number">1em</span>;</span><br><span class="line">    <span class="attribute">padding-bottom</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre><code>3.padding的实际应用（具体实现可自行思考）
+    1.增加链接或按钮的点击区域的大小
+    2.利用内联元素的padding实现高度可控的分割线
+    3.用内联元素实现瞄点定位距离
+</code></pre><p>4.利用padding百分比值实现等比例缩放图片效果</p>
+
+<style>
+.pd-3{
+    padding: 10% 50%;
+    position: relative;
+}
+
+.pd-3 img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+}
+</style>
+<div class="pd-3"><img src="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg"></div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.pd-3</span>&#123;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10%</span> <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.pd-3</span> <span class="selector-tag">img</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p> <strong style="color:red"> <em>**</em> 注：内联元素的垂直padding会让幽灵空白节点显现,此时可考虑设置font-size:0</strong></p>
+<p> 5.padding与图形绘制</p>
+<blockquote>
+<p>1.菜单图标设计</p>
+</blockquote>
+ 
+ <style>
+.icon-menu{
+    display: inline-block;
+    margin-left: 10%;
+    width: 120px;
+    height: 10px;
+    padding: 35px 0;
+    border-bottom: 10px solid;
+    border-top: 10px solid;
+    background-clip: content-box;
+    background-color: currentColor;
+}
+ </style>
+ <div class="icon-menu"></div>
+ 
+<blockquote>
+<p>2.双层圆点效果</p>
+</blockquote>
+ 
+ <style>
+.icon-dot{
+    display: inline-block;
+    margin-left: 10%;
+    width: 60px;
+    height: 60px;
+    padding: 10px;
+    border-radius: 50%;
+    border: 10px solid;
+    background-clip: content-box;
+    background-color: currentColor;
+}
+ </style>
+ <div class="icon-dot"></div>
+ 
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/* 菜单 */</span></span><br><span class="line"> <span class="selector-class">.icon-menu</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">35px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">    <span class="attribute">background-color</span>: currentColor;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 双层圆点 */</span></span><br><span class="line"><span class="selector-class">.icon-dot</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">    <span class="attribute">background-color</span>: currentColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -890,7 +1007,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">5.padding深入研究</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

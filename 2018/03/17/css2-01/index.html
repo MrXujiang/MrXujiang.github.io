@@ -101,7 +101,7 @@
 <meta property="og:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
-<meta property="og:updated_time" content="2018-03-22T16:13:30.018Z">
+<meta property="og:updated_time" content="2018-03-23T08:54:01.156Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -385,7 +385,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,599
+                  2,125
                 </span>
               
 
@@ -633,7 +633,7 @@
 </div>
 
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box1</span>&#123;</span><br><span class="line">    <span class="attribute">counter-reset</span>: count1;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.xigua</span><span class="selector-pseudo">:checked</span><span class="selector-pseudo">::before</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">    <span class="attribute">counter-increment</span>: count1;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">color</span>: transparent;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.box1</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="built_in">counter</span>(count1);</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class="counter"&gt;</span><br><span class="line">    &lt;div class="box1"&gt;</span><br><span class="line">        &lt;div&gt;西瓜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;香蕉&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">        &lt;div&gt;萝卜&lt;input class="xigua" type="checkbox" /&gt;&lt;/div&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="5-padding深入研究"><a href="#5-padding深入研究" class="headerlink" title="5.padding深入研究"></a>5.padding深入研究</h4><pre><code>1.对于盒模型设置为box-sizing: border-box的元素，如果padding足够大，那么width将失效:
+<h4 id="6-padding深入研究"><a href="#6-padding深入研究" class="headerlink" title="6.padding深入研究"></a>6.padding深入研究</h4><pre><code>1.对于盒模型设置为box-sizing: border-box的元素，如果padding足够大，那么width将失效:
 </code></pre>
 <style>
 .pd-1{
@@ -749,6 +749,129 @@
  <div class="icon-dot"></div>
  
  <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">/* 菜单 */</span></span><br><span class="line"> <span class="selector-class">.icon-menu</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">120px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">35px</span> <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">    <span class="attribute">background-color</span>: currentColor;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 双层圆点 */</span></span><br><span class="line"><span class="selector-class">.icon-dot</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">50%</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">10px</span> solid;</span><br><span class="line">    <span class="attribute">background-clip</span>: content-box;</span><br><span class="line">    <span class="attribute">background-color</span>: currentColor;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="7-margin深入研究"><a href="#7-margin深入研究" class="headerlink" title="7.margin深入研究"></a>7.margin深入研究</h4><blockquote>
+<p>1.使用:nth-type-of(3n)去除子元素尾部margin</p>
+</blockquote>
+ 
+ <style>
+ .mg-wrap{
+     width: 640px;
+     height: 100px;
+     background: #000;
+ }
+ .mg-item{
+     float: left;
+     width: 200px;
+     height: 100px;
+     background: #06c;
+     color: #fff;
+     text-align: center;
+     margin-right: 20px;
+ }
+ .mg-item:nth-of-type(3n){
+     margin-right: 0;
+ }
+ </style>
+ <div class="mg-wrap">
+    <div class="mg-item">margin-right: 20px</div>
+    <div class="mg-item">margin-right: 20px</div>
+    <div class="mg-item">margin-right: 20px</div>
+ </div>
+ 
+ <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.mg-item</span><span class="selector-pseudo">:nth-of-type(3n)</span>&#123;</span><br><span class="line">    <span class="attribute">margin-right</span>: <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>注：如果容器可以滚动，在IE和firefox下会忽略padding-bottom的值，chrome则不会，此时可以通过margin-bottom实现滚动容器的底部留白</strong></p>
+</blockquote>
+  
+ <style>
+ .box-wrap{
+     width: 640px;
+     height: 100px;
+     padding: 30px 0;
+     overflow: auto;
+     background: #000;
+ }
+ .box-inner{
+     width: 200px;
+     height: 200px;
+     background: #06c;
+ }
+ </style>
+ <div class="box-wrap">
+    <div class="box-inner"></div>
+ </div>
+ 
+<p> <strong style="color: red">* 其本质区别在于：chrome是子元素超过父元素content box尺寸触发滚动条显示，而IE和Firefox浏览器是超过padding box尺寸时触发滚动条显示</strong></p>
+<blockquote>
+<p>2.margin合并<br>块级元素，但不包含浮动和绝对定位元素<br>在默认文档流下只出现在垂直方向</p>
+<ul>
+<li>margin合并的三种场景<br>  1.相邻兄弟元素<br>  2.父级和第一个/最后一个子元素<pre><code>* 解决方案： 父级设置为块级格式化上下文元素
+            父元素设置border-top/bottom值
+            父元素设置padding-top/bottom值
+            父元素设置高度
+</code></pre>  3.空块级元素margin合并</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>margin合并的计算规则</p>
+<blockquote>
+<p><strong style="color: red">“正正取大值”，”正负值相加”，”负负最负值”</strong></p>
+</blockquote>
+</li>
+<li><p>深入理解margin:auto<br>  1.如果一侧定值，一侧auto，则auto为剩余空间大小<br>  2.如果两侧均是auto，则平分剩余空间<br>  3.<strong style="color: red">触发margin:auto计算的前提：width或height为auto时，元素是具有自动填充特性的。</strong></p>
+</li>
+</ul>
+
+<style>
+.father{
+    position: relative;
+    margin: 20px;
+    height: 60px;
+    overflow: auto;
+    background: #000;
+}
+.child-1{
+    width: 40px;
+    height: 20px;
+    background: #06c;
+    margin-right: 20px;
+    margin-left: auto;
+}
+.child-2{
+    position: absolute;
+    left: 0; bottom: 0; right: 0; top: 0;
+    width: 40px;
+    height: 20px;
+    background: #06c;
+    margin: auto;
+}
+</style>
+<div class="father">
+    <div class="child-1"></div>
+</div>
+<div class="father">
+    <div class="child-2"></div>
+</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 1 */</span></span><br><span class="line"><span class="selector-tag">margin-right</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">auto</span>;</span><br><span class="line"><span class="comment">/* 2 */</span></span><br><span class="line"><span class="selector-tag">margin-right</span><span class="selector-pseudo">:auto</span>;</span><br><span class="line"><span class="selector-tag">margin-left</span>: <span class="selector-tag">auto</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong style="color: red">绝对定位元素利用margin:auto实现水平垂直居中(兼容到ie8+)</strong></li>
+</ul>
+
+<div class="father">
+    <div class="child-2"></div>
+</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.father</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.child-2</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>; <span class="attribute">bottom</span>: <span class="number">0</span>; <span class="attribute">right</span>: <span class="number">0</span>; <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">margin</span>: auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>margin无效情形解析<ol>
+<li>display计算值为inline的非替换元素的垂直margin是无效的</li>
+<li><strong>对于内联替换元素，垂直margin有效，并且没有margin合并问题，所以永远不会发生margin合并</strong></li>
+<li>内联特性导致margin失效：一个容器里面有一个图片，图片设置margin-top,随着margin-top负值越来越大，达到某一具体负值时，图片将不再往上偏移</li>
+</ol>
+</li>
+</ul>
+
       
     </div>
     
@@ -1007,7 +1130,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">5.padding深入研究</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

@@ -101,7 +101,8 @@
 <meta property="og:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
-<meta property="og:updated_time" content="2018-03-23T08:54:01.156Z">
+<meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
+<meta property="og:updated_time" content="2018-03-26T18:41:32.334Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -211,6 +212,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            作品集
           </a>
         </li>
       
@@ -385,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,125
+                  2,646
                 </span>
               
 
@@ -871,6 +882,135 @@
 </ol>
 </li>
 </ul>
+<h4 id="8-border深入研究"><a href="#8-border深入研究" class="headerlink" title="8.border深入研究"></a>8.border深入研究</h4><ol>
+<li>重置边框的高性能方案<blockquote>
+<p>border-width的默认值为3px,<strong style="color:red">边框宽度没有半像素的概念</strong><br>边框样式的默认值是none,经测试以下方案性能最优</p>
+</blockquote>
+</li>
+</ol>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">2px</span> solid <span class="number">#ccc</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">0</span> none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>border-style: double的高级用法<blockquote>
+<p><strong style="border-bottom: 1px solid red">double的表现规则: 双线宽度永远相等，中间间隔+-1</strong><br>利用双线边框实现菜单按钮</p>
+</blockquote>
+</li>
+</ol>
+
+<style>
+.border-icon{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+    height: 20px;
+    border-top: 60px double #06c;
+    border-bottom: 20px solid #06c;
+    transition: transform 1s;
+}
+.border-icon:hover{
+    transform: rotate(90deg);
+    
+}
+</style>
+<div class="border-icon"></div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.border-icon</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">20px</span>;</span><br><span class="line">    <span class="attribute">border-top</span>: <span class="number">60px</span> double <span class="number">#06c</span>;</span><br><span class="line">    <span class="attribute">border-bottom</span>: <span class="number">20px</span> solid <span class="number">#06c</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="9-字母x与css中的基线"><a href="#9-字母x与css中的基线" class="headerlink" title="9.字母x与css中的基线"></a>9.字母x与css中的基线</h4><blockquote>
+<p>基线 字母x的下边缘<br>x-height 指字母x的高度<br>ex：ex指小写字母x的高度，是相对单位<br>vertical-align:middle 指的是基线往上1/2 x-height高度</p>
+</blockquote>
+
+<style>
+.txt-wrap{
+    line-height: 1;
+}
+.f1{
+    font-size: 40px;
+      vertical-align: middle
+}
+.f3{
+    font-size: 30px;
+      vertical-align: middle
+}
+.f2{
+    display: inline-block;
+    width: 10px;
+    height: 2ex;
+    background: #000;  
+}
+</style>
+<div class="txt-wrap">
+<span class="f2"></span>
+<span class="f1">X</span>
+<span class="f3">X</span>
+</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">内联元素设置对齐方式时，是基于最前面的内联元素的基线，然后根据自己的<span class="selector-tag">vertical-align</span>来调整对齐的</span><br></pre></td></tr></table></figure>
+<h4 id="10-line-height深入研究"><a href="#10-line-height深入研究" class="headerlink" title="10.line-height深入研究"></a>10.line-height深入研究</h4><blockquote>
+<p>1.对于非替换元素的纯内联元素，其可视高度完全由line-height决定，padding,border对其可视高度没有任何影响。<br>2.line-height不能影响替换元素的高度</p>
+</blockquote>
+
+<style>
+.lh-wrap{
+    margin-bottom: 20px;
+    line-height: 1em;
+    font-size: 30px;
+    border: 1px solid #000;
+}
+.lh1{
+    border: 1px solid #000;
+}
+
+</style>
+<div class="lh-wrap">
+<span class="lh1">徐r</span>
+<img src="http://p3g4ahmhh.bkt.clouddn.com/me.jpg" style="width: 60px">
+</div>
+
+<blockquote>
+<p>3.line-height属性值的具体了解：<br>        <strong> 数值：</strong>如1.5，即1.5倍字体大小，此时子元素将继承1.5而不是最终父元素计算的值<br>        <strong>百分比：</strong>如200%，子元素将继承最终计算的值<br>        <strong>em：</strong>如2m，子元素将继承最终计算的值</p>
+<p>4.多行文本垂直居中</p>
+</blockquote>
+
+<style>
+.lh2-wrap{
+    margin: 20px auto;
+    width: 400px;
+    line-height: 7em;
+    font-size: 16px;
+    border: 1px solid #000;
+}
+.lh2-1{
+    display: inline-block;
+    line-height: 2em;
+    vertical-align: middle;
+}
+
+</style>
+<div class="lh2-wrap">
+<span class="lh2-1">徐rjhfj下客服打击开发商电话JFK幅度萨芬京东卡好的的JFK是否获得男子冒充</span>
+</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 文本块用inline-block，借助vertical-align: middle */</span></span><br><span class="line"><span class="selector-class">.lh2-wrap</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">7em</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.lh2-1</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">2em</span>;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong style="color:red">5.计算行高时，一定要向上舍入，因为谷歌浏览器计算数值时是向下取整的</strong>6.无论内联元素line-height如何设置，最终父元素的高度都是由数值大的那个line-height决定的。</p>
+</blockquote>
+<h4 id="10-vertical-align深入探究"><a href="#10-vertical-align深入探究" class="headerlink" title="10.vertical-align深入探究"></a>10.vertical-align深入探究</h4>
+<style>
+.lh3-wrap{
+    margin: 20px auto;
+    width: 400px;
+    line-height: 7em;
+    font-size: 16px;
+    border: 1px solid #000;
+}
+.lh3-1{
+    /* display: inline-block; */
+    line-height: 2em;
+}
+
+</style>
+<div class="lh2-wrap">
+<span class="lh3-1">徐rjhfj下客</span>
+</div>
 
       
     </div>
@@ -950,8 +1090,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/17/works/" rel="next" title="作品集">
-                <i class="fa fa-chevron-left"></i> 作品集
+              <a href="/2018/03/15/animation-transition/" rel="next" title="过渡与动画">
+                <i class="fa fa-chevron-left"></i> 过渡与动画
               </a>
             
           </div>
@@ -1045,7 +1185,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -1130,7 +1270,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-border深入研究"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">8.border深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-字母x与css中的基线"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">9.字母x与css中的基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-line-height深入研究"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">10.line-height深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-vertical-align深入探究"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">10.vertical-align深入探究</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

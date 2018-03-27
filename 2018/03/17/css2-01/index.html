@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
-<meta property="og:updated_time" content="2018-03-26T18:41:32.334Z">
+<meta property="og:updated_time" content="2018-03-27T06:18:09.379Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,646
+                  3,187
                 </span>
               
 
@@ -993,24 +993,104 @@
 <blockquote>
 <p><strong style="color:red">5.计算行高时，一定要向上舍入，因为谷歌浏览器计算数值时是向下取整的</strong>6.无论内联元素line-height如何设置，最终父元素的高度都是由数值大的那个line-height决定的。</p>
 </blockquote>
-<h4 id="10-vertical-align深入探究"><a href="#10-vertical-align深入探究" class="headerlink" title="10.vertical-align深入探究"></a>10.vertical-align深入探究</h4>
+<h4 id="10-vertical-align深入探究"><a href="#10-vertical-align深入探究" class="headerlink" title="10.vertical-align深入探究"></a>10.vertical-align深入探究</h4><blockquote>
+<p>1.vertical-align的数值百分比属性值介绍：<br>    <strong>数值：</strong> 如vertical-align: 10px; 正值往上偏移，负值往下偏移，兼容性良好<br>    <strong>百分比：</strong> 如vertical-align: 10%; 基于line-height计算，不过不常用</p>
+<p>2.vertical-align的作用前提： <strong style="color:red">只能应用于内联元素和display:table-cell的元素</strong><br>    注：1.浮动和绝对定位会让元素块状化，所以使用vertical-align时会失效<br>        2.对于teble-cell元素而言，vertical-align作用的是自身，因为其本身有内联性质，所以对子元素设置vertical-align无效</p>
+<p>3.vertical-align和line-height的关系<strong style="color:red">重要</strong></p>
+</blockquote>
+<ul>
+<li>现象1：容器高度不等于行高</li>
+</ul>
+
 <style>
 .lh3-wrap{
     margin: 20px auto;
-    width: 400px;
-    line-height: 7em;
-    font-size: 16px;
-    border: 1px solid #000;
+    width: 200px;
+    background: #000;
+    line-height: 32px;
 }
 .lh3-1{
     /* display: inline-block; */
-    line-height: 2em;
+    font-size: 28px;
+    background: #06c;
+    color: #fff;
+    /* vertical-align: bottom; */
 }
 
 </style>
-<div class="lh2-wrap">
-<span class="lh3-1">徐rjhfj下客</span>
+<div class="lh3-wrap">
+x<span class="lh3-1">徐rjhfj下客</span>
 </div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.lh3-wrap</span>&#123;</span><br><span class="line">    <span class="attribute">line-height</span>: <span class="number">32px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.lh3-1</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">28px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么实际高度会超过32px呢？<strong>是因为幽灵空白节点的字体大小和内联元素字体大小不同，字体越大基线越低导致两个元素上下偏移，使得容器高度超过原先的设定。</strong><br>解决方案：1.内联元素设置对其方式为bottom或者top<br>        2.将幽灵空白节点和内联元素字体设置成一样的</p>
+<ul>
+<li>现象2. 图片底部始终留有间隙的问题</li>
+</ul>
+<p>原因：<strong>是由line-height,vertical-align和和幽灵空白节点共同决定的。因为图片之前的空白节点和图片默认基线对齐，而幽灵空白节点的行高导致多余的间隙导致图片下面空出了一段距离。</strong><br>解决方案： 1.图片块状话化<br>        2.容器line-height足够小<br>        3.图片设置vertical-align为top,bottom,middle任意一种</p>
+<ul>
+<li>现象3. 图片设置margin-top到一定值时无效<br>原因： <strong>被幽灵空白节点的vertical-align:baseline限定死了</strong></li>
+</ul>
+<blockquote>
+<p>4.应用-实现垂直剧中的弹窗</p>
+</blockquote>
+
+<style>
+.mask{
+    position: fixed;
+    /* z-index: 9999; */
+    display: none;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    background: rgba(0,0,0,.8);
+    font-size: 0;
+    white-space: nowrap;
+    overflow: auto;
+}
+.mask::after{
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+}
+.dialog{
+    display: inline-block;
+    text-align: left;
+    font-size: 14px;
+    color: #fff;
+    white-space: normal;
+}
+#show_mask{
+display: inline-block;
+padding: 4px 10px;
+border-radius: 4px;
+background: #06c;
+color: #fff;
+cursor: pointer;
+}
+</style>
+<div class="mask" id="mask1">
+    <div class="dialog">dddd</div>
+</div>
+<div id="show_mask">显示弹窗</div>
+<script>
+var btn = document.getElementById("show_mask"),
+    mask = document.getElementById("mask1"),
+    isShow = false;
+btn.onclick = function(){
+    mask.style.display = "block";
+    isShow = true;
+}
+mask.onclick = function(){
+    this.style.display = "none";
+    isShow = false;
+}
+</script>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.mask</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: fixed;</span><br><span class="line">    <span class="comment">/* z-index: 9999; */</span></span><br><span class="line">    <span class="attribute">left</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">top</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">right</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">text-align</span>: center;</span><br><span class="line">    <span class="attribute">background</span>: <span class="built_in">rgba</span>(0,0,0,.8);</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">0</span>;</span><br><span class="line">    <span class="attribute">white-space</span>: nowrap;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.mask</span><span class="selector-pseudo">::after</span>&#123;</span><br><span class="line">    <span class="attribute">content</span>: <span class="string">''</span>;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">vertical-align</span>: middle;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.dialog</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: inline-block;</span><br><span class="line">    <span class="attribute">text-align</span>: left;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">14px</span>;</span><br><span class="line">    <span class="attribute">color</span>: <span class="number">#fff</span>;</span><br><span class="line">    <span class="attribute">white-space</span>: normal;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>

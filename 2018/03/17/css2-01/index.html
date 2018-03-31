@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
-<meta property="og:updated_time" content="2018-03-30T13:52:11.785Z">
+<meta property="og:updated_time" content="2018-03-31T01:09:25.019Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  3,720
+                  3,965
                 </span>
               
 
@@ -1122,8 +1122,51 @@ mask.onclick = function(){
 </ul>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.ell-rows-2</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">2</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h4 id="13-overflow与position-absolute"><a href="#13-overflow与position-absolute" class="headerlink" title="13.overflow与position:absolute"></a>13.overflow与position:absolute</h4><blockquote>
-<p>1.如果overflow不是定位元素,并且绝对定位元素和overflow容器之间没有定位元素,则overflow无法对absolute元素进行切割<br>2.如果overflow属性值不是hidden而是auto或者scroll,则即使绝对定位元素宽高溢出也不会出现滚动条<br>3.对于现代浏览器,如果overflow子元素transform溢出,则会裁剪’’</p>
+<p>1.如果overflow不是定位元素,并且绝对定位元素和overflow容器之间没有定位元素,则overflow无法对absolute元素进行切割<br>2.如果overflow属性值不是hidden而是auto或者scroll,则即使绝对定位元素宽高溢出也不会出现滚动条<br>3.对于现代浏览器,如果overflow子元素transform溢出,则会裁剪’’<br>4.overflow默认值为visible,内容不会被修剪，会呈现在元素框之外</p>
 </blockquote>
+<h4 id="14-absolute与clip"><a href="#14-absolute与clip" class="headerlink" title="14.absolute与clip"></a>14.absolute与clip</h4><blockquote>
+<p>1.clip属性要想起作用，元素必须是absolute或者fixed,语法如下：</p>
+</blockquote>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 裁剪区域，不支持缩写和百分比值 */</span></span><br><span class="line"><span class="selector-tag">clip</span>: <span class="selector-tag">rect</span>(<span class="selector-tag">top</span> <span class="selector-tag">right</span> <span class="selector-tag">bottom</span> <span class="selector-tag">left</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.clip应用与渲染</p>
+</blockquote>
+<ul>
+<li>1.最佳可访问性隐藏</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 多用于SEO优化和对表单控件样式的优化以及屏幕阅读器的可访问性 */</span></span><br><span class="line"><span class="selector-class">.clip</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">clip</span>: <span class="built_in">rect</span>(0 0 0 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>2.clip渲染</li>
+</ul>
+<blockquote>
+<p>clip隐藏仅仅决定了哪部分是可见的，对于原来占据的空间并没有影响，非可见部分无法响应点击事件。在ie和火狐浏览器中，抹掉了不可见区域尺寸对布局的影响，chorme浏览器却保留了。</p>
+</blockquote>
+
+<style>
+.re-box{
+    position: relative;
+    width: 200px;
+    height: 200px;
+    background: #eee;
+    overflow: auto;
+}
+.sb-sub{
+    position: absolute;
+    width: 180px;
+    height: 280px;
+    clip: rect(0 0 0 0);
+}
+</style>
+<div class="re-box">
+    <div class="sb-sub"></div>
+</div>
+<script>
+document.querySelector(".sb-sub").onclick = function(){
+    alert(1)
+}
+</script>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.re-box</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: relative;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">200px</span>;</span><br><span class="line">    <span class="attribute">background</span>: <span class="number">#eee</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: auto;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.sb-sub</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>: absolute;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">180px</span>;</span><br><span class="line">    <span class="attribute">height</span>: <span class="number">280px</span>;</span><br><span class="line">    <span class="attribute">clip</span>: <span class="built_in">rect</span>(0 0 0 0);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1383,7 +1426,7 @@ mask.onclick = function(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-border深入研究"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">8.border深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-字母x与css中的基线"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">9.字母x与css中的基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-line-height深入研究"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">10.line-height深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-vertical-align深入探究"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">10.vertical-align深入探究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-float作用机制"><span class="nav-number">1.1.0.8.</span> <span class="nav-text">11.float作用机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-BFC–块级格式化上下文"><span class="nav-number">1.1.0.9.</span> <span class="nav-text">12.BFC–块级格式化上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-overflow与position-absolute"><span class="nav-number">1.1.0.10.</span> <span class="nav-text">13.overflow与position:absolute</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-border深入研究"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">8.border深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-字母x与css中的基线"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">9.字母x与css中的基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-line-height深入研究"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">10.line-height深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-vertical-align深入探究"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">10.vertical-align深入探究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-float作用机制"><span class="nav-number">1.1.0.8.</span> <span class="nav-text">11.float作用机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-BFC–块级格式化上下文"><span class="nav-number">1.1.0.9.</span> <span class="nav-text">12.BFC–块级格式化上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-overflow与position-absolute"><span class="nav-number">1.1.0.10.</span> <span class="nav-text">13.overflow与position:absolute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-absolute与clip"><span class="nav-number">1.1.0.11.</span> <span class="nav-text">14.absolute与clip</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

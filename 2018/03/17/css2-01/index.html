@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
-<meta property="og:updated_time" content="2018-04-01T17:11:55.312Z">
+<meta property="og:updated_time" content="2018-04-02T14:57:47.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,329
+                  4,479
                 </span>
               
 
@@ -1237,10 +1237,18 @@ document.querySelector(".sb-sub").onclick = function(){
 </li>
 <li><p>3.relative的最小化原则</p>
 <blockquote>
-<p>1.尽量不使用relative,可以采用无依赖绝对定位解决某些问题<br>2.如果一定要使用relative,则relative务必最小化（最小包含区域） –为了避免层级覆盖等问题 </p>
+<p>1.尽量不使用relative,可以采用无依赖绝对定位解决某些问题<br>2.如果一定要使用relative,则relative务必最小化（最小包含区域） –为了避免层级覆盖等问题</p>
+</blockquote>
+</li>
+<li><p>4.层叠上下文</p>
+<blockquote>
+<p>1.定位元素的默认z-index:auto;此时和普通元素一样，一旦z-index设置为任意数值，就创建了一个层叠上下文，顺序为：<br>层叠上下文 &lt; 负z-index &lt; block &lt; float &lt; inline &lt; z-index:auto &lt; 正z-index<br>2.css3新属性的层叠上下文：<br>1.flex<br>2.opacity不为1<br>3.transform不为none<br>4.mix-blend-mode不为normal<br>5.filter不为none<br>6.isolation是isolate<br>7.will-change为上面2-6的任意一个<br>8.元素-webkit-overflow-scrolling设为touch</p>
 </blockquote>
 </li>
 </ul>
+<blockquote>
+<p>3.z-index负值在block下面，实际应用：<br>  1.可访问性隐藏<br>  2.ie8下的多背景隐藏</p>
+</blockquote>
 
       
     </div>

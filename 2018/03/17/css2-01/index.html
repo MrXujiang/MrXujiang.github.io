@@ -102,7 +102,7 @@
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/bg.jpg">
 <meta property="og:image" content="http://p3g4ahmhh.bkt.clouddn.com/me.jpg">
-<meta property="og:updated_time" content="2018-04-02T14:57:47.982Z">
+<meta property="og:updated_time" content="2018-04-03T14:07:23.271Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css2.0深入探究">
 <meta name="twitter:description" content="要想深入一个事物，最好对其总体有个大体的了解。要想学好css,最好对其进行深入的研究，让自己对其有足够的控制感，这样才能发挥css最大的价值。 程序员必读 Css3编码技巧  1.css尺寸1.首选最小宽度–实现复杂图形效果 在css中，图片和文字的权重远大于布局，因此当width:0时表现出来的宽度就是“首选最小宽度”。中文的最小宽度为每个汉字的宽度，西方文字取决于连续的英文字符单元。">
@@ -396,7 +396,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  4,479
+                  5,120
                 </span>
               
 
@@ -1249,6 +1249,116 @@ document.querySelector(".sb-sub").onclick = function(){
 <blockquote>
 <p>3.z-index负值在block下面，实际应用：<br>  1.可访问性隐藏<br>  2.ie8下的多背景隐藏</p>
 </blockquote>
+<h4 id="16-字体相关"><a href="#16-字体相关" class="headerlink" title="16.字体相关"></a>16.字体相关</h4><ul>
+<li><p>1.font-weight数值</p>
+<blockquote>
+<p>font-weight的数值范围是100-900，值必须是整百</p>
+</blockquote>
+</li>
+<li><p>2.text-indent</p>
+<blockquote>
+<p>text-indent:100% 百分比值是基于当前元素的<strong>包含块</strong>计算的，即父元素宽度</p>
+</blockquote>
+</li>
+<li><p>3.text-indent应用–对话式排版</p>
+</li>
+</ul>
+
+<style>
+.t-in{
+width: 80%;
+margin-left: 20%;
+}
+.t{
+    text-indent: -2em;
+    border-bottom: 1px solid #eee;
+}
+.t:first-letter{
+    color: #06f;
+}
+</style>
+<div class="t-in">
+    <div class="t">明：我其实一开始就知道，我喜欢你，所以，让我追你吧，用尽一切力量，守护你，呵护你，或许自己还不够成熟？是吗？那就试试看，好不好！</div>
+    <div class="t">红：我其实一开始就知道，我喜欢你，所以，让我追你吧，用尽一切力量，守护你，呵护你，或许自己还不够成熟？是吗？那就试试看，好不好！</div>
+</div>
+
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">text-indent</span>: <span class="selector-tag">-2em</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>4.letter-spacing 用来控制字符之间的变化，包括英文字母，汉字以及空格</p>
+<blockquote>
+<p>其负值只能让字符重叠，不能让替换元素，inline-table发生重叠<br>word-spacing是单词间距</p>
+</blockquote>
+</li>
+<li><p>5.按钮之间的间距可以用如下方法设置</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.btn</span> + <span class="selector-class">.btn</span>&#123;</span><br><span class="line">    <span class="attribute">margin-left</span>: <span class="number">20px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>6.强制换行 word-break: break-all</p>
+<blockquote>
+<p>所有字符只要超出就换行，而word-break: break-word会保留整个单词的完整性</p>
+</blockquote>
+</li>
+<li><p>7.实现中文两端对齐兼容方案</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.justify</span>&#123;</span><br><span class="line">    <span class="attribute">text-align</span>: justify;</span><br><span class="line">    <span class="attribute">text-justify</span>: inter-ideograph;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>8.字符串大小写text-transform<blockquote>
+<p>身份证输入等强制大写</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span>&#123;</span><br><span class="line">    <span class="attribute">text-transform</span>: uppercase;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>9.::first-letter–作用于子元素<blockquote>
+<p>应用：实现字体控制</p>
+</blockquote>
+</li>
+</ul>
+
+<style>
+.t-tr{
+    font-size: 28px;
+    text-indent: 2em;
+}
+.t-tr:first-letter{
+    font-size: 36px;
+    color: red;
+}
+</style>
+<div class="t-tr">￥200</div>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.t-tr</span><span class="selector-pseudo">:first-letter</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">36px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br><span class="line">&lt;div class="t-tr"&gt;￥200&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>10.隐藏元素的background-image的加载</p>
+<blockquote>
+<p>在firfox下，display:none的元素的background-image不加载，包括父元素设置display: none,在chrome和safari下若父元素为display:none则不加载，本身隐藏会加载，对于ie来说都会加载<br>通过背景图片实现鼠标经过切换图片效果时最好把两张图片合成一张图，这样既减少请求又可以提高用户体验</p>
+</blockquote>
+</li>
+<li><p>11.background-position百分比计算规则</p>
+<blockquote>
+<p>positionX = (容器宽度 - 图片宽度) <em> percentX<br>positionY = (容器高度 - 图片高度) </em> percentY</p>
+</blockquote>
+</li>
+<li><p>12.兼容PC端的hidden属性</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-attr">[hidden]</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: none;</span><br><span class="line">&#125;</span><br><span class="line">&lt;div hidden&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>13.visibility的继承性</p>
+<blockquote>
+<p>父元素设置visibility: hidden,子元素会继承该特性，如果子元素设置visibility: visible,则子元素会显示出来<br>visibility: hidden不会影响计数器技术，而display：none会影响<br>有过渡效果，display则没有</p>
+</blockquote>
+</li>
+<li><p>14.user-select:none使得文本不能选中</p>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">user-select</span>: <span class="selector-tag">none</span>;</span><br><span class="line"><span class="comment">/* 默认鼠标图形 */</span></span><br><span class="line"><span class="selector-tag">cursor</span>: <span class="selector-tag">default</span>;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>15.自定义光标</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.cur</span>&#123;</span><br><span class="line">    <span class="attribute">cursor</span>: <span class="built_in">url</span>(transparent.cur);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -1508,7 +1618,7 @@ document.querySelector(".sb-sub").onclick = function(){
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-border深入研究"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">8.border深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-字母x与css中的基线"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">9.字母x与css中的基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-line-height深入研究"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">10.line-height深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-vertical-align深入探究"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">10.vertical-align深入探究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-float作用机制"><span class="nav-number">1.1.0.8.</span> <span class="nav-text">11.float作用机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-BFC–块级格式化上下文"><span class="nav-number">1.1.0.9.</span> <span class="nav-text">12.BFC–块级格式化上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-overflow与position-absolute"><span class="nav-number">1.1.0.10.</span> <span class="nav-text">13.overflow与position:absolute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-absolute与clip"><span class="nav-number">1.1.0.11.</span> <span class="nav-text">14.absolute与clip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-relative难点解析"><span class="nav-number">1.1.0.12.</span> <span class="nav-text">15.relative难点解析</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序员必读"><span class="nav-number">1.</span> <span class="nav-text">程序员必读</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css尺寸"><span class="nav-number">1.1.</span> <span class="nav-text">1.css尺寸</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-首选最小宽度–实现复杂图形效果"><span class="nav-number">1.1.0.0.1.</span> <span class="nav-text">1.首选最小宽度–实现复杂图形效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-子元素宽度设为100-时的奇怪现象原理探究"><span class="nav-number">1.1.0.0.2.</span> <span class="nav-text">2.子元素宽度设为100%时的奇怪现象原理探究</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-如何让元素支持height-100-效果"><span class="nav-number">1.1.0.0.3.</span> <span class="nav-text">3.如何让元素支持height:100%效果</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-任意高度元素的展开收起动画-max-height-min-height"><span class="nav-number">1.1.0.0.4.</span> <span class="nav-text">4.任意高度元素的展开收起动画(max-height/min-height)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-内联元素深入探究"><span class="nav-number">1.1.0.0.5.</span> <span class="nav-text">5.内联元素深入探究</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-深入理解content"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">6.深入理解content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-padding深入研究"><span class="nav-number">1.1.0.2.</span> <span class="nav-text">6.padding深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-margin深入研究"><span class="nav-number">1.1.0.3.</span> <span class="nav-text">7.margin深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8-border深入研究"><span class="nav-number">1.1.0.4.</span> <span class="nav-text">8.border深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#9-字母x与css中的基线"><span class="nav-number">1.1.0.5.</span> <span class="nav-text">9.字母x与css中的基线</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-line-height深入研究"><span class="nav-number">1.1.0.6.</span> <span class="nav-text">10.line-height深入研究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10-vertical-align深入探究"><span class="nav-number">1.1.0.7.</span> <span class="nav-text">10.vertical-align深入探究</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11-float作用机制"><span class="nav-number">1.1.0.8.</span> <span class="nav-text">11.float作用机制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#12-BFC–块级格式化上下文"><span class="nav-number">1.1.0.9.</span> <span class="nav-text">12.BFC–块级格式化上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#13-overflow与position-absolute"><span class="nav-number">1.1.0.10.</span> <span class="nav-text">13.overflow与position:absolute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#14-absolute与clip"><span class="nav-number">1.1.0.11.</span> <span class="nav-text">14.absolute与clip</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#15-relative难点解析"><span class="nav-number">1.1.0.12.</span> <span class="nav-text">15.relative难点解析</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#16-字体相关"><span class="nav-number">1.1.0.13.</span> <span class="nav-text">16.字体相关</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

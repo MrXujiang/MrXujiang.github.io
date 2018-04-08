@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="众学技术团队">
 <meta property="og:description" content="javascript在浏览器中运行的性能，可以认为是开发者所面临的最严重的可用性问题。这个问题因为javascript的阻塞性而变得复杂，事实上，多数浏览器使用单一进程来处理用户界面和js脚本执行，所以同一时刻只能做一件事。js执行过程耗时越久，浏览器等待响应的时间越长。 加载和执行1.提高加载性能 1.IE8,FF,3.5,Safari 4和Chrome都允许并行下载js文件，当script下载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-06T21:56:20.233Z">
+<meta property="og:updated_time" content="2018-04-08T09:33:17.227Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能JS">
 <meta name="twitter:description" content="javascript在浏览器中运行的性能，可以认为是开发者所面临的最严重的可用性问题。这个问题因为javascript的阻塞性而变得复杂，事实上，多数浏览器使用单一进程来处理用户界面和js脚本执行，所以同一时刻只能做一件事。js执行过程耗时越久，浏览器等待响应的时间越长。 加载和执行1.提高加载性能 1.IE8,FF,3.5,Safari 4和Chrome都允许并行下载js文件，当script下载">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  764
+                  2,041
                 </span>
               
 
@@ -438,6 +438,86 @@
 </blockquote>
 </li>
 </ul>
+<h4 id="3-DOM编程"><a href="#3-DOM编程" class="headerlink" title="3.DOM编程"></a>3.DOM编程</h4><ul>
+<li>1.访问DOM会影响浏览器性能，修改DOM则更耗费性能，因为他会导致浏览器重新计算页面的几何变化。<strong>&lt;通常的做法是减少访问DOM的次数，把运算尽量留在JS这一端。</strong></li>
+</ul>
+<blockquote>
+<p>注：如过在一个对性能要求比较高的操作中更新一段HTML，推荐使用innerHTML，因为它在绝大多数浏览器中运行的都很快。但对于大多数日常操作而言，并没有太大区别，所以你更应该根据可读性，稳定性，团队习惯，代码风格来综合决定使用innerHTML还是createElement()</p>
+</blockquote>
+<ul>
+<li>2.HTML集合优化<blockquote>
+<p>HTML集合包含了DOM节点引用的类数组对象，一直与文档保持连接，每次你需要最新的信息时，都会重复执行查询操作，哪怕只是获取集合里元素的个数。</p>
+</blockquote>
+</li>
+</ul>
+<p>1.优化一——集合转数组collToArr</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">collToArr</span>(<span class="params">coll</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, a=[], len=coll.length; i&lt;len; i++)&#123;</span><br><span class="line">        a.push(coll[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>2.缓存集合length<br>3.访问集合元素时使用局部变量（即将重复的集合访问缓存到局部变量中，用局部变量来操作）</p>
+<ul>
+<li>3.遍历DOM</li>
+</ul>
+<p>1.使用只返回元素节点的API遍历DOM,因为这些API的执行效率比自己实现的效率更高：<br>
+    <table>
+        <tr><td>属性名</td><td>被替代属性</td></tr>
+        <tr><td>children</td><td>childNodes</td></tr>
+        <tr><td>childElementCount</td><td>childNodes.length</td></tr>
+        <tr><td>firstElementChild</td><td>firstChild</td></tr>
+        <tr><td>lastElementChild</td><td>lastChild</td></tr>
+        <tr><td>nextElementSibling</td><td>nextSibling</td></tr>
+        <tr><td>previousElementSibling</td><td>previousSibling</td></tr>
+    </table>
+<br>2.选择器API——querySelectorAll()</p>
+<blockquote>
+<p>querySelectorAll()方法使用css选择器作为参数并返回一个NodeList——包含着匹配节点的类数组对象，该方法不会返回HTML集合，因此返回的节点不会对应实时文档结构，着也避免了HTML集合引起的性能问题。<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> arr = <span class="built_in">document</span>.querySelectorAll(<span class="string">'div.warning, div.notice &gt; p'</span>)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li>4.重绘和重排<blockquote>
+<p>浏览器在下载完页面的所有组件——html,js,css,图片等之后，会解析并生成两个内部数据结构—— <strong>DOM树，渲染树</strong>.一旦DOM树和渲染树构建完成，浏览器就开始绘制页面元素（paint）.</p>
+</blockquote>
+</li>
+</ul>
+<p>1.重排发生的条件：</p>
+<blockquote>
+<p>添加或删除可见的DOM<br>元素位置变化<br>元素尺寸改变<br>内容改变<br>页面渲染器初始化<br>浏览器窗口尺寸变化<br>出现滚动条时会触发整个页面的重排</p>
+</blockquote>
+<p><strong style="color: red">重排必定重绘</strong></p>
+<ul>
+<li>5.渲染树变化的排列和刷新<blockquote>
+<p>大多数浏览器通过队列化修改并批量执行来优化重排过程，然而获取布局信息的操作会导致队列强制刷新。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">offsetTop,offsetWidth...</span><br><span class="line">scrollTop,scrollHeight...</span><br><span class="line">clientTop,clientHeight...</span><br><span class="line">getComputedStyle()</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>一些优化建议：将设置样式的操作和获取样式的操作分开：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 设置样式</span></span><br><span class="line">body.style.color = <span class="string">'red'</span>;</span><br><span class="line">body.style.fontSize = <span class="string">'24px'</span></span><br><span class="line"><span class="comment">// 读取样式</span></span><br><span class="line"><span class="keyword">let</span> color = body.style.color</span><br><span class="line"><span class="keyword">let</span> fontSize = body.style.fontSize</span><br></pre></td></tr></table></figure>
+<p>另外，获取计算属性的兼容写法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getComputedStyle</span>(<span class="params">el</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> computed = (<span class="built_in">document</span>.body.currentStyle ? el.currentStyle : <span class="built_in">document</span>.defaultView.getComputedStyle(el,<span class="string">''</span>);</span><br><span class="line">    <span class="keyword">return</span> computed</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>6.最小化重绘和重排</li>
+</ul>
+<blockquote>
+<p>1.批量改变样式</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 使用cssText */</span></span><br><span class="line">el.style.cssText = <span class="string">'border-left: 1px; border-right: 2px; padding: 20px'</span>;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.批量修改dom的优化方案——使元素脱离文档流-对其应用多重改变-把元素带回文档</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">appendDataToEl</span>(<span class="params">option</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> targetEl = option.target || <span class="built_in">document</span>.body,</span><br><span class="line">        createEl,</span><br><span class="line">        data = option.data || [];</span><br><span class="line">    <span class="comment">// 让容器脱离文档流，减少重绘重排</span></span><br><span class="line">    <span class="keyword">var</span> targetEl_display = targetEl.style.display;</span><br><span class="line">    targetEl.style.display = <span class="string">'none'</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// *****创建文档片段来优化Dom操作****</span></span><br><span class="line">    <span class="keyword">var</span> fragment = <span class="built_in">document</span>.createDocumentFragment();</span><br><span class="line">    <span class="comment">// 给元素填充数据</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>, max = data.length; i&lt; max; i++)&#123;</span><br><span class="line">        createEl = <span class="built_in">document</span>.createElement(option.createEl);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> item <span class="keyword">in</span> data[i])&#123;</span><br><span class="line">            <span class="keyword">if</span>(item.toString() === <span class="string">'text'</span>)&#123;</span><br><span class="line">                createEl.appendChild(<span class="built_in">document</span>.createTextNode(data[i][item]));</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(item.toString() === <span class="string">'html'</span>)&#123;</span><br><span class="line">                createEl.innerHTML = item,data[i][item];</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            createEl.setAttribute(item,data[i][item]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// ****将填充好的node插入文档片段****</span></span><br><span class="line">        fragment.appendChild(createEl);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// ****将文档片段统一插入目标容器****</span></span><br><span class="line">    targetEl.appendChild(fragment);</span><br><span class="line">    <span class="comment">// 显示容器，完成数据填充</span></span><br><span class="line">    targetEl.style.display = targetEl_display;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 使用</span></span><br><span class="line"><span class="keyword">var</span> wrap = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.wrap'</span>)[<span class="number">0</span>];</span><br><span class="line"><span class="keyword">var</span> data = [</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'xujaing'</span>,<span class="attr">text</span>: <span class="string">'选景'</span>, <span class="attr">title</span>: <span class="string">'xuanfij'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'xujaing'</span>,<span class="attr">text</span>: <span class="string">'选景'</span>, <span class="attr">title</span>: <span class="string">'xuanfij'</span>&#125;,</span><br><span class="line">    &#123;<span class="attr">name</span>: <span class="string">'xujaing'</span>,<span class="attr">text</span>: <span class="string">'选景'</span>, <span class="attr">title</span>: <span class="string">'xuanfij'</span>&#125;</span><br><span class="line">];</span><br><span class="line">appendDataToEl(&#123;</span><br><span class="line">    target: wrap,</span><br><span class="line">    createEl: <span class="string">'div'</span>,</span><br><span class="line">    data: data</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的优化方法使用了<strong>文档片段: </strong>当我们把文档片段插入到节点中时，实际上被添加的只是该片段的子节点，而不是片段本身。可以使得dom操作更有效率。</p>
+<p>3.缓存布局信息</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//缓存布局信息</span></span><br><span class="line"><span class="keyword">let</span> current = el.offsetLeft;</span><br><span class="line">current++;</span><br><span class="line">el.style.left = current + <span class="string">'px'</span>;</span><br><span class="line"><span class="keyword">if</span>(current &gt; <span class="number">300</span>)&#123;</span><br><span class="line">    stop();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.慎用:hover</p>
+</blockquote>
+<p>如果有大量元素使用:hover,那么会降低相应速度，CPU升高</p>
+<blockquote>
+<p>5.使用事件委托（通过事件冒泡实现）来减少事件处理器的数量，减少内存和处理时间</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delegation</span>(<span class="params">e,selector,callback</span>)</span>&#123;</span><br><span class="line">    e = e || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = e.target || e.srcElement;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(target.nodeName !== selector || target.className !== selector || target.id !== selector)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> e.preventDefault === <span class="string">'function'</span>)&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        e.returnValue = <span class="literal">false</span>;</span><br><span class="line">        e.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    callback()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -695,7 +775,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加载和执行"><span class="nav-number">1.</span> <span class="nav-text">加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提高加载性能"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.提高加载性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据存取与JS性能"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.数据存取与JS性能</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加载和执行"><span class="nav-number">1.</span> <span class="nav-text">加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提高加载性能"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.提高加载性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据存取与JS性能"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.数据存取与JS性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DOM编程"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.DOM编程</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

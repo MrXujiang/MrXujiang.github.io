@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    
+    <lastmod>2018-04-09T05:32:27.609Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
     
     <lastmod>2018-04-09T05:26:10.132Z</lastmod>
@@ -26,13 +33,6 @@
     <loc>http://build800.com/about/index.html</loc>
     
     <lastmod>2018-03-24T02:57:24.288Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    
-    <lastmod>2018-03-21T03:43:39.484Z</lastmod>
     
   </url>
   

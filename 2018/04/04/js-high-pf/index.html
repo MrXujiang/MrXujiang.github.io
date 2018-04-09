@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="众学技术团队">
 <meta property="og:description" content="javascript在浏览器中运行的性能，可以认为是开发者所面临的最严重的可用性问题。这个问题因为javascript的阻塞性而变得复杂，事实上，多数浏览器使用单一进程来处理用户界面和js脚本执行，所以同一时刻只能做一件事。js执行过程耗时越久，浏览器等待响应的时间越长。 加载和执行1.提高加载性能 1.IE8,FF,3.5,Safari 4和Chrome都允许并行下载js文件，当script下载">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-08T09:33:17.227Z">
+<meta property="og:updated_time" content="2018-04-09T05:26:10.132Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="高性能JS">
 <meta name="twitter:description" content="javascript在浏览器中运行的性能，可以认为是开发者所面临的最严重的可用性问题。这个问题因为javascript的阻塞性而变得复杂，事实上，多数浏览器使用单一进程来处理用户界面和js脚本执行，所以同一时刻只能做一件事。js执行过程耗时越久，浏览器等待响应的时间越长。 加载和执行1.提高加载性能 1.IE8,FF,3.5,Safari 4和Chrome都允许并行下载js文件，当script下载">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,041
+                  2,320
                 </span>
               
 
@@ -518,6 +518,22 @@
 <p>5.使用事件委托（通过事件冒泡实现）来减少事件处理器的数量，减少内存和处理时间</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">delegation</span>(<span class="params">e,selector,callback</span>)</span>&#123;</span><br><span class="line">    e = e || <span class="built_in">window</span>.event;</span><br><span class="line">    <span class="keyword">var</span> target = e.target || e.srcElement;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(target.nodeName !== selector || target.className !== selector || target.id !== selector)&#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(<span class="keyword">typeof</span> e.preventDefault === <span class="string">'function'</span>)&#123;</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        e.stopPropagation();</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        e.returnValue = <span class="literal">false</span>;</span><br><span class="line">        e.cancelBubble = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    callback()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4-算法和流程控制"><a href="#4-算法和流程控制" class="headerlink" title="4.算法和流程控制"></a>4.算法和流程控制</h4><blockquote>
+<p>1.循环中减少属性查找并反转(可以提升50%-60%的性能)</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// for 循环</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=item.length; i--)&#123;</span><br><span class="line">    process(item[i]);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// while循环</span></span><br><span class="line"><span class="keyword">var</span> j = item.length;</span><br><span class="line"><span class="keyword">while</span>(j--)&#123;</span><br><span class="line">    process(item[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>2.使用Duff装置来优化循环（该方法在后面的文章中会详细介绍）</p>
+<p>3.基于函数的迭代（比基于循环的迭代慢）</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">items.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value,index,array</span>)</span>&#123;</span><br><span class="line">    process(value);</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>4.通常情况下switch总比if-else快，但是不是最佳方案</p>
+</blockquote>
+<h4 id="5-字符串和正则表达式"><a href="#5-字符串和正则表达式" class="headerlink" title="5.字符串和正则表达式"></a>5.字符串和正则表达式</h4><blockquote>
+<p>1.除了IE外，其他浏览器会尝试为表达式左侧的字符串分配更多的内存，然后简单的将第二个字符串拷贝到他的末尾，如果在一个循环中，基础字符串位于最左侧，就可以避免重复拷贝一个逐渐变大的基础字符串。<br>2.使用[\s\S]来匹配任意字符串<br>3.去除尾部空白的常用做法：</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(!<span class="built_in">String</span>.prototype.trim)&#123;</span><br><span class="line">    <span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/^\s+/</span>,<span class="string">''</span>).replace(<span class="regexp">/\s\s*$/</span>, <span class="string">''</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -753,7 +769,7 @@
               <ul class="links-of-blogroll-list">
                 
                   <li class="links-of-blogroll-item">
-                    <a href="https://mp.weixin.qq.com/s?__biz=MzU0OTUyMjI4Mg==&mid=2247483674&idx=1&sn=3ad3f4c95af1c57e251b9a8c5f3182d5&chksm=fbafdf1fccd85609127b54df677376544fb6f368c72f1f840839644c127e69581210bfcd4059#rd" title="众学智库" target="_blank">众学智库</a>
+                    <a href="http://zhikume.cn/" title="众学智库" target="_blank">众学智库</a>
                   </li>
                 
               </ul>
@@ -775,7 +791,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加载和执行"><span class="nav-number">1.</span> <span class="nav-text">加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提高加载性能"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.提高加载性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据存取与JS性能"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.数据存取与JS性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DOM编程"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.DOM编程</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#加载和执行"><span class="nav-number">1.</span> <span class="nav-text">加载和执行</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-提高加载性能"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">1.提高加载性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-数据存取与JS性能"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">2.数据存取与JS性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DOM编程"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">3.DOM编程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-算法和流程控制"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">4.算法和流程控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-字符串和正则表达式"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">5.字符串和正则表达式</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>

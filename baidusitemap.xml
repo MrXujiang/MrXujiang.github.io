@@ -4,14 +4,16 @@
 
     
   <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    <lastmod>2018-04-09T05:32:27.609Z</lastmod>
+    <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
+    <lastmod>2018-04-10T02:29:30.692Z</lastmod>
     <data>
         <display>
-        <title>js常用工具函数</title>
-        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
+        <title>高性能JS</title>
+        <pubTime>2018-04-04T08:44:02.000Z</pubTime>
         
-        <tag>js</tag>
+        <tag>Javascript</tag>
+         
+        <tag>dom</tag>
          
          
            
@@ -24,16 +26,14 @@
 
     
   <url>
-    <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
-    <lastmod>2018-04-09T05:26:10.132Z</lastmod>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    <lastmod>2018-04-09T05:32:27.609Z</lastmod>
     <data>
         <display>
-        <title>高性能JS</title>
-        <pubTime>2018-04-04T08:44:02.000Z</pubTime>
+        <title>js常用工具函数</title>
+        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
         
-        <tag>Javascript</tag>
-         
-        <tag>dom</tag>
+        <tag>js</tag>
          
          
            

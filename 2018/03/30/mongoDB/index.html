@@ -92,18 +92,18 @@
 
 
 
-<meta name="description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  123456789101112# 查看数据库sho">
+<meta name="description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  12345678910111213141516#">
 <meta name="keywords" content="mongoDB,mongoose">
 <meta property="og:type" content="article">
 <meta property="og:title" content="mongoDB学习指南">
 <meta property="og:url" content="http://build800.com/2018/03/30/mongoDB/index.html">
 <meta property="og:site_name" content="众学技术团队">
-<meta property="og:description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  123456789101112# 查看数据库sho">
+<meta property="og:description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  12345678910111213141516#">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-03-31T01:57:05.327Z">
+<meta property="og:updated_time" content="2018-04-10T12:05:38.035Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="mongoDB学习指南">
-<meta name="twitter:description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  123456789101112# 查看数据库sho">
+<meta name="twitter:description" content="Mongodb是分布式文档存储数据库，由C++语言编写，旨在为WEB应用提供可扩展的高性能数据存储解决方案。MongoDB是一个高性能，开源，无模式的文档型数据库，是当前NoSql数据库中比较热门的一种。它在许多场景下可用于替代传统的关系型数据库或键/值存储方式,接下来就让我们学习一下它吧! 安装和配置 mongoDB安装教程   1.基本操作  12345678910111213141516#">
 
 
 
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,348
+                  1,386
                 </span>
               
 
@@ -425,7 +425,7 @@
 <ul>
 <li>1.基本操作</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show dbs</span><br><span class="line"><span class="comment"># 切换/创建数据库</span></span><br><span class="line">use [数据库名]</span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">1.先切换到想要删除的数据库</span><br><span class="line">2.执行命令:</span><br><span class="line">  db.dropDatabase()</span><br><span class="line"><span class="comment"># 创建集合并插入数据 如果集合不存在mongoDB会自动创建并插入文档</span></span><br><span class="line">db.class_name.insert(&#123;name:<span class="string">"一班"</span>&#125;)</span><br><span class="line"><span class="comment"># 删除集合</span></span><br><span class="line">db.collection_name.drop()</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动数据库服务（--dbpath后的路径代表指定数据库的路径）</span></span><br><span class="line">mongod --dbpath c:\mongoDB\data\db</span><br><span class="line"><span class="comment"># 连接数据库</span></span><br><span class="line">mongo</span><br><span class="line"><span class="comment"># 查看数据库</span></span><br><span class="line">show dbs</span><br><span class="line"><span class="comment"># 切换/创建数据库</span></span><br><span class="line">use [数据库名]</span><br><span class="line"><span class="comment"># 删除数据库</span></span><br><span class="line">1.先切换到想要删除的数据库</span><br><span class="line">2.执行命令:</span><br><span class="line">  db.dropDatabase()</span><br><span class="line"><span class="comment"># 创建集合并插入数据 如果集合不存在mongoDB会自动创建并插入文档</span></span><br><span class="line">db.class_name.insert(&#123;name:<span class="string">"一班"</span>&#125;)</span><br><span class="line"><span class="comment"># 删除集合</span></span><br><span class="line">db.collection_name.drop()</span><br></pre></td></tr></table></figure>
 <ul>
 <li>2.查询</li>
 </ul>

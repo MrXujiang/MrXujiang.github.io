@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://build800.com/2018/03/30/mongoDB/</loc>
+    
+    <lastmod>2018-04-10T12:05:38.035Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
     
     <lastmod>2018-04-10T02:29:30.692Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://build800.com/2018/03/17/css2-01/</loc>
     
     <lastmod>2018-04-03T14:07:23.271Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://build800.com/2018/03/30/mongoDB/</loc>
-    
-    <lastmod>2018-03-31T01:57:05.327Z</lastmod>
     
   </url>
   

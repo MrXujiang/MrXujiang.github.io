@@ -4,6 +4,68 @@
 
     
   <url>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    <lastmod>2018-04-18T08:06:59.308Z</lastmod>
+    <data>
+        <display>
+        <title>js常用工具函数</title>
+        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://build800.com/2018/04/18/es6/</loc>
+    <lastmod>2018-04-18T06:01:02.948Z</lastmod>
+    <data>
+        <display>
+        <title>高性能JS</title>
+        <pubTime>2018-04-18T04:44:02.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+        <tag>ES6</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://build800.com/2018/03/17/css2-01/</loc>
+    <lastmod>2018-04-12T04:42:57.774Z</lastmod>
+    <data>
+        <display>
+        <title>css2.0深入探究</title>
+        <pubTime>2018-03-17T03:09:04.000Z</pubTime>
+        
+        <tag>css2</tag>
+         
+         
+           
+             
+              <breadCrumb title="css2高级" url="http://build800.com/categories/css2%E9%AB%98%E7%BA%A7/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
     <lastmod>2018-04-12T04:30:38.651Z</lastmod>
     <data>
@@ -41,46 +103,6 @@
            
              
               <breadCrumb title="mongoDB" url="http://build800.com/categories/mongoDB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    <lastmod>2018-04-09T05:32:27.609Z</lastmod>
-    <data>
-        <display>
-        <title>js常用工具函数</title>
-        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/03/17/css2-01/</loc>
-    <lastmod>2018-04-03T14:07:23.271Z</lastmod>
-    <data>
-        <display>
-        <title>css2.0深入探究</title>
-        <pubTime>2018-03-17T03:09:04.000Z</pubTime>
-        
-        <tag>css2</tag>
-         
-         
-           
-             
-              <breadCrumb title="css2高级" url="http://build800.com/categories/css2%E9%AB%98%E7%BA%A7/"/>
           
         </display>
     </data>

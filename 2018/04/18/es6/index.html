@@ -95,14 +95,14 @@
 <meta name="description" content="ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。ES6给我们提供了很多js的新特性和规范，使得我们编写Js代码更加灵活和强大，接下来让我们来学习一下吧。 let和constlet声明的变量只在它所在的代码块有效。for循">
 <meta name="keywords" content="Javascript,ES6">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高性能JS">
+<meta property="og:title" content="ES6总结">
 <meta property="og:url" content="http://build800.com/2018/04/18/es6/index.html">
 <meta property="og:site_name" content="众学技术团队">
 <meta property="og:description" content="ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。ES6给我们提供了很多js的新特性和规范，使得我们编写Js代码更加灵活和强大，接下来让我们来学习一下吧。 let和constlet声明的变量只在它所在的代码块有效。for循">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-19T03:49:07.045Z">
+<meta property="og:updated_time" content="2018-04-20T08:18:58.603Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="高性能JS">
+<meta name="twitter:title" content="ES6总结">
 <meta name="twitter:description" content="ECMAScript 6.0（以下简称 ES6）是 JavaScript 语言的下一代标准，已经在 2015 年 6 月正式发布了。它的目标，是使得 JavaScript 语言可以用来编写复杂的大型应用程序，成为企业级开发语言。ES6给我们提供了很多js的新特性和规范，使得我们编写Js代码更加灵活和强大，接下来让我们来学习一下吧。 let和constlet声明的变量只在它所在的代码块有效。for循">
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title>高性能JS | 众学技术团队</title>
+  <title>ES6总结 | 众学技术团队</title>
   
 
 
@@ -316,7 +316,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">高性能JS</h2>
+          <h2 class="post-title" itemprop="name headline">ES6总结</h2>
         
 
         <div class="post-meta">
@@ -368,7 +368,7 @@
 
           
           
-             <span id="/2018/04/18/es6/" class="leancloud_visitors" data-flag-title="高性能JS">
+             <span id="/2018/04/18/es6/" class="leancloud_visitors" data-flag-title="ES6总结">
                <span class="post-meta-divider">|</span>
                <span class="post-meta-item-icon">
                  <i class="fa fa-eye"></i>
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  2,131
+                  2,692
                 </span>
               
 
@@ -482,6 +482,31 @@
 <p>String.raw方法可以作为处理模板字符串的基本方法，它会将所有变量替换，而且对斜杠进行转义，方便下一步作为字符串来使用</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>.raw<span class="string">`Hi\n<span class="subst">$&#123;<span class="number">2</span>+<span class="number">3</span>&#125;</span>!`</span>;</span><br><span class="line"><span class="comment">// 返回 "Hi\\n5!"</span></span><br><span class="line"></span><br><span class="line"><span class="string">`Hi\n<span class="subst">$&#123;<span class="number">2</span>+<span class="number">3</span>&#125;</span>!`</span>  <span class="comment">// 此时换行符/n会生效</span></span><br><span class="line"><span class="comment">// 返回 "Hi</span></span><br><span class="line"><span class="comment">//      n5!"</span></span><br></pre></td></tr></table></figure>
+<h1 id="正则的扩展"><a href="#正则的扩展" class="headerlink" title="正则的扩展"></a>正则的扩展</h1><h2 id="u-修饰符"><a href="#u-修饰符" class="headerlink" title="u 修饰符"></a>u 修饰符</h2><blockquote>
+<p>ES6 对正则表达式添加了u修饰符，含义为“Unicode 模式”，用来正确处理大于\uFFFF的 Unicode 字符。也就是说，会正确处理四个字节的 UTF-16 编码</p>
+</blockquote>
+<h2 id="y-修饰符"><a href="#y-修饰符" class="headerlink" title="y 修饰符"></a>y 修饰符</h2><blockquote>
+<p>y修饰符的作用与g修饰符类似，也是全局匹配，后一次匹配都从上一次匹配成功的下一个位置开始。不同之处在于，g修饰符只要剩余位置中存在匹配就可，而y修饰符确保匹配必须从剩余的第一个位置开始，这也就是“粘连”的涵义。<br>单单一个y修饰符对match方法，只能返回第一个匹配，必须与g修饰符联用，才能返回所有匹配。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'a1a2a3'</span>.match(<span class="regexp">/a\d/y</span>) <span class="comment">// ["a1"]</span></span><br><span class="line"><span class="string">'a1a2a3'</span>.match(<span class="regexp">/a\d/gy</span>) <span class="comment">// ["a1", "a2", "a3"]</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>y修饰符的一个应用，是从字符串提取 token（词元），y修饰符确保了匹配之间不会有漏掉的字符。</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> TOKEN_Y = <span class="regexp">/\s*(\+|[0-9]+)\s*/y</span>;</span><br><span class="line"><span class="keyword">const</span> TOKEN_G  = <span class="regexp">/\s*(\+|[0-9]+)\s*/g</span>;</span><br><span class="line"></span><br><span class="line">tokenize(TOKEN_Y, <span class="string">'3 + 4'</span>)</span><br><span class="line"><span class="comment">// [ '3', '+', '4' ]</span></span><br><span class="line">tokenize(TOKEN_G, <span class="string">'3 + 4'</span>)</span><br><span class="line"><span class="comment">// [ '3', '+', '4' ]</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">tokenize</span>(<span class="params">TOKEN_REGEX, str</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">let</span> result = [];</span><br><span class="line">  <span class="keyword">let</span> match;</span><br><span class="line">  <span class="keyword">while</span> (match = TOKEN_REGEX.exec(str)) &#123;</span><br><span class="line">    result.push(match[<span class="number">1</span>]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">tokenize(TOKEN_Y, <span class="string">'3x + 4'</span>)</span><br><span class="line"><span class="comment">// [ '3' ]</span></span><br><span class="line">tokenize(TOKEN_G, <span class="string">'3x + 4'</span>)</span><br><span class="line"><span class="comment">// [ '3', '+', '4' ]</span></span><br></pre></td></tr></table></figure>
+<h2 id="sticky-属性"><a href="#sticky-属性" class="headerlink" title="sticky 属性"></a>sticky 属性</h2><blockquote>
+<p>表示是否设置了y修饰符 ,返回true/false</p>
+</blockquote>
+<h2 id="flags-属性"><a href="#flags-属性" class="headerlink" title="flags 属性"></a>flags 属性</h2><blockquote>
+<p>返回正则表达式的修饰符</p>
+</blockquote>
+<h2 id="如何让-匹配包括换行符-行终止符-的所有字符"><a href="#如何让-匹配包括换行符-行终止符-的所有字符" class="headerlink" title="如何让 . 匹配包括换行符(行终止符)的所有字符"></a>如何让 . 匹配包括换行符(行终止符)的所有字符</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//U+000A 换行符（\n）</span></span><br><span class="line"><span class="comment">//U+000D 回车符（\r）</span></span><br><span class="line"><span class="comment">//U+2028 行分隔符（line separator）</span></span><br><span class="line"><span class="comment">//U+2029 段分隔符（paragraph separator）</span></span><br><span class="line"></span><br><span class="line">/foo[^]bar/.test(<span class="string">'foo\nbar'</span>) <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="ES5先行断言"><a href="#ES5先行断言" class="headerlink" title="ES5先行断言"></a>ES5先行断言</h2><blockquote>
+<p>”先行断言“指的是，x只有在y前面才匹配，必须写成/x(?=y)/。比如，只匹配百分号之前的数字，要写成/\d+(?=%)/。”先行否定断言“指的是，x只有不在y前面才匹配，必须写成/x(?!y)/。比如，只匹配不在百分号之前的数字，要写成/\d+(?!%)/。</p>
+</blockquote>
+<h2 id="ES5组匹配"><a href="#ES5组匹配" class="headerlink" title="ES5组匹配"></a>ES5组匹配</h2><blockquote>
+<p>正则表达式使用圆括号进行组匹配</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> RE_DATE = <span class="regexp">/(\d&#123;4&#125;)-(\d&#123;2&#125;)-(\d&#123;2&#125;)/</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> matchObj = RE_DATE.exec(<span class="string">'1999-12-31'</span>);</span><br><span class="line"><span class="keyword">const</span> year = matchObj[<span class="number">1</span>]; <span class="comment">// 1999</span></span><br><span class="line"><span class="keyword">const</span> month = matchObj[<span class="number">2</span>]; <span class="comment">// 12</span></span><br><span class="line"><span class="keyword">const</span> day = matchObj[<span class="number">3</span>]; <span class="comment">// 31</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -738,7 +763,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#let和const"><span class="nav-number">1.</span> <span class="nav-text">let和const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#let声明的变量只在它所在的代码块有效。for循环计数很适合此变量"><span class="nav-number">1.1.</span> <span class="nav-text">let声明的变量只在它所在的代码块有效。for循环计数很适合此变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const声明一个只读的常量。一旦声明，常量的值就不能改变"><span class="nav-number">1.2.</span> <span class="nav-text">const声明一个只读的常量。一旦声明，常量的值就不能改变</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量的解构赋值"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值允许指定默认值"><span class="nav-number">2.1.</span> <span class="nav-text">解构赋值允许指定默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的解构"><span class="nav-number">2.2.</span> <span class="nav-text">对象的解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的解构赋值"><span class="nav-number">2.3.</span> <span class="nav-text">字符串的解构赋值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串扩展"><span class="nav-number">3.</span> <span class="nav-text">字符串扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符基础"><span class="nav-number">3.1.</span> <span class="nav-text">字符基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的遍历器接口"><span class="nav-number">3.2.</span> <span class="nav-text">字符串的遍历器接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#includes-startsWith-endsWith"><span class="nav-number">3.3.</span> <span class="nav-text">includes(), startsWith(), endsWith()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repeat"><span class="nav-number">3.4.</span> <span class="nav-text">repeat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padStart-，padEnd-字符串补全"><span class="nav-number">3.5.</span> <span class="nav-text">padStart()，padEnd() 字符串补全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.6.</span> <span class="nav-text">模板字符串 ${}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签模板"><span class="nav-number">3.7.</span> <span class="nav-text">标签模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-raw"><span class="nav-number">3.8.</span> <span class="nav-text">String.raw()</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#let和const"><span class="nav-number">1.</span> <span class="nav-text">let和const</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#let声明的变量只在它所在的代码块有效。for循环计数很适合此变量"><span class="nav-number">1.1.</span> <span class="nav-text">let声明的变量只在它所在的代码块有效。for循环计数很适合此变量</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#const声明一个只读的常量。一旦声明，常量的值就不能改变"><span class="nav-number">1.2.</span> <span class="nav-text">const声明一个只读的常量。一旦声明，常量的值就不能改变</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量的解构赋值"><span class="nav-number">2.</span> <span class="nav-text">变量的解构赋值</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#解构赋值允许指定默认值"><span class="nav-number">2.1.</span> <span class="nav-text">解构赋值允许指定默认值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象的解构"><span class="nav-number">2.2.</span> <span class="nav-text">对象的解构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的解构赋值"><span class="nav-number">2.3.</span> <span class="nav-text">字符串的解构赋值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#字符串扩展"><span class="nav-number">3.</span> <span class="nav-text">字符串扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#字符基础"><span class="nav-number">3.1.</span> <span class="nav-text">字符基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符串的遍历器接口"><span class="nav-number">3.2.</span> <span class="nav-text">字符串的遍历器接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#includes-startsWith-endsWith"><span class="nav-number">3.3.</span> <span class="nav-text">includes(), startsWith(), endsWith()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repeat"><span class="nav-number">3.4.</span> <span class="nav-text">repeat()</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#padStart-，padEnd-字符串补全"><span class="nav-number">3.5.</span> <span class="nav-text">padStart()，padEnd() 字符串补全</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模板字符串"><span class="nav-number">3.6.</span> <span class="nav-text">模板字符串 ${}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#标签模板"><span class="nav-number">3.7.</span> <span class="nav-text">标签模板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String-raw"><span class="nav-number">3.8.</span> <span class="nav-text">String.raw()</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#正则的扩展"><span class="nav-number">4.</span> <span class="nav-text">正则的扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u-修饰符"><span class="nav-number">4.1.</span> <span class="nav-text">u 修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#y-修饰符"><span class="nav-number">4.2.</span> <span class="nav-text">y 修饰符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sticky-属性"><span class="nav-number">4.3.</span> <span class="nav-text">sticky 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#flags-属性"><span class="nav-number">4.4.</span> <span class="nav-text">flags 属性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何让-匹配包括换行符-行终止符-的所有字符"><span class="nav-number">4.5.</span> <span class="nav-text">如何让 . 匹配包括换行符(行终止符)的所有字符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5先行断言"><span class="nav-number">4.6.</span> <span class="nav-text">ES5先行断言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ES5组匹配"><span class="nav-number">4.7.</span> <span class="nav-text">ES5组匹配</span></a></li></ol></li></ol></div>
             
 
           </div>

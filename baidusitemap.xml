@@ -4,14 +4,16 @@
 
     
   <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    <lastmod>2018-04-20T08:19:19.439Z</lastmod>
+    <loc>http://build800.com/2018/04/18/es6/</loc>
+    <lastmod>2018-04-21T03:17:41.535Z</lastmod>
     <data>
         <display>
-        <title>js常用工具函数汇总</title>
-        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
+        <title>ES6总结</title>
+        <pubTime>2018-04-18T04:44:02.000Z</pubTime>
         
-        <tag>js</tag>
+        <tag>Javascript</tag>
+         
+        <tag>ES6</tag>
          
          
            
@@ -24,16 +26,14 @@
 
     
   <url>
-    <loc>http://build800.com/2018/04/18/es6/</loc>
-    <lastmod>2018-04-20T08:18:58.603Z</lastmod>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    <lastmod>2018-04-20T14:26:51.096Z</lastmod>
     <data>
         <display>
-        <title>ES6总结</title>
-        <pubTime>2018-04-18T04:44:02.000Z</pubTime>
+        <title>js常用工具函数汇总</title>
+        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
         
-        <tag>Javascript</tag>
-         
-        <tag>ES6</tag>
+        <tag>js</tag>
          
          
            

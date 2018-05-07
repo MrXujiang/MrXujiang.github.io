@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://build800.com/2018/04/26/face-summary/</loc>
-    <lastmod>2018-04-28T08:39:11.074Z</lastmod>
+    <lastmod>2018-05-06T17:26:09.042Z</lastmod>
     <data>
         <display>
         <title>面面俱到——不足点总结</title>
@@ -22,7 +22,7 @@
     
   <url>
     <loc>http://build800.com/2018/04/18/es6/</loc>
-    <lastmod>2018-04-27T04:31:42.386Z</lastmod>
+    <lastmod>2018-05-05T23:58:38.320Z</lastmod>
     <data>
         <display>
         <title>ES6总结</title>
@@ -36,6 +36,26 @@
            
              
               <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://build800.com/2018/03/12/git-china/</loc>
+    <lastmod>2018-05-05T03:04:17.315Z</lastmod>
+    <data>
+        <display>
+        <title>使用码云</title>
+        <pubTime>2018-03-12T13:06:36.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="git" url="http://build800.com/categories/git/"/>
           
         </display>
     </data>
@@ -242,26 +262,6 @@
            
              
               <breadCrumb title="Css3高级实用技巧大全" url="http://build800.com/categories/Css3%E9%AB%98%E7%BA%A7%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7%E5%A4%A7%E5%85%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/03/12/git-china/</loc>
-    <lastmod>2018-03-12T15:14:45.283Z</lastmod>
-    <data>
-        <display>
-        <title>使用码云</title>
-        <pubTime>2018-03-12T13:06:36.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-         
-           
-             
-              <breadCrumb title="git" url="http://build800.com/categories/git/"/>
           
         </display>
     </data>

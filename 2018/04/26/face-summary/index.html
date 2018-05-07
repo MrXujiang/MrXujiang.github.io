@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="猪先森的博">
 <meta property="og:description" content="过往一些不足的地方，通过博客，好好总结一下。 前端常见问题总结1.css禁用鼠标事件12345.disabled &amp;#123;    pointer-events: none;    cursor: default;    opacity: 0.6;&amp;#125; 2.get/post的理解和他们之间的区别http 超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。HTTP 的工作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-04-28T08:39:11.074Z">
+<meta property="og:updated_time" content="2018-05-06T17:26:09.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面面俱到——不足点总结">
 <meta name="twitter:description" content="过往一些不足的地方，通过博客，好好总结一下。 前端常见问题总结1.css禁用鼠标事件12345.disabled &amp;#123;    pointer-events: none;    cursor: default;    opacity: 0.6;&amp;#125; 2.get/post的理解和他们之间的区别http 超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。HTTP 的工作">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  1,650
+                  6,331
                 </span>
               
 
@@ -445,6 +445,311 @@
 <p><a href="https://www.jianshu.com/p/f9bcddb0e8b4" target="_blank" rel="noopener">参考连接</a></p>
 </blockquote>
 <h2 id="9-正则表达式匹配手机号"><a href="#9-正则表达式匹配手机号" class="headerlink" title="9.正则表达式匹配手机号"></a>9.正则表达式匹配手机号</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPhone</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(<span class="regexp">/^1[34578]\d&#123;9&#125;$/</span>.test(phone)))&#123;</span><br><span class="line">        alert(<span class="string">"手机号码有误，请重填"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="10-如何提高首频加载速度"><a href="#10-如何提高首频加载速度" class="headerlink" title="10.如何提高首频加载速度"></a>10.如何提高首频加载速度</h2><blockquote>
+</blockquote>
+<h2 id="11-浏览器内核-渲染引擎"><a href="#11-浏览器内核-渲染引擎" class="headerlink" title="11.浏览器内核(渲染引擎)"></a>11.浏览器内核(渲染引擎)</h2><blockquote>
+<p>IE/360/搜狗浏览器: Trident<br>Chrome/Safari/Opera: WebKit(KHTML的一个开源的分支)<br>(虽然我们称WebKit为浏览器内核，但不太适合直接称渲染引擎，因为WebKit本身主要是由两个引擎构成的，一个正是渲染引擎“WebCore”，另一个则是javascript解释引擎“JSCore”，它们均是从KDE的渲染引擎KHTML及javascript解释引擎KJS衍生而来。)<br>(在13年发布的Chrome 28.0.1469.0版本开始，Chrome放弃Chromium引擎转而使用最新的Blink引擎（基于WebKit2——苹果公司于2010年推出的新的WebKit引擎），Blink对比上一代的引擎精简了代码、改善了DOM框架，也提升了安全性。)<br>(为了减少研发成本，Opera在2013年2月宣布放弃Presto，转而跟随Chrome使用WebKit分支的Chromium引擎作为自家浏览器核心引擎)<br>Firefox/SeaMonkey: Gecko</p>
+</blockquote>
+<h2 id="12-浏览器渲染过程及优化建议"><a href="#12-浏览器渲染过程及优化建议" class="headerlink" title="12.浏览器渲染过程及优化建议"></a>12.浏览器渲染过程及优化建议</h2><blockquote>
+<p>1）解析：<br>一个是HTML/SVG/XHTML，事实上，Webkit有三个C++的类对应这三类文档。解析这三种文件会产生一个DOM Tree。 CSS，解析CSS会产生CSS规则树。 Javascript，脚本，主要是通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree.<br>2）渲染：浏览器引擎会通过DOM Tree 和 CSS Rule Tree 来构造 Rendering Tree。注意：<br>Rendering Tree 渲染树并不等同于DOM树，因为一些像Header或display:none的东西就没必要放在渲染树中了。 CSS 的 Rule Tree主要是为了完成匹配并把CSS Rule附加上Rendering Tree上的每个Element。也就是DOM结点。也就是所谓的Frame。 然后，计算每个Frame（也就是每个Element）的位置，这又叫layout和reflow过程。<br>3）绘制：最后通过调用操作系统Native GUI的API绘制。</p>
+<p>减少reflow和repaint<br>1）不要一条一条地修改DOM的样式。还不如预先定义好css的class，然后修改DOM的className。<br>2) 把DOM离线后修改。如：<br>使用documentFragment 对象在内存里操作DOM 先把DOM给display:none(有一次reflow)，然后你想怎么改就怎么改。比如修改100次，然后再把他显示出来。 clone一个DOM结点到内存里，然后想怎么改就怎么改，改完后，和在线的那个的交换一下。<br>3）不要把DOM结点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性<br>4）为动画的HTML元件使用fixed或absoulte的position，尽量使用transfoem，那么修改他们的CSS是不会reflow的<br>5）尽量少使用table布局。因为可能很小的一个小改动会造成整个table的重新布局</p>
+</blockquote>
+<h2 id="13-页面导入样式时，使用link和-import有什么区别？"><a href="#13-页面导入样式时，使用link和-import有什么区别？" class="headerlink" title="13. 页面导入样式时，使用link和@import有什么区别？"></a>13. 页面导入样式时，使用link和@import有什么区别？</h2><blockquote>
+<p>（1）link属于XHTML标签，除了加载CSS外，还能用于定义RSS, 定义rel连接属性等作用；而@import是CSS提供的，只能用于加载CSS;<br>  （2）页面被加载的时，link会同时被加载，而@import引用的CSS会等到页面被加载完再加载;<br>  （3）import是CSS2.1 提出的，只在IE5以上才能被识别，而link是XHTML标签，无兼容问题;<br>   (4)link支持使用js控制DOM去改变样式，而@import不支持;</p>
+</blockquote>
+<h2 id="14-简述一下你对HTML语义化的理解？"><a href="#14-简述一下你对HTML语义化的理解？" class="headerlink" title="14. 简述一下你对HTML语义化的理解？"></a>14. 简述一下你对HTML语义化的理解？</h2><blockquote>
+<p>用正确的标签做正确的事情。<br>  html语义化让页面的内容结构化，便于对浏览器、搜索引擎解析;<br>  即使在没有样式CSS情况下也以一种文档格式显示，并且是容易阅读的;<br>  搜索引擎的爬虫也依赖于HTML标记来确定上下文和各个关键字的权重，利于SEO;<br>  使阅读源代码的人对网站更容易将网站分块，便于阅读维护理解。</p>
+</blockquote>
+<h2 id="15-请描述一下-cookies，sessionStorage-和-localStorage-的区别？"><a href="#15-请描述一下-cookies，sessionStorage-和-localStorage-的区别？" class="headerlink" title="15. 请描述一下 cookies，sessionStorage 和 localStorage 的区别？"></a>15. 请描述一下 cookies，sessionStorage 和 localStorage 的区别？</h2><p>cookie是网站为了标示用户身份而储存在用户本地终端（Client Side）上的数据（通常经过加密）。<br>  cookie数据始终在同源的http请求中携带（即使不需要），记会在浏览器和服务器间来回传递。<br>  sessionStorage和localStorage不会自动把数据发给服务器，仅在本地保存。</p>
+<p>  存储大小：<br>      cookie数据大小不能超过4k。<br>      sessionStorage和localStorage 虽然也有存储大小的限制，但比cookie大得多，可以达到5M或更大。</p>
+<p>  有期时间：<br>      localStorage    存储持久数据，浏览器关闭后数据不丢失除非主动删除数据；<br>      sessionStorage  数据在当前浏览器窗口关闭后自动删除。<br>      cookie          设置的cookie过期时间之前一直有效，即使窗口或浏览器关闭</p>
+<h2 id="16-iframe有那些缺点？"><a href="#16-iframe有那些缺点？" class="headerlink" title="16. iframe有那些缺点？"></a>16. iframe有那些缺点？</h2><p><em>iframe会阻塞主页面的Onload事件；
+</em>搜索引擎的检索程序无法解读这种页面，不利于SEO;<br>*iframe和主页面共享连接池，而浏览器对相同域的连接有限制，所以会影响页面的并行加载。<br>使用iframe之前需要考虑这两个缺点。如果需要使用iframe，最好是通过javascript<br>动态给iframe添加src属性值，这样可以绕开以上两个问题。</p>
+<h2 id="17-vue父子组件生命周期的顺序及作用？"><a href="#17-vue父子组件生命周期的顺序及作用？" class="headerlink" title="17. vue父子组件生命周期的顺序及作用？"></a>17. vue父子组件生命周期的顺序及作用？</h2><h2 id="18-网页验证码是干嘛的，是为了解决什么安全问题？"><a href="#18-网页验证码是干嘛的，是为了解决什么安全问题？" class="headerlink" title="18. 网页验证码是干嘛的，是为了解决什么安全问题？"></a>18. 网页验证码是干嘛的，是为了解决什么安全问题？</h2><blockquote>
+<p>区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、论坛灌水；<br>有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行不断的登陆尝试。</p>
+</blockquote>
+<h2 id="19-介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"><a href="#19-介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？" class="headerlink" title="19. 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"></a>19. 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</h2><blockquote>
+<p>（1）有两种， IE 盒子模型、W3C 盒子模型；<br>  （2）盒模型： 内容(content)、填充(padding)、边界(margin)、 边框(border)；<br>  （3）区  别： IE的content部分把 border 和 padding计算了进去;</p>
+</blockquote>
+<h2 id="20-position的值relative和absolute定位原点是？"><a href="#20-position的值relative和absolute定位原点是？" class="headerlink" title="20. position的值relative和absolute定位原点是？"></a>20. position的值relative和absolute定位原点是？</h2><blockquote>
+<p>absolute<br>生成绝对定位的元素，相对于值不为 static的第一个父元素进行定位。<br>fixed （老IE不支持）<br>生成绝对定位的元素，相对于浏览器窗口进行定位。<br>relative<br>生成相对定位的元素，相对于其正常位置进行定位。<br>static<br>默认值。没有定位，元素出现在正常的流中（忽略 top, bottom, left, right z-index 声明）。<br>inherit<br>规定从父元素继承 position 属性的值。</p>
+</blockquote>
+<h2 id="21-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？"><a href="#21-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？" class="headerlink" title="21. 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？"></a>21. 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</h2><blockquote>
+<ul>
+<li>png24位的图片在iE6浏览器上出现背景，解决方案是做成PNG8.</li>
+</ul>
+</blockquote>
+<ul>
+<li><p>浏览器默认的margin和padding不同。解决方案是加一个全局的*{margin:0;padding:0;}来统一。</p>
+</li>
+<li><p>IE6双边距bug:块属性标签float后，又有横行的margin情况下，在ie6显示margin比设置的大。</p>
+<p>浮动ie产生的双倍距离 #box{ float:left; width:10px; margin:0 0 0 100px;}</p>
+<p>这种情况之下IE会产生20px的距离，解决方案是在float的标签样式控制中加入 ——<em>display:inline;将其转化为行内属性。(</em>这个符号只有ie6会识别)</p>
+<p>渐进识别的方式，从总体中逐渐排除局部。</p>
+<p>首先，巧妙的使用“\9”这一标记，将IE游览器从所有情况中分离出来。<br>接着，再次使用“+”将IE8和IE7、IE6分离开来，这样IE8已经独立识别。</p>
+<p>css</p>
+<pre><code>.bb{
+    background-color:red;/*所有识别*/
+    background-color:#00deff\9; /*IE6、7、8识别*/
+    +background-color:#a200ff;/*IE6、7识别*/
+    _background-color:#1e0bd1;/*IE6识别*/
+}
+</code></pre></li>
+</ul>
+<ul>
+<li><p>IE下,可以使用获取常规属性的方法来获取自定义属性,<br>也可以使用getAttribute()获取自定义属性;<br>Firefox下,只能使用getAttribute()获取自定义属性。<br>解决方法:统一通过getAttribute()获取自定义属性。</p>
+</li>
+<li><p>IE下,even对象有x,y属性,但是没有pageX,pageY属性;<br>Firefox下,event对象有pageX,pageY属性,但是没有x,y属性。</p>
+</li>
+<li><p>解决方法：（条件注释）缺点是在IE浏览器下可能会增加额外的HTTP请求数。</p>
+</li>
+<li><p>Chrome 中文界面下默认会将小于 12px 的文本强制按照 12px 显示,<br>可通过加入 CSS 属性 -webkit-text-size-adjust: none; 解决。</p>
+<p>超链接访问过后hover样式就不出现了 被点击访问过的超链接样式不在具有hover和active了解决方法是改变CSS属性的排列顺序:<br>L-V-H-A :  a:link {} a:visited {} a:hover {} a:active {}</p>
+</li>
+</ul>
+<h2 id="22-CSS优化、提高性能的方法有哪些？"><a href="#22-CSS优化、提高性能的方法有哪些？" class="headerlink" title="22. CSS优化、提高性能的方法有哪些？"></a>22. CSS优化、提高性能的方法有哪些？</h2><blockquote>
+<p>关键选择器（key selector）。选择器的最后面的部分为关键选择器（即用来匹配目标元素的部分）；<br>  如果规则拥有 ID 选择器作为其关键选择器，则不要为规则增加标签。过滤掉无关的规则（这样样式系统就不会浪费时间去匹配它们了）；<br>  提取项目的通用公有样式，增强可复用性，按模块编写组件；增强项目的协同开发性、可维护性和可扩展性;<br>  使用预处理工具或构建工具（gulp对css进行语法检查、自动补前缀、打包压缩、自动优雅降级）；</p>
+</blockquote>
+<h2 id="23-如何修改chrome记住密码后自动填充表单的黄色背景-？"><a href="#23-如何修改chrome记住密码后自动填充表单的黄色背景-？" class="headerlink" title="23. 如何修改chrome记住密码后自动填充表单的黄色背景 ？"></a>23. 如何修改chrome记住密码后自动填充表单的黄色背景 ？</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">input</span><span class="selector-pseudo">:-webkit-autofill</span>, <span class="selector-tag">textarea</span><span class="selector-pseudo">:-webkit-autofill</span>, <span class="selector-tag">select</span><span class="selector-pseudo">:-webkit-autofill</span> &#123;</span><br><span class="line">   <span class="attribute">background-color</span>: <span class="built_in">rgb</span>(250, 255, 189); <span class="comment">/* #FAFFBD; */</span></span><br><span class="line">   <span class="attribute">background-image</span>: none;</span><br><span class="line">   <span class="attribute">color</span>: <span class="built_in">rgb</span>(0, 0, 0);</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="24-让页面里的字体变清晰，变细用CSS怎么做？"><a href="#24-让页面里的字体变清晰，变细用CSS怎么做？" class="headerlink" title="24. 让页面里的字体变清晰，变细用CSS怎么做？"></a>24. 让页面里的字体变清晰，变细用CSS怎么做？</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-font-smoothing</span>: <span class="selector-tag">antialiased</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="25-让overflow-scroll平滑滚动？"><a href="#25-让overflow-scroll平滑滚动？" class="headerlink" title="25. 让overflow:scroll平滑滚动？"></a>25. 让overflow:scroll平滑滚动？</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-overflow-scrolling</span>: <span class="selector-tag">touch</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="26-如何将浮点数点左边的数每三位添加一个逗号，如12000000-11转化为『12-000-000-11』"><a href="#26-如何将浮点数点左边的数每三位添加一个逗号，如12000000-11转化为『12-000-000-11』" class="headerlink" title="26. 如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?"></a>26. 如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">commafy</span>(<span class="params">num</span>)</span>&#123;</span><br><span class="line">  	<span class="keyword">return</span> num &amp;&amp; num</span><br><span class="line">  		.toString()</span><br><span class="line">  		.replace(<span class="regexp">/(\d)(?=(\d&#123;3&#125;)+\.)/g</span>, <span class="function"><span class="keyword">function</span>(<span class="params">$<span class="number">1</span>, $<span class="number">2</span></span>)</span>&#123;</span><br><span class="line">  			<span class="keyword">return</span> $<span class="number">2</span> + <span class="string">','</span>;</span><br><span class="line">  		&#125;);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="27-Javascript作用链域"><a href="#27-Javascript作用链域" class="headerlink" title="27. Javascript作用链域?"></a>27. Javascript作用链域?</h2><blockquote>
+<p>全局函数无法查看局部函数的内部细节，但局部函数可以查看其上层的函数细节，直至全局细节。<br> 当需要从局部函数查找某一属性或方法时，如果当前作用域没有找到，就会上溯到上层作用域查找，<br> 直至全局函数，这种组织形式就是作用域链。</p>
+</blockquote>
+<h2 id="28-谈谈This对象的理解。"><a href="#28-谈谈This对象的理解。" class="headerlink" title="28. 谈谈This对象的理解。"></a>28. 谈谈This对象的理解。</h2><blockquote>
+<p>this总是指向函数的直接调用者（而非间接调用者）；<br>如果有new关键字，this指向new出来的那个对象；<br>在事件中，this指向触发这个事件的对象，特殊的是，IE中的attachEvent中的this总是指向全局对象Window；</p>
+</blockquote>
+<h2 id="29-eval是做什么的？"><a href="#29-eval是做什么的？" class="headerlink" title="29. eval是做什么的？"></a>29. eval是做什么的？</h2><blockquote>
+<p>它的功能是把对应的字符串解析成JS代码并运行；<br> 应该避免使用eval，不安全，非常耗性能（2次，一次解析成js语句，一次执行）。<br> 由JSON字符串转换为JSON对象的时候可以用eval，var obj =eval(‘(‘+ str +’)’);</p>
+</blockquote>
+<h2 id="30-什么是window对象-什么是document对象"><a href="#30-什么是window对象-什么是document对象" class="headerlink" title="30. 什么是window对象? 什么是document对象?"></a>30. 什么是window对象? 什么是document对象?</h2><blockquote>
+<p>window对象是指浏览器打开的窗口。<br> document对象是Documentd对象（HTML 文档对象）的一个只读引用，window对象的一个属性。</p>
+</blockquote>
+<h2 id="31-“1”-“2”-“3”-map-parseInt-答案是多少？"><a href="#31-“1”-“2”-“3”-map-parseInt-答案是多少？" class="headerlink" title="31. [“1”, “2”, “3”].map(parseInt) 答案是多少？"></a>31. [“1”, “2”, “3”].map(parseInt) 答案是多少？</h2><blockquote>
+<p>[“1”, “2”, “3”].map(parseInt) 答案也就是：[1, NaN, NaN]</p>
+</blockquote>
+<h2 id="32-什么是闭包（closure），为什么要用它？"><a href="#32-什么是闭包（closure），为什么要用它？" class="headerlink" title="32. 什么是闭包（closure），为什么要用它？"></a>32. 什么是闭包（closure），为什么要用它？</h2><blockquote>
+<p>闭包是指有权访问另一个函数作用域中变量的函数，创建闭包的最常见的方式就是在一个函数内创建另一个函数，通过另一个函数访问这个函数的局部变量,利用闭包可以突破作用链域，将函数内部的变量和方法传递到外部。</p>
+</blockquote>
+<h2 id="33-javascript-代码中的”use-strict”-是什么意思-使用它区别是什么？"><a href="#33-javascript-代码中的”use-strict”-是什么意思-使用它区别是什么？" class="headerlink" title="33. javascript 代码中的”use strict”;是什么意思 ? 使用它区别是什么？"></a>33. javascript 代码中的”use strict”;是什么意思 ? 使用它区别是什么？</h2><blockquote>
+<p>使JS编码更加规范化的模式,消除Javascript语法的一些不合理、不严谨之处，减少一些怪异行为。<br> 默认支持的糟糕特性都会被禁用，比如不能用with，也不能在意外的情况下给全局变量赋值;<br> 全局变量的显示声明,函数必须声明在顶层，不允许在非函数代码块内声明函数,arguments.callee也不允许使用；<br> 保证代码运行的安全,限制函数中的arguments修改;<br> 提高编译器效率，增加运行速度；</p>
+</blockquote>
+<h2 id="34-如何判断一个对象是否属于某个类？"><a href="#34-如何判断一个对象是否属于某个类？" class="headerlink" title="34. 如何判断一个对象是否属于某个类？"></a>34. 如何判断一个对象是否属于某个类？</h2> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(a <span class="keyword">instanceof</span> Person)&#123;</span><br><span class="line">    alert(<span class="string">'yes'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 判断对象类型最好的方式</span></span><br><span class="line"><span class="comment">// 对于 Object 对象，直接调用 toString()  就能返回 [object Object] 。而对于其他对象，则需要通过 call / apply 来调用才能返回正确的类型信息。</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="string">''</span>) ;   <span class="comment">// [object String]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="number">1</span>) ;    <span class="comment">// [object Number]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">true</span>) ; <span class="comment">// [object Boolean]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">Symbol</span>()); <span class="comment">//[object Symbol]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">undefined</span>) ; <span class="comment">// [object Undefined]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="literal">null</span>) ; <span class="comment">// [object Null]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Function</span>()) ; <span class="comment">// [object Function]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Date</span>()) ; <span class="comment">// [object Date]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call([]) ; <span class="comment">// [object Array]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">RegExp</span>()) ; <span class="comment">// [object RegExp]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="keyword">new</span> <span class="built_in">Error</span>()) ; <span class="comment">// [object Error]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">document</span>) ; <span class="comment">// [object HTMLDocument]</span></span><br><span class="line"><span class="built_in">Object</span>.prototype.toString.call(<span class="built_in">window</span>) ; <span class="comment">//[object global] window 是全局对象 global 的引用</span></span><br></pre></td></tr></table></figure>
+<h2 id="35-new一个对象的过程"><a href="#35-new一个对象的过程" class="headerlink" title="35. new一个对象的过程"></a>35. new一个对象的过程</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、创建一个空对象，并且 <span class="keyword">this</span> 变量引用该对象，同时还继承了该函数的原型。</span><br><span class="line"><span class="number">2</span>、属性和方法被加入到 <span class="keyword">this</span> 引用的对象中。</span><br><span class="line"><span class="number">3</span>、新创建的对象由 <span class="keyword">this</span> 所引用，并且最后隐式的返回 <span class="keyword">this</span> 。</span><br></pre></td></tr></table></figure>
+<h2 id="36-Ajax-解决浏览器缓存问题"><a href="#36-Ajax-解决浏览器缓存问题" class="headerlink" title="36. Ajax 解决浏览器缓存问题"></a>36. Ajax 解决浏览器缓存问题</h2><blockquote>
+<p>1、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(“If-Modified-Since”,”0”)。</p>
+</blockquote>
+<p>2、在ajax发送请求前加上 anyAjaxObj.setRequestHeader(“Cache-Control”,”no-cache”)。<br>3、在URL后面加上一个随机数： “fresh=” + Math.random();。<br>4、在URL后面加上时间戳：”nowtime=” + new Date().getTime();。<br>5、如果是使用jQuery，直接这样就可以了 $.ajaxSetup({cache:false})。这样页面的所有ajax都会执行这条语句就是不需要保存缓存记录。</p>
+<h2 id="37-如何解决跨域问题"><a href="#37-如何解决跨域问题" class="headerlink" title="37. 如何解决跨域问题?"></a>37. 如何解决跨域问题?</h2><blockquote>
+<p>jsonp、 iframe、window.name、window.postMessage、服务器上设置代理页面</p>
+</blockquote>
+<h2 id="38-模块化开发怎么做"><a href="#38-模块化开发怎么做" class="headerlink" title="38. 模块化开发怎么做"></a>38. 模块化开发怎么做</h2><blockquote>
+<p>立即执行函数,不暴露私有成员</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> module1 = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     　　　　<span class="keyword">var</span> _count = <span class="number">0</span>;</span><br><span class="line">     　　　　<span class="keyword">var</span> m1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     　　　　　　<span class="comment">//...</span></span><br><span class="line">     　　　　&#125;;</span><br><span class="line">     　　　　<span class="keyword">var</span> m2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     　　　　　　<span class="comment">//...</span></span><br><span class="line">     　　　　&#125;;</span><br><span class="line">     　　　　<span class="keyword">return</span> &#123;</span><br><span class="line">     　　　　　　m1 : m1,</span><br><span class="line">     　　　　　　m2 : m2</span><br><span class="line">     　　　　&#125;;</span><br><span class="line">     　　&#125;)();</span><br></pre></td></tr></table></figure>
+<h2 id="39-AMD（Modules-Asynchronous-Definition）、CMD（Common-Module-Definition）规范区别？"><a href="#39-AMD（Modules-Asynchronous-Definition）、CMD（Common-Module-Definition）规范区别？" class="headerlink" title="39. AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？"></a>39. AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？</h2><blockquote>
+<ol>
+<li>对于依赖的模块，AMD 是提前执行，CMD 是延迟执行。不过 RequireJS 从 2.0 开始，也改成可以延迟执行（根据写法不同，处理方式不同）。<ol>
+<li>CMD 推崇依赖就近，AMD 推崇依赖前置。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// CMD</span></span><br><span class="line"> define(<span class="function"><span class="keyword">function</span>(<span class="params">require, exports, module</span>) </span>&#123;</span><br><span class="line">     <span class="keyword">var</span> a = <span class="built_in">require</span>(<span class="string">'./a'</span>)</span><br><span class="line">     a.doSomething()</span><br><span class="line">     <span class="comment">// 此处略去 100 行</span></span><br><span class="line">     <span class="keyword">var</span> b = <span class="built_in">require</span>(<span class="string">'./b'</span>) <span class="comment">// 依赖可以就近书写</span></span><br><span class="line">     b.doSomething()</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line"> &#125;)</span><br><span class="line"></span><br><span class="line"> <span class="comment">// AMD 默认推荐</span></span><br><span class="line"> define([<span class="string">'./a'</span>, <span class="string">'./b'</span>], <span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123; <span class="comment">// 依赖必须一开始就写好</span></span><br><span class="line">     a.doSomething()</span><br><span class="line">     <span class="comment">// 此处略去 100 行</span></span><br><span class="line">     b.doSomething()</span><br><span class="line">     <span class="comment">// ...</span></span><br><span class="line"> &#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="40-requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何-缓存的？）"><a href="#40-requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何-缓存的？）" class="headerlink" title="40. requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）"></a>40. requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）</h2><blockquote>
+<p><a href="https://blog.csdn.net/cde7070/article/details/65935888" target="_blank" rel="noopener">参考链接</a></p>
+</blockquote>
+<h2 id="41-如何实现一个模块加载器"><a href="#41-如何实现一个模块加载器" class="headerlink" title="41. 如何实现一个模块加载器"></a>41. 如何实现一个模块加载器</h2><blockquote>
+<p><a href="https://purplebamboo.github.io/2015/01/17/javascript-module/" target="_blank" rel="noopener">参考连接</a></p>
+</blockquote>
+<h2 id="42-列举几条-JavaScript-的基本代码规范"><a href="#42-列举几条-JavaScript-的基本代码规范" class="headerlink" title="42. 列举几条 JavaScript 的基本代码规范"></a>42. 列举几条 JavaScript 的基本代码规范</h2><blockquote>
+<p>（1）不要在同一行声明多个变量<br>（2）如果你不知道数组的长度，使用 push<br>（3）请使用 ===/!== 来比较 true/false 或者数值<br>（4）对字符串使用单引号 ‘’(因为大多时候我们的字符串。特别html会出现”)<br>（5）使用对象字面量替代 new Array 这种形式<br>（6）绝对不要在一个非函数块里声明一个函数，把那个函数赋给一个变量。浏览器允许你这么做，但是它们解析不同<br>（7）不要使用全局函数<br>（8）总是使用 var 来声明变量，如果不这么做将导致产生全局变量，我们要避免污染全局命名空间<br>（9）Switch 语句必须带有 default 分支<br>（10）使用 /<em>*…</em>/ 进行多行注释，包括描述，指定类型以及参数值和返回值<br>（11）函数不应该有时候有返回值，有时候没有返回值<br>（12）语句结束一定要加分号<br>（13）for 循环必须使用大括号<br>（14）if 语句必须使用大括号<br>（15）for-in 循环中的变量应该使用 var 关键字明确限定作用域，从而避免作用域污染<br>（16）避免单个字符名，让你的变量名有描述意义<br>（17）当命名对象、函数和实例时使用驼峰命名规则<br>（18）给对象原型分配方法，而不是用一个新的对象覆盖原型，覆盖原型会使继承出现问题</p>
+</blockquote>
+<h2 id="43-DOM操作——怎样添加、移除、移动、复制、创建和查找节点"><a href="#43-DOM操作——怎样添加、移除、移动、复制、创建和查找节点" class="headerlink" title="43. DOM操作——怎样添加、移除、移动、复制、创建和查找节点?"></a>43. DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</h2><blockquote>
+<p>1）创建新节点<br>    createDocumentFragment()    //创建一个DOM片段<br>    createElement()   //创建一个具体的元素<br>    createTextNode()   //创建一个文本节点<br>  （2）添加、移除、替换、插入<br>    appendChild()<br>    removeChild()<br>    replaceChild()<br>    insertBefore() //在已有的子节点前插入一个新的子节点<br>  （3）查找<br>    getElementsByTagName()    //通过标签名称<br>    getElementsByName()    //通过元素的Name属性的值(IE容错能力较强，会得到一个数组，其中包括id等于name值的)<br>    getElementById()    //通过元素Id，唯一性</p>
+</blockquote>
+<h2 id="44-jquery实现原理"><a href="#44-jquery实现原理" class="headerlink" title="44. jquery实现原理"></a>44. jquery实现原理</h2><blockquote>
+<p><a href="http://www.zhangxinxu.com/wordpress/2013/07/jquery-%E5%8E%9F%E7%90%86-%E6%9C%BA%E5%88%B6/" target="_blank" rel="noopener">参考链接</a></p>
+</blockquote>
+<h2 id="45-jquery中如何将数组转化为json字符串，然后再转化回来？"><a href="#45-jquery中如何将数组转化为json字符串，然后再转化回来？" class="headerlink" title="45. jquery中如何将数组转化为json字符串，然后再转化回来？"></a>45. jquery中如何将数组转化为json字符串，然后再转化回来？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">jQuery中没有提供这个功能，所以你需要先编写两个jQuery的扩展： </span><br><span class="line"> $.fn.stringifyArray = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">JSON</span>.stringify(array)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $.fn.parseArray = <span class="function"><span class="keyword">function</span>(<span class="params">array</span>) </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">JSON</span>.parse(array)</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    然后调用：</span><br><span class="line">    $.fn.stringifyArray(array)</span><br></pre></td></tr></table></figure>
+<h2 id="46-jquery的-extend深复制和浅复制原理"><a href="#46-jquery的-extend深复制和浅复制原理" class="headerlink" title="46. jquery的$.extend深复制和浅复制原理"></a>46. jquery的$.extend深复制和浅复制原理</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 浅复制</span></span><br><span class="line">$ = &#123; </span><br><span class="line"></span><br><span class="line">     extend : <span class="function"><span class="keyword">function</span>(<span class="params">target, options</span>) </span>&#123; </span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (name <span class="keyword">in</span> options) &#123; </span><br><span class="line"></span><br><span class="line">            target[name] = options[name]; </span><br><span class="line"></span><br><span class="line">        &#125; </span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> target; </span><br><span class="line"></span><br><span class="line">    &#125; </span><br><span class="line"></span><br><span class="line">&#125;; </span><br><span class="line"><span class="comment">// 深复制</span></span><br><span class="line">$ = &#123; </span><br><span class="line">   extend : <span class="function"><span class="keyword">function</span>(<span class="params">deep, target, options</span>) </span>&#123; </span><br><span class="line">       <span class="keyword">for</span> (name <span class="keyword">in</span> options) &#123; </span><br><span class="line">           copy = options[name]; </span><br><span class="line">           <span class="keyword">if</span> (deep &amp;&amp; copy <span class="keyword">instanceof</span> <span class="built_in">Array</span>) &#123; </span><br><span class="line">               target[name] = $.extend(deep, [], copy); </span><br><span class="line">           &#125; <span class="keyword">else</span> <span class="keyword">if</span> (deep &amp;&amp; copy <span class="keyword">instanceof</span> <span class="built_in">Object</span>) &#123; </span><br><span class="line"></span><br><span class="line">              target[name] = $.extend(deep, &#123;&#125;, copy); </span><br><span class="line">           &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">              target[name] = options[name]; </span><br><span class="line">          &#125; </span><br><span class="line">      &#125; </span><br><span class="line"></span><br><span class="line">     <span class="keyword">return</span> target; </span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="47-jquery-extend-与-jquery-fn-extend的区别？"><a href="#47-jquery-extend-与-jquery-fn-extend的区别？" class="headerlink" title="47. jquery.extend 与 jquery.fn.extend的区别？"></a>47. jquery.extend 与 jquery.fn.extend的区别？</h2><blockquote>
+<ul>
+<li>jquery.extend 为jquery类添加类方法，可以理解为添加静态方法<ul>
+<li>jquery.fn.extend:<br> 源码中jquery.fn = jquery.prototype，所以对jquery.fn的扩展，就是为jquery类添加成员函数<br>使用：<br>jquery.extend扩展，需要通过jquery类来调用，而jquery.fn.extend扩展，所有jquery实例都可以直接调用。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="48-如何判断当前脚本运行在浏览器还是node环境中？（阿里）"><a href="#48-如何判断当前脚本运行在浏览器还是node环境中？（阿里）" class="headerlink" title="48. 如何判断当前脚本运行在浏览器还是node环境中？（阿里）"></a>48. 如何判断当前脚本运行在浏览器还是node环境中？（阿里）</h2> <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span> === <span class="built_in">window</span> ? <span class="string">'browser'</span> : <span class="string">'node'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="49-实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？"><a href="#49-实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？" class="headerlink" title="49. 实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？"></a>49. 实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</h2><blockquote>
+<p><a href="http://www.haorooms.com/post/ajax_historybackprev" target="_blank" rel="noopener">参考链接</a></p>
+</blockquote>
+<h2 id="50-把-Script-标签-放在页面的最底部的body封闭之前-和封闭之后有什么区别？浏览器会如何解析它们？"><a href="#50-把-Script-标签-放在页面的最底部的body封闭之前-和封闭之后有什么区别？浏览器会如何解析它们？" class="headerlink" title="50. 把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？"></a>50. 把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</h2><blockquote>
+<p>之前推荐的方法（已过时）：之前解决这个问题的方法是把<script> 标签放到<body>标签之后 ，这确保了解析到</body>之前都不会被script终端。这个方法是有问题的: 浏览器在整个文档解析完成之前都不能下载script文件，如果文档很大的话，解析完HTML，用户依然要等待script文件下载并执行完成之后，才能操作这个网站。</p>
+<p>现在推荐的解决方案：<br>现在浏览器script标签支持 async 和 defer 属性. 应用这些属性当script被下载时，浏览器更安全而且可以并行下载（下载script并不阻断HTML解析）。<br>1.async标记的Script异步执行下载，并执行。这意味着script下载时并不阻塞HTML的解析，并且下载结束script马上执行。<br>2.defer标签的script顺序执行。这种方式也不会阻断浏览器解析HTML。<br>跟 async不同, defer scripts在整个文档里的script都被下载完才顺序执行。</p>
+</blockquote>
+<h2 id="51-JQuery一个对象可以同时绑定多个事件，这是如何实现的？"><a href="#51-JQuery一个对象可以同时绑定多个事件，这是如何实现的？" class="headerlink" title="51. JQuery一个对象可以同时绑定多个事件，这是如何实现的？"></a>51. JQuery一个对象可以同时绑定多个事件，这是如何实现的？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//多个事件同一个函数：</span></span><br><span class="line">	$(<span class="string">"div"</span>).on(<span class="string">"click mouseover"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;);</span><br><span class="line"><span class="comment">//多个事件不同函数</span></span><br><span class="line">	$(<span class="string">"div"</span>).on(&#123;</span><br><span class="line">		click: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">		mouseover: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">	&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="52-什么是前端路由？前端路由的-实现原理"><a href="#52-什么是前端路由？前端路由的-实现原理" class="headerlink" title="52. 什么是前端路由？前端路由的 实现原理"></a>52. 什么是前端路由？前端路由的 实现原理</h2><blockquote>
+<p><a href="http://www.voidcn.com/article/p-fowvpjan-dx.html">参考链接</a></p>
+</blockquote>
+<h2 id="53-检测浏览器版本版本有哪些方式？"><a href="#53-检测浏览器版本版本有哪些方式？" class="headerlink" title="53. 检测浏览器版本版本有哪些方式？"></a>53. 检测浏览器版本版本有哪些方式？</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">功能检测、userAgent特征检测</span><br><span class="line"></span><br><span class="line">比如：navigator.userAgent</span><br><span class="line"><span class="comment">//"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36</span></span><br><span class="line">  (KHTML, like Gecko) Chrome/<span class="number">41.0</span><span class="number">.2272</span><span class="number">.101</span> Safari/<span class="number">537.36</span><span class="string">"</span></span><br></pre></td></tr></table></figure>
+<h2 id="54-什么是Polyfill"><a href="#54-什么是Polyfill" class="headerlink" title="54. 什么是Polyfill?"></a>54. 什么是Polyfill?</h2><blockquote>
+<p>polyfill 是“在旧版浏览器上复制标准 API 的 JavaScript 补充”,可以动态地加载 JavaScript 代码或库，在不支持这些标准 API 的浏览器中模拟它们。<br>  例如，geolocation（地理位置）polyfill 可以在 navigator 对象上添加全局的 geolocation 对象，还能添加 getCurrentPosition 函数以及“坐标”回调对象，<br>  所有这些都是 W3C 地理位置 API 定义的对象和函数。因为 polyfill 模拟标准 API，所以能够以一种面向所有浏览器未来的方式针对这些 API 进行开发，<br>  一旦对这些 API 的支持变成绝对大多数，则可以方便地去掉 polyfill，无需做任何额外工作。</p>
+</blockquote>
+<h2 id="55-做的项目中，有没有用过或自己实现一些-polyfill-方案（兼容性处理方案）？"><a href="#55-做的项目中，有没有用过或自己实现一些-polyfill-方案（兼容性处理方案）？" class="headerlink" title="55. 做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？"></a>55. 做的项目中，有没有用过或自己实现一些 polyfill 方案（兼容性处理方案）？</h2><blockquote>
+<p>html5shiv、Geolocation、Placeholder</p>
+</blockquote>
+<h2 id="56-我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？"><a href="#56-我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？" class="headerlink" title="56. 我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？"></a>56. 我们给一个dom同时绑定两个点击事件，一个用捕获，一个用冒泡。会执行几次事件，会先执行冒泡还是捕获？</h2><blockquote>
+<p>按照W3C的标准，先发生捕获事件，后发生冒泡事件。所有事件的顺序是：其他元素捕获阶段事件 -&gt; 本元素代码顺序事件 -&gt; 其他元素冒泡阶段事件</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// div-capture &gt; btn-bubble &gt; btn-capture &gt; div-bubble</span></span><br><span class="line"><span class="keyword">var</span> btn = <span class="built_in">document</span>.querySelector(<span class="string">'button'</span>);</span><br><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.querySelector(<span class="string">'div'</span>);</span><br><span class="line"></span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'bubble'</span>,<span class="string">'btn'</span>);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br><span class="line">btn.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'capture'</span>,<span class="string">'btn'</span>);</span><br><span class="line">&#125;,<span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">div.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'bubble'</span>,<span class="string">'div'</span>);</span><br><span class="line">&#125;,<span class="literal">false</span>);</span><br><span class="line">div.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'capture'</span>,<span class="string">'div'</span>);</span><br><span class="line">&#125;,<span class="literal">true</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="57-Webpack热更新实现原理"><a href="#57-Webpack热更新实现原理" class="headerlink" title="57. Webpack热更新实现原理?"></a>57. Webpack热更新实现原理?</h2><blockquote>
+<ol>
+<li>Webpack编译期，为需要热更新的 entry 注入热更新代码(EventSource通信)<ol>
+<li>页面首次打开后，服务端与客户端通过 EventSource 建立通信渠道，把下一次的 hash 返回前端</li>
+<li>客户端获取到hash，这个hash将作为下一次请求服务端 hot-update.js 和 hot-update.json的hash</li>
+<li>修改页面代码后，Webpack 监听到文件修改后，开始编译，编译完成后，发送 build 消息给客户端</li>
+<li>客户端获取到hash，成功后客户端构造hot-update.js script链接，然后插入主文档</li>
+<li>hot-update.js 插入成功后，执行hotAPI 的 createRecord 和 reload方法，获取到 Vue 组件的 render方法，重新 render 组件， 继而实现 UI 无刷新更新。</li>
+</ol>
+</li>
+</ol>
+</blockquote>
+<h2 id="58-函数节流和防抖"><a href="#58-函数节流和防抖" class="headerlink" title="58. 函数节流和防抖"></a>58. 函数节流和防抖</h2><blockquote>
+<p><a href="https://juejin.im/post/5a35ed25f265da431d3cc1b1">参考链接</a></p>
+</blockquote>
+<h2 id="59-页面重构怎么操作？"><a href="#59-页面重构怎么操作？" class="headerlink" title="59. 页面重构怎么操作？"></a>59. 页面重构怎么操作？</h2><blockquote>
+<p>网站重构：在不改变外部行为的前提下，简化结构、添加可读性，而在网站前端保持一致的行为。<br>  也就是说是在不改变UI的情况下，对网站进行优化，在扩展的同时保持一致的UI。</p>
+</blockquote>
+<p>  对于传统的网站来说重构通常是：</p>
+<p>  表格(table)布局改为DIV+CSS<br>  使网站前端兼容于现代浏览器(针对于不合规范的CSS、如对IE6有效的)<br>  对于移动平台的优化<br>  针对于SEO进行优化<br>  深层次的网站重构应该考虑的方面</p>
+<p>  减少代码间的耦合<br>  让代码保持弹性<br>  严格按规范编写代码<br>  设计可扩展的API<br>  代替旧有的框架、语言(如VB)<br>  增强用户体验<br>  通常来说对于速度的优化也包含在重构中</p>
+<p>  压缩JS、CSS、image等前端资源(通常是由服务器来解决)<br>  程序的性能优化(如数据读写)<br>  采用CDN来加速资源加载<br>  对于JS DOM的优化<br>  HTTP服务器的文件缓存</p>
+<h2 id="60-列举IE与其他浏览器不一样的特性"><a href="#60-列举IE与其他浏览器不一样的特性" class="headerlink" title="60. 列举IE与其他浏览器不一样的特性"></a>60. 列举IE与其他浏览器不一样的特性</h2><blockquote>
+<p>事件不同之处：</p>
+</blockquote>
+<pre><code>   触发事件的元素被认为是目标（target）。而在 IE 中，目标包含在 event 对象的 srcElement 属性；
+
+获取字符代码、如果按键代表一个字符（shift、ctrl、alt除外），IE 的 keyCode 会返回字符代码（Unicode），DOM 中按键的代码和字符是分离的，要获取字符代码，需要使用 charCode 属性；
+
+阻止某个事件的默认行为，IE 中阻止某个事件的默认行为，必须将 returnValue 属性设置为 false，Mozilla 中，需要调用 preventDefault() 方法；
+
+停止事件冒泡，IE 中阻止事件进一步冒泡，需要设置 cancelBubble 为 true，Mozzilla 中，需要调用 stopPropagation()；
+</code></pre><h2 id="61-对Node的优点和缺点提出了自己的看法？"><a href="#61-对Node的优点和缺点提出了自己的看法？" class="headerlink" title="61. 对Node的优点和缺点提出了自己的看法？"></a>61. 对Node的优点和缺点提出了自己的看法？</h2><blockquote>
+<p>*（优点）因为Node是基于事件驱动和无阻塞的，所以非常适合处理并发请求，<br>    因此构建在Node上的代理服务器相比其他技术实现（如Ruby）的服务器表现要好得多。<br>    此外，与Node代理服务器交互的客户端代码是由javascript语言编写的，<br>    因此客户端和服务器端都用同一种语言编写，这是非常美妙的事情。</p>
+</blockquote>
+<p>  *（缺点）Node是一个相对新的开源项目，所以不太稳定，它总是一直在变，<br>    而且缺少足够多的第三方库支持。看起来，就像是Ruby/Rails当年的样子。</p>
+<h2 id="62-你有用过哪些前端性能优化的方法？"><a href="#62-你有用过哪些前端性能优化的方法？" class="headerlink" title="62. 你有用过哪些前端性能优化的方法？"></a>62. 你有用过哪些前端性能优化的方法？</h2><blockquote>
+<p>（1） 减少http请求次数：CSS Sprites, JS、CSS源码压缩、图片大小控制合适；网页Gzip，CDN托管，data缓存 ，图片服务器。</p>
+</blockquote>
+<pre><code>（2） 前端模板 JS+数据，减少由于HTML标签导致的带宽浪费，前端用变量保存AJAX请求结果，每次操作本地变量，不用请求，减少请求次数
+
+（3） 用innerHTML代替DOM操作，减少DOM操作次数，优化javascript性能。
+
+（4） 当需要设置的样式很多时设置className而不是直接操作style。
+
+（5） 少用全局变量、缓存DOM节点查找的结果。减少IO读取操作。
+
+（6） 避免使用CSS Expression（css表达式)又称Dynamic properties(动态属性)。
+
+（7） 图片预加载，将样式表放在顶部，将脚本放在底部  加上时间戳。
+
+（8） 避免在页面的主体布局中使用table，table要等其中的内容完全下载之后才会显示出来，显示比div+css布局慢。
+对普通的网站有一个统一的思路，就是尽量向前端优化、减少数据库操作、减少磁盘IO。向前端优化指的是，在不影响功能和体验的情况下，能在浏览器执行的不要在服务端执行，能在缓存服务器上直接返回的不要到应用服务器，程序能直接取得的结果不要到外部取得，本机内能取得的数据不要到远程取，内存能取到的不要到磁盘取，缓存中有的不要去数据库查询。减少数据库操作指减少更新次数、缓存结果减少查询次数、将数据库执行的操作尽可能的让你的程序完成（例如join查询），减少磁盘IO指尽量不使用文件系统作为缓存、减少读写文件次数等。程序优化永远要优化慢的部分，换语言是无法“优化”的。
+</code></pre><h2 id="63-http"><a href="#63-http" class="headerlink" title="63. http"></a>63. http</h2><blockquote>
+<p>1**(信息类)：表示接收到请求并且继续处理<br>      100——客户必须继续发出请求<br>      101——客户要求服务器根据请求转换HTTP协议版本</p>
+</blockquote>
+<pre><code>2**(响应成功)：表示动作被成功接收、理解和接受
+  200——表明该请求被成功地完成，所请求的资源发送回客户端
+  201——提示知道新文件的URL
+  202——接受和处理、但处理未完成
+  203——返回信息不确定或不完整
+  204——请求收到，但返回信息为空
+  205——服务器完成了请求，用户代理必须复位当前已经浏览过的文件
+  206——服务器已经完成了部分用户的GET请求
+
+3**(重定向类)：为了完成指定的动作，必须接受进一步处理
+  300——请求的资源可在多处得到
+  301——本网页被永久性转移到另一个URL
+  302——请求的网页被转移到一个新的地址，但客户访问仍继续通过原始URL地址，重定向，新的URL会在response中的Location中返回，浏览器将会使用新的URL发出新的Request。
+  303——建议客户访问其他URL或访问方式
+  304——自从上次请求后，请求的网页未修改过，服务器返回此响应时，不会返回网页内容，代表上次的文档已经被缓存了，还可以继续使用
+  305——请求的资源必须从服务器指定的地址得到
+  306——前一版本HTTP中使用的代码，现行版本中不再使用
+  307——申明请求的资源临时性删除
+
+4**(客户端错误类)：请求包含错误语法或不能正确执行
+  400——客户端请求有语法错误，不能被服务器所理解
+  401——请求未经授权，这个状态代码必须和WWW-Authenticate报头域一起使用
+  HTTP 401.1 - 未授权：登录失败
+  　　HTTP 401.2 - 未授权：服务器配置问题导致登录失败
+  　　HTTP 401.3 - ACL 禁止访问资源
+  　　HTTP 401.4 - 未授权：授权被筛选器拒绝
+  HTTP 401.5 - 未授权：ISAPI 或 CGI 授权失败
+  402——保留有效ChargeTo头响应
+  403——禁止访问，服务器收到请求，但是拒绝提供服务
+  HTTP 403.1 禁止访问：禁止可执行访问
+  　　HTTP 403.2 - 禁止访问：禁止读访问
+  　　HTTP 403.3 - 禁止访问：禁止写访问
+  　　HTTP 403.4 - 禁止访问：要求 SSL
+  　　HTTP 403.5 - 禁止访问：要求 SSL 128
+  　　HTTP 403.6 - 禁止访问：IP 地址被拒绝
+  　　HTTP 403.7 - 禁止访问：要求客户证书
+  　　HTTP 403.8 - 禁止访问：禁止站点访问
+  　　HTTP 403.9 - 禁止访问：连接的用户过多
+  　　HTTP 403.10 - 禁止访问：配置无效
+  　　HTTP 403.11 - 禁止访问：密码更改
+  　　HTTP 403.12 - 禁止访问：映射器拒绝访问
+  　　HTTP 403.13 - 禁止访问：客户证书已被吊销
+  　　HTTP 403.15 - 禁止访问：客户访问许可过多
+  　　HTTP 403.16 - 禁止访问：客户证书不可信或者无效
+  HTTP 403.17 - 禁止访问：客户证书已经到期或者尚未生效
+  404——一个404错误表明可连接服务器，但服务器无法取得所请求的网页，请求资源不存在。eg：输入了错误的URL
+  405——用户在Request-Line字段定义的方法不允许
+  406——根据用户发送的Accept拖，请求资源不可访问
+  407——类似401，用户必须首先在代理服务器上得到授权
+  408——客户端没有在用户指定的饿时间内完成请求
+  409——对当前资源状态，请求不能完成
+  410——服务器上不再有此资源且无进一步的参考地址
+  411——服务器拒绝用户定义的Content-Length属性请求
+  412——一个或多个请求头字段在当前请求中错误
+  413——请求的资源大于服务器允许的大小
+  414——请求的资源URL长于服务器允许的长度
+  415——请求资源不支持请求项目格式
+  416——请求中包含Range请求头字段，在当前请求资源范围内没有range指示值，请求也不包含If-Range请求头字段
+  417——服务器不满足请求Expect头字段指定的期望值，如果是代理服务器，可能是下一级服务器不能满足请求长。
+
+5**(服务端错误类)：服务器不能正确执行一个正确的请求
+  HTTP 500 - 服务器遇到错误，无法完成请求
+  　　HTTP 500.100 - 内部服务器错误 - ASP 错误
+  　　HTTP 500-11 服务器关闭
+  　　HTTP 500-12 应用程序重新启动
+  　　HTTP 500-13 - 服务器太忙
+  　　HTTP 500-14 - 应用程序无效
+  　　HTTP 500-15 - 不允许请求 global.asa
+  　　Error 501 - 未实现
+HTTP 502 - 网关错误
+HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时间后可能恢复正常
+</code></pre><h2 id="64-一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）"><a href="#64-一个页面从输入-URL-到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）" class="headerlink" title="64. 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）"></a>64. 一个页面从输入 URL 到页面加载显示完成，这个过程中都发生了什么？（流程说的越详细越好）</h2><blockquote>
+<p>而高手可以根据自己擅长的领域自由发挥，从URL规范、HTTP协议、DNS、CDN、数据库查询、<br>    到浏览器流式解析、CSS规则构建、layout、paint、onload/domready、JS执行、JS API绑定等等；</p>
+</blockquote>
+<pre><code>详细版：
+  1、浏览器会开启一个线程来处理这个请求，对 URL 分析判断如果是 http 协议就按照 Web 方式来处理;
+  2、调用浏览器内核中的对应方法，比如 WebView 中的 loadUrl 方法;
+  3、通过DNS解析获取网址的IP地址，设置 UA 等信息发出第二个GET请求;
+  4、进行HTTP协议会话，客户端发送报头(请求报头);
+  5、进入到web服务器上的 Web Server，如 Apache、Tomcat、Node.JS 等服务器;
+  6、进入部署好的后端应用，如 PHP、Java、JavaScript、Python 等，找到对应的请求处理;
+  7、处理结束回馈报头，此处如果浏览器访问过，缓存上有对应资源，会与服务器最后修改时间对比，一致则返回304;
+  8、浏览器开始下载html文档(响应报头，状态码200)，同时使用缓存;
+  9、文档树建立，根据标记请求所需指定MIME类型的文件（比如css、js）,同时设置了cookie;
+  10、页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。
+</code></pre><h2 id="65-前端学习资源"><a href="#65-前端学习资源" class="headerlink" title="65. 前端学习资源"></a>65. 前端学习资源</h2><blockquote>
+<p><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/">js秘密花园</a><br><a href="http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html">jquery原理解析</a><br><a href="http://css.doyoe.com/">css3</a><br><a href="http://javascript.ruanyifeng.com/bom/cors.html">js标准</a></p>
+</blockquote>
+</script></p></blockquote>
       
     </div>
     
@@ -699,7 +1004,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端常见问题总结"><span class="nav-number">1.</span> <span class="nav-text">前端常见问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css禁用鼠标事件"><span class="nav-number">1.1.</span> <span class="nav-text">1.css禁用鼠标事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-get-post的理解和他们之间的区别"><span class="nav-number">1.2.</span> <span class="nav-text">2.get/post的理解和他们之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">1.2.1.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http方法："><span class="nav-number">1.2.2.</span> <span class="nav-text">http方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET和POST的区别"><span class="nav-number">1.2.3.</span> <span class="nav-text">GET和POST的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现条纹网格的方式"><span class="nav-number">1.3.</span> <span class="nav-text">3.实现条纹网格的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-js求平面两点之间的距离"><span class="nav-number">1.4.</span> <span class="nav-text">4.js求平面两点之间的距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-css禁止用户选择"><span class="nav-number">1.5.</span> <span class="nav-text">5.css禁止用户选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-数组去重"><span class="nav-number">1.6.</span> <span class="nav-text">6.数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-什么是CDN和CDN的好处"><span class="nav-number">1.7.</span> <span class="nav-text">7.什么是CDN和CDN的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-圣杯布局和双飞翼布局"><span class="nav-number">1.8.</span> <span class="nav-text">8.圣杯布局和双飞翼布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-正则表达式匹配手机号"><span class="nav-number">1.9.</span> <span class="nav-text">9.正则表达式匹配手机号</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前端常见问题总结"><span class="nav-number">1.</span> <span class="nav-text">前端常见问题总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-css禁用鼠标事件"><span class="nav-number">1.1.</span> <span class="nav-text">1.css禁用鼠标事件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-get-post的理解和他们之间的区别"><span class="nav-number">1.2.</span> <span class="nav-text">2.get/post的理解和他们之间的区别</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#http"><span class="nav-number">1.2.1.</span> <span class="nav-text">http</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#http方法："><span class="nav-number">1.2.2.</span> <span class="nav-text">http方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#GET和POST的区别"><span class="nav-number">1.2.3.</span> <span class="nav-text">GET和POST的区别</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-实现条纹网格的方式"><span class="nav-number">1.3.</span> <span class="nav-text">3.实现条纹网格的方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-js求平面两点之间的距离"><span class="nav-number">1.4.</span> <span class="nav-text">4.js求平面两点之间的距离</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-css禁止用户选择"><span class="nav-number">1.5.</span> <span class="nav-text">5.css禁止用户选择</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-数组去重"><span class="nav-number">1.6.</span> <span class="nav-text">6.数组去重</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-什么是CDN和CDN的好处"><span class="nav-number">1.7.</span> <span class="nav-text">7.什么是CDN和CDN的好处</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-圣杯布局和双飞翼布局"><span class="nav-number">1.8.</span> <span class="nav-text">8.圣杯布局和双飞翼布局</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-正则表达式匹配手机号"><span class="nav-number">1.9.</span> <span class="nav-text">9.正则表达式匹配手机号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-如何提高首频加载速度"><span class="nav-number">1.10.</span> <span class="nav-text">10.如何提高首频加载速度</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-浏览器内核-渲染引擎"><span class="nav-number">1.11.</span> <span class="nav-text">11.浏览器内核(渲染引擎)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#12-浏览器渲染过程及优化建议"><span class="nav-number">1.12.</span> <span class="nav-text">12.浏览器渲染过程及优化建议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#13-页面导入样式时，使用link和-import有什么区别？"><span class="nav-number">1.13.</span> <span class="nav-text">13. 页面导入样式时，使用link和@import有什么区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#14-简述一下你对HTML语义化的理解？"><span class="nav-number">1.14.</span> <span class="nav-text">14. 简述一下你对HTML语义化的理解？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#15-请描述一下-cookies，sessionStorage-和-localStorage-的区别？"><span class="nav-number">1.15.</span> <span class="nav-text">15. 请描述一下 cookies，sessionStorage 和 localStorage 的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#16-iframe有那些缺点？"><span class="nav-number">1.16.</span> <span class="nav-text">16. iframe有那些缺点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#17-vue父子组件生命周期的顺序及作用？"><span class="nav-number">1.17.</span> <span class="nav-text">17. vue父子组件生命周期的顺序及作用？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#18-网页验证码是干嘛的，是为了解决什么安全问题？"><span class="nav-number">1.18.</span> <span class="nav-text">18. 网页验证码是干嘛的，是为了解决什么安全问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#19-介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？"><span class="nav-number">1.19.</span> <span class="nav-text">19. 介绍一下标准的CSS的盒子模型？低版本IE的盒子模型有什么不同的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#20-position的值relative和absolute定位原点是？"><span class="nav-number">1.20.</span> <span class="nav-text">20. position的值relative和absolute定位原点是？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#21-经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧-？"><span class="nav-number">1.21.</span> <span class="nav-text">21. 经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#22-CSS优化、提高性能的方法有哪些？"><span class="nav-number">1.22.</span> <span class="nav-text">22. CSS优化、提高性能的方法有哪些？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#23-如何修改chrome记住密码后自动填充表单的黄色背景-？"><span class="nav-number">1.23.</span> <span class="nav-text">23. 如何修改chrome记住密码后自动填充表单的黄色背景 ？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#24-让页面里的字体变清晰，变细用CSS怎么做？"><span class="nav-number">1.24.</span> <span class="nav-text">24. 让页面里的字体变清晰，变细用CSS怎么做？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#25-让overflow-scroll平滑滚动？"><span class="nav-number">1.25.</span> <span class="nav-text">25. 让overflow:scroll平滑滚动？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#26-如何将浮点数点左边的数每三位添加一个逗号，如12000000-11转化为『12-000-000-11』"><span class="nav-number">1.26.</span> <span class="nav-text">26. 如何将浮点数点左边的数每三位添加一个逗号，如12000000.11转化为『12,000,000.11』?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#27-Javascript作用链域"><span class="nav-number">1.27.</span> <span class="nav-text">27. Javascript作用链域?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#28-谈谈This对象的理解。"><span class="nav-number">1.28.</span> <span class="nav-text">28. 谈谈This对象的理解。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#29-eval是做什么的？"><span class="nav-number">1.29.</span> <span class="nav-text">29. eval是做什么的？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#30-什么是window对象-什么是document对象"><span class="nav-number">1.30.</span> <span class="nav-text">30. 什么是window对象? 什么是document对象?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#31-“1”-“2”-“3”-map-parseInt-答案是多少？"><span class="nav-number">1.31.</span> <span class="nav-text">31. [“1”, “2”, “3”].map(parseInt) 答案是多少？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#32-什么是闭包（closure），为什么要用它？"><span class="nav-number">1.32.</span> <span class="nav-text">32. 什么是闭包（closure），为什么要用它？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#33-javascript-代码中的”use-strict”-是什么意思-使用它区别是什么？"><span class="nav-number">1.33.</span> <span class="nav-text">33. javascript 代码中的”use strict”;是什么意思 ? 使用它区别是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#34-如何判断一个对象是否属于某个类？"><span class="nav-number">1.34.</span> <span class="nav-text">34. 如何判断一个对象是否属于某个类？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#35-new一个对象的过程"><span class="nav-number">1.35.</span> <span class="nav-text">35. new一个对象的过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#36-Ajax-解决浏览器缓存问题"><span class="nav-number">1.36.</span> <span class="nav-text">36. Ajax 解决浏览器缓存问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#37-如何解决跨域问题"><span class="nav-number">1.37.</span> <span class="nav-text">37. 如何解决跨域问题?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#38-模块化开发怎么做"><span class="nav-number">1.38.</span> <span class="nav-text">38. 模块化开发怎么做</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#39-AMD（Modules-Asynchronous-Definition）、CMD（Common-Module-Definition）规范区别？"><span class="nav-number">1.39.</span> <span class="nav-text">39. AMD（Modules/Asynchronous-Definition）、CMD（Common Module Definition）规范区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#40-requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何-缓存的？）"><span class="nav-number">1.40.</span> <span class="nav-text">40. requireJS的核心原理是什么？（如何动态加载的？如何避免多次加载的？如何 缓存的？）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#41-如何实现一个模块加载器"><span class="nav-number">1.41.</span> <span class="nav-text">41. 如何实现一个模块加载器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#42-列举几条-JavaScript-的基本代码规范"><span class="nav-number">1.42.</span> <span class="nav-text">42. 列举几条 JavaScript 的基本代码规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#43-DOM操作——怎样添加、移除、移动、复制、创建和查找节点"><span class="nav-number">1.43.</span> <span class="nav-text">43. DOM操作——怎样添加、移除、移动、复制、创建和查找节点?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#44-jquery实现原理"><span class="nav-number">1.44.</span> <span class="nav-text">44. jquery实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#45-jquery中如何将数组转化为json字符串，然后再转化回来？"><span class="nav-number">1.45.</span> <span class="nav-text">45. jquery中如何将数组转化为json字符串，然后再转化回来？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#46-jquery的-extend深复制和浅复制原理"><span class="nav-number">1.46.</span> <span class="nav-text">46. jquery的$.extend深复制和浅复制原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#47-jquery-extend-与-jquery-fn-extend的区别？"><span class="nav-number">1.47.</span> <span class="nav-text">47. jquery.extend 与 jquery.fn.extend的区别？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#48-如何判断当前脚本运行在浏览器还是node环境中？（阿里）"><span class="nav-number">1.48.</span> <span class="nav-text">48. 如何判断当前脚本运行在浏览器还是node环境中？（阿里）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#49-实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？"><span class="nav-number">1.49.</span> <span class="nav-text">49. 实现一个页面操作不会整页刷新的网站，并且能在浏览器前进、后退时正确响应。给出你的技术实现方案？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#50-把-Script-标签-放在页面的最底部的body封闭之前-和封闭之后有什么区别？浏览器会如何解析它们？"><span class="nav-number">1.50.</span> <span class="nav-text">50. 把 Script 标签 放在页面的最底部的body封闭之前 和封闭之后有什么区别？浏览器会如何解析它们？</span></a></li></ol></li></ol></div>
             
 
           </div>

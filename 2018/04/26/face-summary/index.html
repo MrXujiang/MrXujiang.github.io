@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="猪先森的博">
 <meta property="og:description" content="过往一些不足的地方，通过博客，好好总结一下。 前端常见问题总结1.css禁用鼠标事件12345.disabled &amp;#123;    pointer-events: none;    cursor: default;    opacity: 0.6;&amp;#125; 2.get/post的理解和他们之间的区别http 超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。HTTP 的工作">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-06T17:26:09.042Z">
+<meta property="og:updated_time" content="2018-05-13T12:23:31.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="面面俱到——不足点总结">
 <meta name="twitter:description" content="过往一些不足的地方，通过博客，好好总结一下。 前端常见问题总结1.css禁用鼠标事件12345.disabled &amp;#123;    pointer-events: none;    cursor: default;    opacity: 0.6;&amp;#125; 2.get/post的理解和他们之间的区别http 超文本传输协议（HTTP）的设计目的是保证客户机与服务器之间的通信。HTTP 的工作">
@@ -371,7 +371,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  6,331
+                  6,487
                 </span>
               
 
@@ -446,6 +446,7 @@
 </blockquote>
 <h2 id="9-正则表达式匹配手机号"><a href="#9-正则表达式匹配手机号" class="headerlink" title="9.正则表达式匹配手机号"></a>9.正则表达式匹配手机号</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">checkPhone</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!(<span class="regexp">/^1[34578]\d&#123;9&#125;$/</span>.test(phone)))&#123;</span><br><span class="line">        alert(<span class="string">"手机号码有误，请重填"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="10-如何提高首频加载速度"><a href="#10-如何提高首频加载速度" class="headerlink" title="10.如何提高首频加载速度"></a>10.如何提高首频加载速度</h2><blockquote>
+<p>1.js外联文件放到body底部，css外联文件放到head内<br>2.http静态资源尽量用多个子域名<br>3.服务器端提供html和http静态资源时最好开启gzip<br>4.在js,css,img等资源响应的http headers里设置expires,last-modified<br>5.尽量减少http requests的数量<br>6.js/css/html/img资源压缩<br>7.使用css spirtes，可以减少img请求次数<br>8.大图使用lazyload懒加载<br>9.避免404，减少外联js<br>10.减少cookie大小可以提高获得响应的时间<br>11.减少dom elements的数量<br>12.使用异步脚本，动态创建脚本</p>
 </blockquote>
 <h2 id="11-浏览器内核-渲染引擎"><a href="#11-浏览器内核-渲染引擎" class="headerlink" title="11.浏览器内核(渲染引擎)"></a>11.浏览器内核(渲染引擎)</h2><blockquote>
 <p>IE/360/搜狗浏览器: Trident<br>Chrome/Safari/Opera: WebKit(KHTML的一个开源的分支)<br>(虽然我们称WebKit为浏览器内核，但不太适合直接称渲染引擎，因为WebKit本身主要是由两个引擎构成的，一个正是渲染引擎“WebCore”，另一个则是javascript解释引擎“JSCore”，它们均是从KDE的渲染引擎KHTML及javascript解释引擎KJS衍生而来。)<br>(在13年发布的Chrome 28.0.1469.0版本开始，Chrome放弃Chromium引擎转而使用最新的Blink引擎（基于WebKit2——苹果公司于2010年推出的新的WebKit引擎），Blink对比上一代的引擎精简了代码、改善了DOM框架，也提升了安全性。)<br>(为了减少研发成本，Opera在2013年2月宣布放弃Presto，转而跟随Chrome使用WebKit分支的Chromium引擎作为自家浏览器核心引擎)<br>Firefox/SeaMonkey: Gecko</p>
@@ -748,6 +749,18 @@ HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时
   10、页面开始渲染DOM，JS根据DOM API操作DOM,执行事件绑定等，页面显示完成。
 </code></pre><h2 id="65-前端学习资源"><a href="#65-前端学习资源" class="headerlink" title="65. 前端学习资源"></a>65. 前端学习资源</h2><blockquote>
 <p><a href="http://bonsaiden.github.io/JavaScript-Garden/zh/">js秘密花园</a><br><a href="http://docs.huihoo.com/jquery/jquery-fundamentals/zh-cn/index.html">jquery原理解析</a><br><a href="http://css.doyoe.com/">css3</a><br><a href="http://javascript.ruanyifeng.com/bom/cors.html">js标准</a></p>
+</blockquote>
+<h2 id="66-邮箱验证"><a href="#66-邮箱验证" class="headerlink" title="66. 邮箱验证"></a>66. 邮箱验证</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> pattern = <span class="regexp">/^([A-Za-z0-9_\-\.\u4e00-\u9fa5])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]&#123;2,8&#125;)$/</span>;</span><br></pre></td></tr></table></figure>
+<p><a href="https://juejin.im/post/5aa637146fb9a028d663d09d">参考链接</a></p>
+<h2 id="67-ajax实现原理及方法使用"><a href="#67-ajax实现原理及方法使用" class="headerlink" title="67. ajax实现原理及方法使用"></a>67. ajax实现原理及方法使用</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">readyState属性有五个状态值。</span><br><span class="line"></span><br><span class="line"><span class="number">0</span>：是uninitialized，未初始化。已经创建了XMLHttpRequest对象但是未初始化。</span><br><span class="line"><span class="number">1</span>：是loading.已经开始准备好要发送了。</span><br><span class="line"><span class="number">2</span>：已经发送，但是还没有收到响应。</span><br><span class="line"><span class="number">3</span>：正在接受响应，但是还不完整。</span><br><span class="line"><span class="number">4</span>：接受响应完毕。</span><br><span class="line">responseText：服务器返回的响应文本。只有当readyState&gt;=<span class="number">3</span>的时候才有值，根据readyState的状态值，可以知道，当readyState=<span class="number">3</span>，返回的响应文本不完整，只有readyState=<span class="number">4</span>，完全返回，才能接受全部的响应文本。</span><br><span class="line"></span><br><span class="line">responseXML：response  <span class="keyword">as</span> Dom Document object。响应信息是xml，可以解析为Dom对象。</span><br><span class="line">status：服务器的Http状态码，若是<span class="number">200</span>，则表示OK，<span class="number">404</span>，表示为未找到。</span><br><span class="line">statusText：服务器http状态码的文本。比如OK，Not Found。</span><br></pre></td></tr></table></figure>
+<p><a href="https://blog.csdn.net/fuxiaohui/article/details/72725500">参考链接</a></p>
+<h2 id="68-js实现继承"><a href="#68-js实现继承" class="headerlink" title="68. js实现继承"></a>68. js实现继承</h2><p><a href="https://developer.mozilla.org/zh-CN/docs/Learn/JavaScript/Objects/Inheritance">参考链接</a></p>
+<h2 id="69-用generator实现es7的async"><a href="#69-用generator实现es7的async" class="headerlink" title="69. 用generator实现es7的async"></a>69. 用generator实现es7的async</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="70-闭包使用的优缺点"><a href="#70-闭包使用的优缺点" class="headerlink" title="70. 闭包使用的优缺点"></a>70. 闭包使用的优缺点</h2><blockquote>
+<p>优点：1.保护函数内部变量的安全，加强了封装性<br>2.在内存中维持一个变量<br>3.设计私有方法和变量<br>4.可以读取函数内部的变量<br>缺点：1.导致内存泄漏，使用不当会造成额外的内存占用<br>2.可以改变父函数的变量，所以使用时要谨慎</p>
+</blockquote>
+<h2 id="71-canvas和svg区别"><a href="#71-canvas和svg区别" class="headerlink" title="71. canvas和svg区别"></a>71. canvas和svg区别</h2><blockquote>
+<p>1.从图像类别区分，Canvas是基于像素的位图，而SVG却是基于矢量图形。可以简单的把两者的区别看成photoshop与illustrator的区别。<br>2.从结构上说，Canvas没有图层的概念，所有的修改整个画布都要重新渲染，而SVG则可以对单独的标签进行修改。<br>3.从操作对象上说，Canvas是基于HTML canvas标签，通过宿主提供的Javascript API对整个画布进行操作的，而SVG则是基于XML元素的。<br>4.从功能上讲，SVG发布日期较早，所以功能相对Canvas比较完善。<br>5.关于动画，Canvas更适合做基于位图的动画，而SVG则适合图表的展示。<br>6.从搜索引擎角度分析，由于svg是有大量标签组成，所以可以通过给标签添加属性，便于爬虫搜索</p>
 </blockquote>
 </script></p></blockquote>
       

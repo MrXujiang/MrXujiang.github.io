@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://build800.com/2018/05/19/product/</loc>
+    <lastmod>2018-05-19T08:02:54.945Z</lastmod>
+    <data>
+        <display>
+        <title>产品笔记与一些思考</title>
+        <pubTime>2018-05-19T03:08:54.000Z</pubTime>
+        
+        <tag>产品</tag>
+         
+        <tag>Axure</tag>
+         
+         
+           
+             
+              <breadCrumb title="产品" url="http://build800.com/categories/%E4%BA%A7%E5%93%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://build800.com/2018/05/18/react-summary/</loc>
+    <lastmod>2018-05-18T09:01:07.184Z</lastmod>
+    <data>
+        <display>
+        <title>react学习总结</title>
+        <pubTime>2018-05-18T08:56:27.000Z</pubTime>
+        
+        <tag>react</tag>
+         
+        <tag>react-dedux</tag>
+         
+        <tag>react-router-dom</tag>
+         
+         
+           
+             
+              <breadCrumb title="react" url="http://build800.com/categories/react/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/04/26/face-summary/</loc>
     <lastmod>2018-05-13T12:23:31.332Z</lastmod>
     <data>
@@ -202,6 +248,8 @@
         <title>border和background篇</title>
         <pubTime>2018-01-30T15:41:54.176Z</pubTime>
         
+        <tag>box-shadow</tag>
+         
         <tag>Css3</tag>
          
         <tag>outline</tag>
@@ -209,8 +257,6 @@
         <tag>radial-gradient</tag>
          
         <tag>linear-gradient</tag>
-         
-        <tag>box-shadow</tag>
          
          
            
@@ -316,9 +362,9 @@
         <title>css3形状篇</title>
         <pubTime>2018-02-10T07:04:31.000Z</pubTime>
         
-        <tag>Css3</tag>
-         
         <tag>border-radius</tag>
+         
+        <tag>Css3</tag>
          
          
            
@@ -338,9 +384,9 @@
         <title>border——radius篇</title>
         <pubTime>2018-02-10T05:19:55.000Z</pubTime>
         
-        <tag>Css3</tag>
-         
         <tag>border-radius</tag>
+         
+        <tag>Css3</tag>
          
          
            

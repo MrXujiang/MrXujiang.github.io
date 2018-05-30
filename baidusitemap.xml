@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://build800.com/2018/05/19/product/</loc>
+    <lastmod>2018-05-30T08:30:48.263Z</lastmod>
+    <data>
+        <display>
+        <title>产品笔记与一些思考</title>
+        <pubTime>2018-05-19T03:08:54.000Z</pubTime>
+        
+        <tag>产品</tag>
+         
+        <tag>Axure</tag>
+         
+         
+           
+             
+              <breadCrumb title="产品" url="http://build800.com/categories/%E4%BA%A7%E5%93%81/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/05/18/react-summary/</loc>
     <lastmod>2018-05-24T08:20:40.303Z</lastmod>
     <data>
@@ -21,28 +43,6 @@
            
              
               <breadCrumb title="react" url="http://build800.com/categories/react/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/05/19/product/</loc>
-    <lastmod>2018-05-22T15:25:43.642Z</lastmod>
-    <data>
-        <display>
-        <title>产品笔记与一些思考</title>
-        <pubTime>2018-05-19T03:08:54.000Z</pubTime>
-        
-        <tag>产品</tag>
-         
-        <tag>Axure</tag>
-         
-         
-           
-             
-              <breadCrumb title="产品" url="http://build800.com/categories/%E4%BA%A7%E5%93%81/"/>
           
         </display>
     </data>

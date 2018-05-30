@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
+    <lastmod>2018-05-30T16:35:25.264Z</lastmod>
+    <data>
+        <display>
+        <title>高性能JS</title>
+        <pubTime>2018-04-04T08:44:02.000Z</pubTime>
+        
+        <tag>Javascript</tag>
+         
+        <tag>dom</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/05/19/product/</loc>
     <lastmod>2018-05-30T08:30:48.263Z</lastmod>
     <data>
@@ -190,28 +212,6 @@
            
              
               <breadCrumb title="css2高级" url="http://build800.com/categories/css2%E9%AB%98%E7%BA%A7/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/04/04/js-high-pf/</loc>
-    <lastmod>2018-04-12T04:30:38.651Z</lastmod>
-    <data>
-        <display>
-        <title>高性能JS</title>
-        <pubTime>2018-04-04T08:44:02.000Z</pubTime>
-        
-        <tag>Javascript</tag>
-         
-        <tag>dom</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
           
         </display>
     </data>

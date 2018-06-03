@@ -431,7 +431,7 @@
 <ul>
 <li>4.无阻塞加载类库——<a href="http://labjs.com" target="_blank" rel="noopener">LABjs</a>,使用方法如下：</li>
 </ul>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lab.js"</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="comment">// 链式调用时文件逐个下载，.wait()用来指定文件下载并执行完毕后所调用的函数</span></span><br><span class="line">$LAB.script(<span class="string">'./a.js'</span>)</span><br><span class="line">    .script(<span class="string">'./b.js'</span>)</span><br><span class="line">    .wait(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        App.init();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了保证执行顺序，可以这么做,此时a必定在b前执行</span></span><br><span class="line">$LAB.script(<span class="string">'./a.js'</span>).wait()</span><br><span class="line">    .script(<span class="string">'./b.js'</span>)</span><br><span class="line">    .wait(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        App.init();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"lab.js"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="comment">// 链式调用时文件逐个下载，.wait()用来指定文件下载并执行完毕后所调用的函数</span></span><br><span class="line">$LAB.script(<span class="string">'./a.js'</span>)</span><br><span class="line">    .script(<span class="string">'./b.js'</span>)</span><br><span class="line">    .wait(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        App.init();</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 为了保证执行顺序，可以这么做,此时a必定在b前执行</span></span><br><span class="line">$LAB.script(<span class="string">'./a.js'</span>).wait()</span><br><span class="line">    .script(<span class="string">'./b.js'</span>)</span><br><span class="line">    .wait(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        App.init();</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <h4 id="2-数据存取与JS性能"><a href="#2-数据存取与JS性能" class="headerlink" title="2.数据存取与JS性能"></a>2.数据存取与JS性能</h4><ul>
 <li>1.在js中，数据存储的位置会对代码整体性能产生重大影响。数据存储共有4种方式：字面量，变量，数组项，对象成员。他们有着各自的性能特点。<blockquote>
 <p>2.访问字面量和局部变量的速度最快，相反，访问数组和对象相对较慢<br>3.由于局部变量存在于作用域联的起始位置，因此访问局部变量的比访问跨域作用变量更快<br>4.嵌套的对象成员会明显影响性能，应尽量避免<br>5.属性和方法在原型链位置越深，访问他的速度越慢<br>6.通常我们可以把需要多次使用的对象成员，数组元素，跨域变量保存在局部变量中来改善js性能</p>
@@ -771,7 +771,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -782,7 +782,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -793,7 +793,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

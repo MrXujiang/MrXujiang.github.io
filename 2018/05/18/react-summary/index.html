@@ -420,7 +420,7 @@
       
         <p>我的react爬坑笔记</p>
 <h1 id="1-使用create-react-app执行npm-run-build时页面空白"><a href="#1-使用create-react-app执行npm-run-build时页面空白" class="headerlink" title="1. 使用create-react-app执行npm run build时页面空白"></a>1. 使用create-react-app执行npm run build时页面空白</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 解决方案</span></span><br><span class="line">在package.json内增加如下字段</span><br><span class="line"><span class="string">"homepage"</span>: <span class="string">"./"</span></span><br></pre></td></tr></table></figure>
-<h1 id="2-插值符号内不能使用引用类型，否则会报错"><a href="#2-插值符号内不能使用引用类型，否则会报错" class="headerlink" title="2. 插值符号内不能使用引用类型，否则会报错"></a>2. 插值符号内不能使用引用类型，否则会报错</h1><h1 id="3-render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签"><a href="#3-render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签" class="headerlink" title="3. render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签"></a>3. render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">    <span class="comment">// 此时a获取的是初始化的数据，而不是更改后的数据</span></span><br><span class="line">    <span class="keyword">let</span> a = <span class="keyword">this</span>.a;</span><br><span class="line">    <span class="comment">// return内的a是componentDidMount后的数据</span></span><br><span class="line">    <span class="keyword">return</span> (&lt;div&gt;不能为对象等引用类型&#123;a&#125;&lt;/div&gt;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="2-插值符号内不能使用引用类型，否则会报错"><a href="#2-插值符号内不能使用引用类型，否则会报错" class="headerlink" title="2. 插值符号内不能使用引用类型，否则会报错"></a>2. 插值符号内不能使用引用类型，否则会报错</h1><h1 id="3-render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签"><a href="#3-render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签" class="headerlink" title="3. render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签"></a>3. render方法里return之前和return的数据时机不一样，并且return内必须返回一个闭合标签</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">render()&#123;</span><br><span class="line">    <span class="comment">// 此时a获取的是初始化的数据，而不是更改后的数据</span></span><br><span class="line">    <span class="keyword">let</span> a = <span class="keyword">this</span>.a;</span><br><span class="line">    <span class="comment">// return内的a是componentDidMount后的数据</span></span><br><span class="line">    <span class="keyword">return</span> (<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span>不能为对象等引用类型&#123;a&#125;<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -599,7 +599,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-count">22</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -610,7 +610,7 @@
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">11</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -621,7 +621,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">33</span>
+                  <span class="site-state-item-count">35</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

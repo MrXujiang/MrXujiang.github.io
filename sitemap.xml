@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://build800.com/2018/06/02/js-high-design/</loc>
+    
+    <lastmod>2018-06-18T11:37:42.560Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://build800.com/2018/05/19/product/</loc>
+    
+    <lastmod>2018-06-16T10:11:44.322Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://build800.com/2018/04/26/face-summary/</loc>
     
     <lastmod>2018-06-11T16:15:20.555Z</lastmod>
@@ -12,20 +26,6 @@
     <loc>http://build800.com/2018/05/18/react-summary/</loc>
     
     <lastmod>2018-06-11T16:00:08.887Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://build800.com/2018/06/02/js-high-design/</loc>
-    
-    <lastmod>2018-06-11T15:33:43.418Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://build800.com/2018/05/19/product/</loc>
-    
-    <lastmod>2018-06-10T10:50:38.707Z</lastmod>
     
   </url>
   

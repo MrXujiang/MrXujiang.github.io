@@ -100,7 +100,7 @@
 <meta property="og:site_name" content="猪先森的博">
 <meta property="og:description" content="此文是对js高级程序设计一书难点的总结，预计1-2周内可以完成，本有相当经典，希望能有所收获 1. Number类型关键点讲解 1.进制问题  1231.八进制字面量在严格模式下无效，会导致支持该模式的js引擎抛出异常2.十六进制字面量的前两位必须是0x，后根任何十六进制数字（0-9及A-F）3.在进行算术计算时，所有以八进制和十六进制表示的数值最终将被转换成十进制数值  2.浮点数注意点  12">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-06-18T11:37:42.560Z">
+<meta property="og:updated_time" content="2018-06-19T14:57:58.135Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js高级程序设计">
 <meta name="twitter:description" content="此文是对js高级程序设计一书难点的总结，预计1-2周内可以完成，本有相当经典，希望能有所收获 1. Number类型关键点讲解 1.进制问题  1231.八进制字面量在严格模式下无效，会导致支持该模式的js引擎抛出异常2.十六进制字面量的前两位必须是0x，后根任何十六进制数字（0-9及A-F）3.在进行算术计算时，所有以八进制和十六进制表示的数值最终将被转换成十进制数值  2.浮点数注意点  12">
@@ -393,7 +393,7 @@
                   <span class="post-meta-item-text">字数统计&#58;</span>
                 
                 <span title="字数统计">
-                  8,622
+                  8,846
                 </span>
               
 
@@ -622,6 +622,14 @@
 <p>4.选择部分文本</p>
 </blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 所有文本框都有一个setSelectionRange(startIndex, endIndex)</span></span><br><span class="line">textbox.setSelectionRange(<span class="number">0</span>, <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>5.过滤输入</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>屏蔽字符</span><br><span class="line"><span class="comment">// 通过阻止键盘按压事件的默认行为来屏蔽字符</span></span><br><span class="line">el.addEvent(<span class="string">"keypress"</span>,<span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> charCode = event.charCode;</span><br><span class="line">    <span class="comment">// String.fromCharCode(charCode) 将字符编码转换为字符串</span></span><br><span class="line">    <span class="keyword">if</span>(!<span class="regexp">/\d/</span>.test(<span class="built_in">String</span>.fromCharCode(charCode)))&#123;</span><br><span class="line">        event.preventDefault();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;, <span class="literal">false</span>)</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>6.富文本编辑</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>使用contenteditable属性</span><br><span class="line">    <span class="number">1.</span>有三个属性: <span class="literal">true</span>,<span class="literal">false</span>,inherit</span><br><span class="line">    <span class="number">2.</span>例子：&lt;div contenteditable&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="number">2.</span>操作富文本<span class="built_in">document</span>.execCommand()</span><br><span class="line">    三个参数： 要执行的命令的名称，表示浏览器是否为当前命令提供用户界面的一个布尔值，执行命令必须的一个值（如果不需要值，则为<span class="literal">null</span>）</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span>表单与富文本</span><br><span class="line">    *** 要想将富文本中的值传递给表单，则可在表单内创建一个隐藏的表单字段，将富文本的值赋给该表单字段的值</span><br></pre></td></tr></table></figure>
 
       
     </div>

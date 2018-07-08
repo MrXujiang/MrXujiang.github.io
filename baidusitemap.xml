@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://build800.com/2018/06/26/shell/</loc>
+    <lastmod>2018-07-07T11:25:13.758Z</lastmod>
+    <data>
+        <display>
+        <title>利用shell脚本提高前端开发效率</title>
+        <pubTime>2018-06-26T06:53:42.000Z</pubTime>
+        
+        <tag>shell</tag>
+         
+         
+           
+             
+              <breadCrumb title="linux" url="http://build800.com/categories/linux/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/06/29/response-design/</loc>
     <lastmod>2018-07-01T10:26:31.272Z</lastmod>
     <data>
@@ -57,26 +77,6 @@
            
              
               <breadCrumb title="react" url="http://build800.com/categories/react/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/06/26/shell/</loc>
-    <lastmod>2018-06-26T07:14:55.630Z</lastmod>
-    <data>
-        <display>
-        <title>利用shell脚本提高前端开发效率</title>
-        <pubTime>2018-06-26T06:53:42.000Z</pubTime>
-        
-        <tag>shell</tag>
-         
-         
-           
-             
-              <breadCrumb title="linux" url="http://build800.com/categories/linux/"/>
           
         </display>
     </data>

@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://build800.com/2018/02/12/gitStudy/</loc>
+    <lastmod>2018-08-28T09:09:24.047Z</lastmod>
+    <data>
+        <display>
+        <title>git全解读</title>
+        <pubTime>2018-02-12T04:36:37.000Z</pubTime>
+        
+        <tag>git</tag>
+         
+         
+           
+             
+              <breadCrumb title="git" url="http://build800.com/categories/git/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/04/26/face-summary/</loc>
     <lastmod>2018-07-14T13:40:15.278Z</lastmod>
     <data>
@@ -436,26 +456,6 @@
            
              
               <breadCrumb title="Css3高级实用技巧大全" url="http://build800.com/categories/Css3%E9%AB%98%E7%BA%A7%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7%E5%A4%A7%E5%85%A8/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/02/12/gitStudy/</loc>
-    <lastmod>2018-03-12T12:32:13.920Z</lastmod>
-    <data>
-        <display>
-        <title>git全解读</title>
-        <pubTime>2018-02-12T04:36:37.000Z</pubTime>
-        
-        <tag>git</tag>
-         
-         
-           
-             
-              <breadCrumb title="git" url="http://build800.com/categories/git/"/>
           
         </display>
     </data>

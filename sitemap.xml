@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://build800.com/2018/12/27/summary/</loc>
+    
+    <lastmod>2018-12-27T13:33:22.890Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    
+    <lastmod>2018-11-11T05:40:09.979Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://build800.com/2018/02/12/gitStudy/</loc>
     
     <lastmod>2018-08-28T09:09:24.047Z</lastmod>
@@ -89,13 +103,6 @@
     <loc>http://build800.com/2018/03/12/git-china/</loc>
     
     <lastmod>2018-05-05T03:04:17.315Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    
-    <lastmod>2018-04-21T13:51:01.515Z</lastmod>
     
   </url>
   

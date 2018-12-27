@@ -763,7 +763,7 @@ HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时
 <p>1.从图像类别区分，Canvas是基于像素的位图，而SVG却是基于矢量图形。可以简单的把两者的区别看成photoshop与illustrator的区别。<br>2.从结构上说，Canvas没有图层的概念，所有的修改整个画布都要重新渲染，而SVG则可以对单独的标签进行修改。<br>3.从操作对象上说，Canvas是基于HTML canvas标签，通过宿主提供的Javascript API对整个画布进行操作的，而SVG则是基于XML元素的。<br>4.从功能上讲，SVG发布日期较早，所以功能相对Canvas比较完善。<br>5.关于动画，Canvas更适合做基于位图的动画，而SVG则适合图表的展示。<br>6.从搜索引擎角度分析，由于svg是有大量标签组成，所以可以通过给标签添加属性，便于爬虫搜索</p>
 </blockquote>
 <h2 id="72-开启硬件加速"><a href="#72-开启硬件加速" class="headerlink" title="72. 开启硬件加速"></a>72. 开启硬件加速</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//目前，像Chrome/Filefox/Safari/IE9+以及最新版本Opera都支持硬件加速，当检测到某个DOM元素应用了某些CSS规则时就会自动开启，从而解决页面闪白，保证动画流畅。</span></span><br><span class="line">.css &#123;</span><br><span class="line">    -webkit-transform: translate3d(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    -moz-transform: translate3d(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    -ms-transform: translate3d(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    transform: translate3d(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="73-button注意事项"><a href="#73-button注意事项" class="headerlink" title="73. button注意事项"></a>73. button注意事项</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;&lt;/button&gt;元素一定要写上type属性不然会默认提交表单，出现想不到的bug</span><br></pre></td></tr></table></figure>
+<h2 id="73-button注意事项"><a href="#73-button注意事项" class="headerlink" title="73. button注意事项"></a>73. button注意事项</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;button&gt;<span class="xml"><span class="tag">&lt;/<span class="name">button</span>&gt;</span></span>元素一定要写上type属性不然会默认提交表单，出现想不到的bug</span><br></pre></td></tr></table></figure>
 <h2 id="74-移动端html标签几个体验优化"><a href="#74-移动端html标签几个体验优化" class="headerlink" title="74. 移动端html标签几个体验优化"></a>74. 移动端html标签几个体验优化</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;</span><br><span class="line"></span><br><span class="line"><span class="attribute">overflow</span>: hidden;<span class="comment">/*手机上写overflow-x:hidden;会有兼容性问题，如果子级如果是绝对定位有运动到屏幕外的话ios7系统会出现留白*/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">-webkit-overflow-scrolling</span>:touch;<span class="comment">/*流畅滚动,ios7下会有滑一下滑不动的情况，所以需要写上*/</span></span><br><span class="line"></span><br><span class="line"><span class="attribute">position</span>:realtive;<span class="comment">/*直接子级如果是绝对定位有运动到屏幕外的话，会出现留白*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="75-手机上的多行省略"><a href="#75-手机上的多行省略" class="headerlink" title="75.手机上的多行省略"></a>75.手机上的多行省略</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.overflow-hidden</span>&#123;</span><br><span class="line">    <span class="attribute">display</span>: box <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">display</span>: -webkit-box <span class="meta">!important</span>;</span><br><span class="line">    <span class="attribute">overflow</span>: hidden;</span><br><span class="line">    <span class="attribute">text-overflow</span>: ellipsis;</span><br><span class="line">    <span class="attribute">-webkit-box-orient</span>: vertical;</span><br><span class="line">    <span class="attribute">-webkit-line-clamp</span>: <span class="number">4</span>;<span class="comment">/*第几行出现省略号*/</span></span><br><span class="line">    <span class="comment">/*text-align:justify;不能和溢出隐藏的代码一起写，会有bug*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="76-长时间按住页面闪退"><a href="#76-长时间按住页面闪退" class="headerlink" title="76. 长时间按住页面闪退"></a>76. 长时间按住页面闪退</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.element</span> &#123;</span><br><span class="line">    <span class="attribute">-webkit-touch-callout</span>: none;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -943,7 +943,7 @@ HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-count">26</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -954,7 +954,7 @@ HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时
               
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">分类</span>
                 </a>
               </div>
@@ -965,7 +965,7 @@ HTTP 503：由于超载或停机维护，服务器目前无法使用，一段时
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>

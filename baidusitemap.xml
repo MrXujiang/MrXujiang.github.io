@@ -4,6 +4,54 @@
 
     
   <url>
+    <loc>http://build800.com/2018/12/27/summary/</loc>
+    <lastmod>2018-12-27T13:33:22.890Z</lastmod>
+    <data>
+        <display>
+        <title>工作总结 -- 大易云计算</title>
+        <pubTime>2018-12-27T12:53:27.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>react</tag>
+         
+        <tag>css</tag>
+         
+        <tag>webpack</tag>
+         
+        <tag>大易云计算</tag>
+         
+         
+           
+             
+              <breadCrumb title="工作总结" url="http://build800.com/categories/%E5%B7%A5%E4%BD%9C%E6%80%BB%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://build800.com/2018/03/18/js-tools/</loc>
+    <lastmod>2018-11-11T05:40:09.979Z</lastmod>
+    <data>
+        <display>
+        <title>js常用工具函数汇总</title>
+        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+         
+           
+             
+              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://build800.com/2018/02/12/gitStudy/</loc>
     <lastmod>2018-08-28T09:09:24.047Z</lastmod>
     <data>
@@ -272,26 +320,6 @@
            
              
               <breadCrumb title="git" url="http://build800.com/categories/git/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://build800.com/2018/03/18/js-tools/</loc>
-    <lastmod>2018-04-21T13:51:01.515Z</lastmod>
-    <data>
-        <display>
-        <title>js常用工具函数汇总</title>
-        <pubTime>2018-03-18T15:09:54.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-         
-           
-             
-              <breadCrumb title="javascript" url="http://build800.com/categories/javascript/"/>
           
         </display>
     </data>
